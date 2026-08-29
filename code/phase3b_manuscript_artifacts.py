@@ -450,13 +450,14 @@ def tab2_drift():
          r"of the deterministic closed-loop trajectory (fixed MPC, $N_c=1$). The drift measure is "
          r"the shifted-reference warm-start normalized suboptimality of Eq.~\eqref{eq:drift}; a "
          r"transition is \emph{benign} when it falls below the $10^{-4}$ criterion at which this "
-         r"study declares convergence. \emph{In first 10\%} is the share of non-benign transitions "
-         r"falling inside the first tenth of the trajectory. The last column reports the "
+         r"study declares convergence. \emph{Severe early} is the share of the \emph{top decile} "
+         r"of measured drift within a system that falls inside the first tenth of the trajectory; "
+         r"it is not the share of all non-benign transitions. The last column reports the "
          r"reference-driven component of $\Delta f_k$, computed from the implemented equations. "
          r"All remaining drift is state-driven.}",
          r"\label{tab:drift}", r"\resizebox{\linewidth}{!}{%",
          r"\begin{tabular}{@{}lrrrrrrrr@{}}", r"\toprule",
-         r"System & Trans. & Benign & Median & p90 & Max & In first 10\% & "
+         r"System & Trans. & Benign & Median & p90 & Max & Severe early & "
          r"$\kappa(H)$ & Ref.-driven \\", r"\midrule"]
     for sy in SYS:
         r, k = s.loc[sy], c.loc[sy]
@@ -742,8 +743,8 @@ def supp_tables():
          r"$\times$ 4 optimizers $\times$ 5 seeds $=$ 500 runs, fixed MPC, exact budget). The "
          r"initial conditions were frozen before running and exclude those used for optimizer "
          r"tuning. $\bar\tau$ is the mean pairwise Kendall correlation between the per-IC "
-         r"optimizer rankings. The last column counts the (system, IC) cells in which the best "
-         r"optimizer is separated from the runner-up at $\alpha=0.05$.}",
+         r"optimizer rankings. Across the 25 (system, IC) cells, the best optimizer is separated "
+         r"from the runner-up at $\alpha=0.05$ in six.}",
          r"\label{tab:multi_ic}", r"\begin{tabular}{@{}lccl@{}}", r"\toprule",
          r"System & $\bar\tau$ across ICs & Distinct winners & Winner by IC \\", r"\midrule"]
     for sy in SYS:
@@ -820,19 +821,21 @@ def supp_tables():
 
     s = rd("primary_closed_loop_summary.csv")
     L = [r"\begin{table}[htbp]", r"\centering", r"\small",
-         r"\caption{Computation time per MPC step in the fixed-MPC primary experiment "
-         r"(regime B), as a fraction of the sampling interval $dt$. Timings come from an "
-         r"unoptimized single-process Python implementation on one machine and support relative "
-         r"comparison only; they are not a real-time deployability claim.}",
-         r"\label{tab:timing}", r"\begin{tabular}{@{}lccccc@{}}", r"\toprule",
-         r"System & Optimizer & mean (ms) & p95/$dt$ & max/$dt$ & det.\ ref. \\", r"\midrule"]
+         r"\caption{Computation time per MPC step in the fixed-MPC primary experiment under the "
+         r"common population size (regime B, $NP=20$), with the last two columns expressed as a "
+         r"fraction of the sampling interval $dt$. Timings come from an unoptimized "
+         r"single-process Python implementation on one machine with thread parallelism disabled; "
+         r"the execution environment is given in Section~\ref{sec:s_timing}. They are "
+         r"environment dependent, support relative comparison between the methods as implemented "
+         r"here, and are not a hardware-in-the-loop or embedded real-time claim.}",
+         r"\label{tab:timing}", r"\begin{tabular}{@{}llcccc@{}}", r"\toprule",
+         r"System & Optimizer & mean (ms) & median (ms) & p95/$dt$ & max/$dt$ \\", r"\midrule"]
     for sy in SYS:
         g = s[(s.system == sy) & (s.regime == "B_common_NP")].set_index("alg")
         for i, alg in enumerate(ALGS):
             r = g.loc[alg]
             L.append(f"{SYSLAB[sy] if i == 0 else ''} & {alg} & {r.time_ms_mean:.1f} & "
-                     f"{r.p95_over_dt:.3f} & {r.max_over_dt:.3f} & "
-                     f"{'' if i else ''} \\\\")
+                     f"{r.time_ms_median:.1f} & {r.p95_over_dt:.3f} & {r.max_over_dt:.3f} \\\\")
         L.append(r"\addlinespace")
     L = L[:-1] + [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
     wtab("tabS_timing", L)

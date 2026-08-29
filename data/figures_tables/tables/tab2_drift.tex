@@ -1,12 +1,12 @@
 \begin{table}[htbp]
 \centering
 \small
-\caption{Measured optimization-relevant drift over \emph{every} consecutive transition of the deterministic closed-loop trajectory (fixed MPC, $N_c=1$). The drift measure is the shifted-reference warm-start normalized suboptimality of Eq.~\eqref{eq:drift}; a transition is \emph{benign} when it falls below the $10^{-4}$ criterion at which this study declares convergence. \emph{In first 10\%} is the share of non-benign transitions falling inside the first tenth of the trajectory. The last column reports the reference-driven component of $\Delta f_k$, computed from the implemented equations. All remaining drift is state-driven.}
+\caption{Measured optimization-relevant drift over \emph{every} consecutive transition of the deterministic closed-loop trajectory (fixed MPC, $N_c=1$). The drift measure is the shifted-reference warm-start normalized suboptimality of Eq.~\eqref{eq:drift}; a transition is \emph{benign} when it falls below the $10^{-4}$ criterion at which this study declares convergence. \emph{Severe early} is the share of the \emph{top decile} of measured drift within a system that falls inside the first tenth of the trajectory; it is not the share of all non-benign transitions. The last column reports the reference-driven component of $\Delta f_k$, computed from the implemented equations. All remaining drift is state-driven.}
 \label{tab:drift}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{@{}lrrrrrrrr@{}}
 \toprule
-System & Trans. & Benign & Median & p90 & Max & In first 10\% & $\kappa(H)$ & Ref.-driven \\
+System & Trans. & Benign & Median & p90 & Max & Severe early & $\kappa(H)$ & Ref.-driven \\
 \midrule
 Pendulum-cart & 150 & 65.3\% & $4.61{\times}10^{-6}$ & $8.16{\times}10^{-3}$ & $6.69{\times}10^{-2}$ & 67\% & 1.000 & none (exactly 0) \\
 CSTR & 100 & 85.0\% & $1.11{\times}10^{-15}$ & $1.06{\times}10^{-2}$ & $1.80{\times}10^{1}$ & 80\% & $8.01{\times}10^{3}$ & none (exactly 0) \\
