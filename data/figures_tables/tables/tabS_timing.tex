@@ -1,0 +1,36 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Computation time per MPC step in the fixed-MPC primary experiment (regime B), as a fraction of the sampling interval $dt$. Timings come from an unoptimized single-process Python implementation on one machine and support relative comparison only; they are not a real-time deployability claim.}
+\label{tab:timing}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+System & Optimizer & mean (ms) & p95/$dt$ & max/$dt$ & det.\ ref. \\
+\midrule
+Pendulum-cart & SGO & 38.1 & 0.392 & 0.445 &  \\
+ & GWO & 32.2 & 0.338 & 0.440 &  \\
+ & PSO & 23.1 & 0.237 & 0.378 &  \\
+ & WOA & 29.6 & 0.305 & 0.346 &  \\
+\addlinespace
+CSTR & SGO & 11.6 & 0.119 & 0.149 &  \\
+ & GWO & 12.6 & 0.128 & 0.147 &  \\
+ & PSO & 3.5 & 0.036 & 0.041 &  \\
+ & WOA & 7.4 & 0.075 & 0.108 &  \\
+\addlinespace
+Flight control & SGO & 11.5 & 0.118 & 0.144 &  \\
+ & GWO & 12.6 & 0.128 & 0.304 &  \\
+ & PSO & 3.5 & 0.036 & 0.076 &  \\
+ & WOA & 7.3 & 0.075 & 0.136 &  \\
+\addlinespace
+HVAC & SGO & 11.5 & 0.119 & 0.173 &  \\
+ & GWO & 16.2 & 0.166 & 0.246 &  \\
+ & PSO & 3.5 & 0.036 & 0.118 &  \\
+ & WOA & 7.4 & 0.076 & 0.158 &  \\
+\addlinespace
+UAV & SGO & 11.6 & 0.119 & 0.181 &  \\
+ & GWO & 19.9 & 0.203 & 0.291 &  \\
+ & PSO & 3.6 & 0.036 & 0.053 &  \\
+ & WOA & 7.4 & 0.076 & 0.185 &  \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,30 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{SGO temporal-transfer diagnostic: offline error $E_o$ over 31 paired runs for three ways of carrying information across an environmental change. The modes share every SGO operator and differ only in what survives a change. Paired Wilcoxon with Holm correction inside each case; Cliff's $\delta$ with bootstrap 95\% interval. Evidence: \texttt{gmpb\_sgo\_temporal\_summary.csv}, \texttt{gmpb\_statistics.csv}.}
+\label{tab:gmpb_temporal}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llcccccc@{}}
+\toprule
+Case & Mode & mean & median & SD & \multicolumn{3}{c}{vs population persistence} \\
+\cmidrule(lr){6-8}
+ & & & & & median diff & $p_{\mathrm{Holm}}$ & Cliff's $\delta$ \\
+\midrule
+F2 & cold restart & 25.43 & 25.77 & 2.58 & -15.7 & 8.2e-08 & -0.83 [-0.99, -0.63] \\
+ & previous-best seeded & 20.15 & 20.21 & 3.03 & -20.3 & 2.8e-09 & -0.93 [-1.00, -0.81] \\
+ & population persistence & 41.76 & 40.04 & 12.6 & -- & -- & -- \\
+\addlinespace
+F8 & cold restart & 40.33 & 40.6 & 3.18 & -4.47 & 0.14 & -0.17 [-0.49, +0.16] \\
+ & previous-best seeded & 31.71 & 31.9 & 3.92 & -12.1 & 0.00021 & -0.50 [-0.76, -0.21] \\
+ & population persistence & 45.58 & 46.29 & 15.8 & -- & -- & -- \\
+\addlinespace
+F10 & cold restart & 167.7 & 168.2 & 8.05 & -65.5 & 2.8e-09 & -1.00 [-1.00, -1.00] \\
+ & previous-best seeded & 151.5 & 158.5 & 22.8 & -70.7 & 2.8e-09 & -1.00 [-1.00, -1.00] \\
+ & population persistence & 231.1 & 229.7 & 13.5 & -- & -- & -- \\
+\addlinespace
+F12 & cold restart & 25.32 & 25.43 & 2.12 & -26.5 & 2.8e-09 & -1.00 [-1.00, -1.00] \\
+ & previous-best seeded & 23.2 & 23.39 & 1.63 & -28.3 & 2.8e-09 & -1.00 [-1.00, -1.00] \\
+ & population persistence & 52.73 & 52.18 & 9.66 & -- & -- & -- \\
+\bottomrule
+\end{tabular}}
+\end{table}

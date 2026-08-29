@@ -1,0 +1,32 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Finite-horizon accuracy by pre-registered drift stratum (cold start, 215 instances, 20 trials each, exact 1000-evaluation budget). Strata were fixed from the drift measure alone before any optimizer trial and were not redrawn. Two imbalances are reported rather than removed: HVAC contributes no non-benign transition at all, and the Severe stratum is UAV-dominated (16 of 19 transitions; 8 of the 11 sampled instances). The within-system continuous associations reported in Section~\ref{subsec:drift_difficulty} do not depend on stratum balance.}
+\label{tab:strata}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lrcccc@{}}
+\toprule
+Stratum & Inst. & Optimizer & Median gap & IQR & Convergence \\
+\midrule
+Benign & 135 & SGO & 3.894e-10 & [1.33e-11, 4.67e-06] & 84.9\% \\
+ &  & GWO & 8.771e-13 & [4.89e-15, 6.07e-08] & 96.9\% \\
+ &  & PSO & 2.822e-09 & [9.68e-11, 1.32e-07] & 98.7\% \\
+ &  & WOA & 1.618e-11 & [1.48e-12, 1.05e-06] & 91.2\% \\
+\addlinespace
+Moderate & 36 & SGO & 7.907e-06 & [6.85e-08, 4.90e-04] & 66.8\% \\
+ &  & GWO & 1.205e-07 & [1.42e-09, 3.48e-06] & 93.3\% \\
+ &  & PSO & 3.263e-06 & [8.30e-09, 6.22e-05] & 79.0\% \\
+ &  & WOA & 6.816e-07 & [5.81e-13, 6.57e-05] & 77.1\% \\
+\addlinespace
+High & 33 & SGO & 1.635e-04 & [3.52e-06, 9.86e-03] & 46.5\% \\
+ &  & GWO & 4.695e-07 & [1.72e-08, 9.54e-05] & 75.2\% \\
+ &  & PSO & 2.763e-08 & [7.00e-12, 4.85e-04] & 69.8\% \\
+ &  & WOA & 1.500e-06 & [5.49e-12, 8.00e-03] & 59.4\% \\
+\addlinespace
+Severe & 11 & SGO & 5.746e-03 & [8.49e-06, 2.29e-02] & 28.2\% \\
+ &  & GWO & 8.308e-05 & [7.42e-09, 4.12e-04] & 52.7\% \\
+ &  & PSO & 6.123e-04 & [3.19e-10, 5.35e-03] & 45.0\% \\
+ &  & WOA & 3.651e-03 & [2.16e-10, 2.85e-02] & 31.4\% \\
+\bottomrule
+\end{tabular}}
+\end{table}

@@ -1,0 +1,42 @@
+{
+  "purpose": "Test whether deliberately induced changes that increase measured objective drift reproduce the drift-difficulty relationship found in the nominal sequences. Not a second benchmark suite.",
+  "systems": [
+    "hvac",
+    "uav"
+  ],
+  "system_choice_reason": {
+    "hvac": "nominal sequence is completely benign (0 of 1500 transitions non-benign), so any induced drift is unambiguous",
+    "uav": "largest natural tail drift and the only system with clear optimizer separation"
+  },
+  "conditions": [
+    "nominal",
+    "process_disturbance",
+    "measurement_noise",
+    "reference_event"
+  ],
+  "conditions_never_combined": true,
+  "magnitudes": {
+    "process_disturbance": {
+      "hvac": "additive state disturbance, sigma = 0.05 K per step on the three room temperature states (about 2.5% of the 2 K setpoint offset)",
+      "uav": "additive state disturbance, sigma = 0.02 m per step on the three position states (0.2% of the 10 m reference travel)"
+    },
+    "measurement_noise": {
+      "hvac": "sigma = 0.05 K on the state passed to the controller only; the true plant state is unperturbed",
+      "uav": "sigma = 0.02 m on the position states passed to the controller only"
+    },
+    "reference_event": {
+      "hvac": "room setpoints step by +1.0 K at 50% of the horizon",
+      "uav": "position reference steps by +1.0 m in x at 50% of the horizon"
+    }
+  },
+  "magnitude_rationale": "Each magnitude is a small fraction of the quantity the controller is regulating, chosen to be physically plausible and NOT tuned to induce optimizer failure. They were fixed before any optimizer result was observed.",
+  "trajectory_length": {
+    "hvac": 400,
+    "uav": 400
+  },
+  "trajectory_length_reason": "Bounded to 400 steps per system so the study stays small; the nominal condition is rerun at the same length so all comparisons are like-for-like.",
+  "runs_per_optimizer_per_condition": 10,
+  "mpc": "frozen Phase-2A fixed MPC",
+  "fe_budget": 1000,
+  "seed_base": 16000000
+}

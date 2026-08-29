@@ -1,0 +1,32 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Warm-start mechanism. The start gap is the normalized suboptimality of the point the optimizer is initialised from; the incumbent-return rate is the fraction of trials returning that point unchanged. HVAC's reference warm start is already optimal, which is why every optimizer trivially meets the convergence criterion there; flight's is not.}
+\label{tab:warm_start_mechanism}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+System & Start condition & Median start gap & Within $10^{-4}$ & Incumbent returned & Median final gap & Convergence \\
+\midrule
+pendcart & cold & 9.09e-04 & 42.2\% & 1.3\% & 1.82e-09 & 100.0\% \\
+pendcart & reference warm & 3.40e-05 & 51.1\% & 2.2\% & 1.30e-09 & 100.0\% \\
+pendcart & optimizer warm & 3.34e-05 & 51.2\% & 2.7\% & 1.47e-09 & 100.0\% \\
+\addlinespace
+cstr & cold & 1.34e-11 & 61.0\% & 22.6\% & 7.55e-12 & 91.4\% \\
+cstr & reference warm & 7.30e-14 & 61.0\% & 52.7\% & 4.04e-15 & 94.2\% \\
+cstr & optimizer warm & 2.27e-08 & 60.7\% & 16.4\% & 7.94e-09 & 95.1\% \\
+\addlinespace
+flight & cold & 3.64e-04 & 41.5\% & 7.8\% & 1.09e-06 & 92.5\% \\
+flight & reference warm & 1.36e-05 & 58.5\% & 12.2\% & 4.59e-07 & 95.6\% \\
+flight & optimizer warm & 2.29e-05 & 57.6\% & 7.9\% & 1.21e-06 & 94.6\% \\
+\addlinespace
+hvac & cold & 2.91e-02 & 0.0\% & 0.0\% & 5.13e-05 & 72.6\% \\
+hvac & reference warm & 7.53e-08 & 96.9\% & 50.0\% & 1.51e-08 & 100.0\% \\
+hvac & optimizer warm & 3.36e-06 & 88.0\% & 42.3\% & 2.64e-06 & 93.0\% \\
+\addlinespace
+uav & cold & 7.05e-06 & 55.4\% & 27.5\% & 2.94e-06 & 63.1\% \\
+uav & reference warm & 3.28e-07 & 55.4\% & 29.6\% & 1.20e-07 & 67.2\% \\
+uav & optimizer warm & 9.30e-03 & 26.1\% & 4.9\% & 1.29e-03 & 35.8\% \\
+\bottomrule
+\end{tabular}}
+\end{table}

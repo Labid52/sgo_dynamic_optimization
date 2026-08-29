@@ -1,0 +1,15 @@
+{
+  "protocol": {
+    "dim": 100,
+    "budget_evals": 150000,
+    "runs": 100,
+    "NP": 50,
+    "tolerance": 1e-12,
+    "paper_runs": 100,
+    "deviation_from_paper": "none"
+  },
+  "selfcheck_local_copy_matches_sgo_py": true,
+  "functions_validated": 12,
+  "functions_excluded": [],
+  "wall_seconds": 4410.2
+}

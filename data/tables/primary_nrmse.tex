@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Closed-loop normalized RMSE under the fixed-MPC primary experiment. The MPC formulation is identical for all optimizers and for the deterministic reference. Every run consumes exactly the same number of objective evaluations per MPC step. Mean $\pm$ standard deviation over 20 runs; the deterministic reference is a single value.}
+\label{tab:primary_nrmse}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Regime & System & SGO & GWO & PSO & WOA & Deterministic ref. \\
+\midrule
+A (tuned $NP$, exact FE) & Pendulum-cart & $0.21502\!\pm\!3.1e-05$ & $0.21502\!\pm\!3.8e-06$ & \textbf{$0.21499\!\pm\!3.8e-05$} & $0.21502\!\pm\!7.3e-08$ & $0.21502$ \\
+ & CSTR & $0.29421\!\pm\!0.00018$ & \textbf{$0.29415\!\pm\!5.8e-06$} & $0.29467\!\pm\!0.0023$ & $0.29472\!\pm\!0.00068$ & $0.29415$ \\
+ & Flight control & \textbf{$0.018166\!\pm\!6.9e-05$} & $0.018198\!\pm\!1.4e-05$ & $0.018194\!\pm\!6.4e-06$ & $0.018186\!\pm\!3.2e-05$ & $0.018196$ \\
+ & HVAC & \textbf{$0.020752\!\pm\!1.9e-06$} & $0.020759\!\pm\!1.7e-06$ & $0.020754\!\pm\!7.8e-06$ & $0.020767\!\pm\!4.3e-08$ & $0.020767$ \\
+ & UAV & $0.00092729\!\pm\!4.5e-05$ & \textbf{$0.00086918\!\pm\!8.9e-07$} & $0.0024784\!\pm\!0.003$ & $0.0012514\!\pm\!0.00021$ & $0.0008693$ \\
+\midrule
+B (common $NP{=}20$, exact FE) & Pendulum-cart & $0.21502\!\pm\!2.5e-05$ & $0.21502\!\pm\!2.8e-06$ & \textbf{$0.21495\!\pm\!9.5e-05$} & $0.21502\!\pm\!8.5e-08$ & $0.21502$ \\
+ & CSTR & $0.29443\!\pm\!0.0004$ & \textbf{$0.29415\!\pm\!4.1e-06$} & $0.29415\!\pm\!9.8e-07$ & $0.29441\!\pm\!0.00044$ & $0.29415$ \\
+ & Flight control & \textbf{$0.018184\!\pm\!2.4e-05$} & $0.018195\!\pm\!9.7e-06$ & $0.01823\!\pm\!8.2e-05$ & $0.018195\!\pm\!4.4e-06$ & $0.018196$ \\
+ & HVAC & \textbf{$0.02076\!\pm\!1.3e-06$} & $0.020762\!\pm\!1.6e-06$ & $0.020762\!\pm\!2.9e-06$ & $0.020767\!\pm\!3e-08$ & $0.020767$ \\
+ & UAV & $0.00093557\!\pm\!4.7e-05$ & \textbf{$0.00087361\!\pm\!1.5e-05$} & $0.0026352\!\pm\!0.0014$ & $0.0012683\!\pm\!0.00024$ & $0.0008693$ \\
+\bottomrule
+\end{tabular}}
+\end{table}

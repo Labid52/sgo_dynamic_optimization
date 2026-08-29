@@ -1,0 +1,32 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Frozen-subproblem accuracy by drift stratum, cold start. Median normalized optimality gap (IQR) and strict convergence rate at the $10^{-4}$ criterion. Strata were fixed from drift metrics alone before any optimizer trial. HVAC contributes only Benign instances and the Severe stratum is UAV-dominated, so per-system reading is required.}
+\label{tab:frozen_sweep_by_drift}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Stratum & Optimizer & Median gap & IQR & Conv.\ rate & Instances \\
+\midrule
+Benign & GWO & 8.771e-13 & [4.89e-15, 6.07e-08] & 96.9\% & 102 \\
+Benign & PSO & 2.822e-09 & [9.68e-11, 1.32e-07] & 98.7\% & 102 \\
+Benign & SGO & 3.894e-10 & [1.33e-11, 4.67e-06] & 84.9\% & 102 \\
+Benign & WOA & 1.618e-11 & [1.48e-12, 1.05e-06] & 91.2\% & 102 \\
+\midrule
+Moderate & GWO & 1.205e-07 & [1.42e-09, 3.48e-06] & 93.3\% & 26 \\
+Moderate & PSO & 3.263e-06 & [8.30e-09, 6.22e-05] & 79.0\% & 26 \\
+Moderate & SGO & 7.907e-06 & [6.85e-08, 4.90e-04] & 66.8\% & 26 \\
+Moderate & WOA & 6.816e-07 & [5.81e-13, 6.57e-05] & 77.1\% & 26 \\
+\midrule
+High & GWO & 4.695e-07 & [1.72e-08, 9.54e-05] & 75.2\% & 22 \\
+High & PSO & 2.763e-08 & [7.00e-12, 4.85e-04] & 69.8\% & 22 \\
+High & SGO & 1.635e-04 & [3.52e-06, 9.86e-03] & 46.5\% & 22 \\
+High & WOA & 1.500e-06 & [5.49e-12, 8.00e-03] & 59.4\% & 22 \\
+\midrule
+Severe & GWO & 8.308e-05 & [7.42e-09, 4.12e-04] & 52.7\% & 10 \\
+Severe & PSO & 6.123e-04 & [3.19e-10, 5.35e-03] & 45.0\% & 10 \\
+Severe & SGO & 5.746e-03 & [8.49e-06, 2.29e-02] & 28.2\% & 10 \\
+Severe & WOA & 3.651e-03 & [2.16e-10, 2.85e-02] & 31.4\% & 10 \\
+\bottomrule
+\end{tabular}}
+\end{table}

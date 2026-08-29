@@ -1,0 +1,36 @@
+{
+  "budgets": [
+    200,
+    500,
+    1000,
+    2000
+  ],
+  "NP": [
+    8,
+    10,
+    14,
+    20,
+    30
+  ],
+  "trials_per_cell": 5,
+  "systems": [
+    "cstr",
+    "flight",
+    "hvac",
+    "pendcart",
+    "uav"
+  ],
+  "cells": 2000,
+  "any_overshoot": false,
+  "max_overshoot": 0,
+  "max_shortfall": 0,
+  "fraction_exactly_on_budget": 1.0,
+  "shortfall_by_alg": {
+    "GWO": 0,
+    "PSO": 0,
+    "SGO": 0,
+    "WOA": 0
+  },
+  "wall_seconds": 28.1,
+  "verdict": "PASS - no optimizer exceeded its budget"
+}

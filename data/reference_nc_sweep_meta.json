@@ -1,0 +1,39 @@
+{
+  "criteria": {
+    "C1": "OSQP status == solved at every instant",
+    "C2": "max normalized suboptimality bound <= 1e-06",
+    "C3": "max relative solver disagreement <= 1e-06",
+    "C4": "lambda_min(H) > 0"
+  },
+  "convergence_criterion_scale": 0.0001,
+  "certified_cases": [
+    "cstr/Nc1",
+    "cstr/Nc2",
+    "cstr/Nc3",
+    "cstr/Nc5",
+    "cstr/Nc8",
+    "flight/Nc1",
+    "flight/Nc2",
+    "flight/Nc3",
+    "flight/Nc5",
+    "flight/Nc8",
+    "hvac/Nc1",
+    "hvac/Nc2",
+    "hvac/Nc3",
+    "hvac/Nc5",
+    "hvac/Nc8",
+    "pendcart/Nc1",
+    "pendcart/Nc2",
+    "pendcart/Nc3",
+    "pendcart/Nc5",
+    "pendcart/Nc8",
+    "uav/Nc1",
+    "uav/Nc2"
+  ],
+  "not_certified_cases": [
+    "uav/Nc3",
+    "uav/Nc5",
+    "uav/Nc8"
+  ],
+  "wall_seconds": 22.3
+}

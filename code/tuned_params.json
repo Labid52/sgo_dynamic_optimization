@@ -1,0 +1,152 @@
+{
+  "pendcart": {
+    "SGO": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    },
+    "GWO": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    },
+    "PSO": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    },
+    "WOA": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    }
+  },
+  "cstr": {
+    "SGO": {
+      "P": 20,
+      "Nc": 3,
+      "Q_scale": 1.0,
+      "NP": 30,
+      "maxIter": 60
+    },
+    "GWO": {
+      "P": 10,
+      "Nc": 3,
+      "Q_scale": 2.0,
+      "NP": 14,
+      "maxIter": 60
+    },
+    "PSO": {
+      "P": 20,
+      "Nc": 3,
+      "Q_scale": 0.25,
+      "NP": 30,
+      "maxIter": 60
+    },
+    "WOA": {
+      "P": 20,
+      "Nc": 2,
+      "Q_scale": 1.0,
+      "NP": 20,
+      "maxIter": 100
+    }
+  },
+  "flight": {
+    "SGO": {
+      "P": 20,
+      "Nc": 1,
+      "Q_scale": 0.5,
+      "NP": 30,
+      "maxIter": 100
+    },
+    "GWO": {
+      "P": 20,
+      "Nc": 3,
+      "Q_scale": 2.0,
+      "NP": 20,
+      "maxIter": 40
+    },
+    "PSO": {
+      "P": 20,
+      "Nc": 1,
+      "Q_scale": 0.5,
+      "NP": 30,
+      "maxIter": 40
+    },
+    "WOA": {
+      "P": 15,
+      "Nc": 3,
+      "Q_scale": 5.0,
+      "NP": 30,
+      "maxIter": 20
+    }
+  },
+  "hvac": {
+    "SGO": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    },
+    "GWO": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    },
+    "PSO": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    },
+    "WOA": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    }
+  },
+  "uav": {
+    "SGO": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    },
+    "GWO": {
+      "P": 10,
+      "Nc": 1,
+      "Q_scale": 0.5,
+      "NP": 14,
+      "maxIter": 40
+    },
+    "PSO": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    },
+    "WOA": {
+      "NP": 20,
+      "maxIter": 60,
+      "P": null,
+      "Nc": 1,
+      "Q_scale": 1.0
+    }
+  }
+}

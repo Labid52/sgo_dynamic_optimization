@@ -1,0 +1,38 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Sensitivity to modelling choices. \emph{(a)} Bounded perturbations of the nominal sequences: measured non-benign fraction and each optimizer's closed-loop nRMSE excess over the deterministic reference \emph{of the same perturbed problem} (10 runs, exact budget). \emph{(b)} Replacing the zero-tail prediction convention with hold-last, nothing retuned: deterministic closed-loop change and the median first applied-control change as a fraction of the input range. \emph{(c)} Paired-seed stochastic comparison on flight and UAV: SGO's rank of four under each convention, separately by metric family.}
+\label{tab:sens}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+\multicolumn{7}{@{}l}{\textit{(a) bounded perturbation: nRMSE excess over the deterministic reference}} \\
+System & Condition & Non-benign & SGO & GWO & PSO & WOA \\
+\midrule
+HVAC & nominal & 0.0\% & $-0.06\%$ & $-0.03\%$ & $-0.05\%$ & $-0.00\%$ \\
+HVAC & process disturbance & 86.7\% & $+21.92\%$ & $+18.34\%$ & $+13.78\%$ & $+18.63\%$ \\
+HVAC & measurement noise & 80.5\% & $+0.00\%$ & $-0.01\%$ & $-0.17\%$ & $-0.02\%$ \\
+HVAC & abrupt reference & 0.3\% & $+0.01\%$ & $+0.00\%$ & $-0.03\%$ & $-0.00\%$ \\
+\addlinespace
+UAV & nominal & 12.8\% & $+13.93\%$ & $-0.15\%$ & $+198.04\%$ & $+40.55\%$ \\
+UAV & process disturbance & 100.0\% & $-3.18\%$ & $-1.07\%$ & $+34.59\%$ & $+5.50\%$ \\
+UAV & measurement noise & 100.0\% & $+10.38\%$ & $+1.99\%$ & $+244.86\%$ & $+77.40\%$ \\
+UAV & abrupt reference & 29.6\% & $+0.47\%$ & $+0.00\%$ & $+15.98\%$ & $+1.64\%$ \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{(b) prediction tail: hold-last vs zero-tail, deterministic, no retuning}} \\
+System & & nRMSE zero-tail & nRMSE hold-last & Change & Median $|\Delta u_0|$ / range & \\
+Pendulum-cart & & 0.215022 & 3.88534 & $+1706.9\%$ & $50.0\%$ & \\
+CSTR & & 0.294153 & 0.784045 & $+166.5\%$ & $<0.001\%$ & \\
+Flight control & & 0.0181957 & 0.020442 & $+12.3\%$ & $0.11\%$ & \\
+HVAC & & 0.0207669 & 0.0196736 & $-5.3\%$ & $5.7\%$ & \\
+UAV & & 0.000869298 & 0.00121147 & $+39.4\%$ & $0.004\%$ & \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{(c) prediction tail: SGO rank of four under each convention (paired seeds, exact budget)}} \\
+System & Metric family & zero-tail & hold-last & Paired $\Delta$nRMSE & 95\% CI & \\
+Flight control & finite-horizon accuracy & 4 & 4 &  &  & \\
+ & closed-loop nRMSE & 1 & 4 & $+13.6\%$ & $[+12.6, +14.8]$ & \\
+UAV & finite-horizon accuracy & 2 & 2 &  &  & \\
+ & closed-loop nRMSE & 2 & 3 & $+33.9\%$ & $[+30.1, +37.5]$ & \\
+\bottomrule
+\end{tabular}}
+\end{table}

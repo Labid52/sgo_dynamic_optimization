@@ -1,0 +1,184 @@
+{
+  "protocol": {
+    "mpc_frozen": true,
+    "tuned_parameters": [
+      "NP"
+    ],
+    "derived_parameters": [
+      "maxIter (from exact FE budget and NP)"
+    ],
+    "not_tuned": [
+      "P",
+      "Nc",
+      "Q",
+      "R",
+      "Q_scale",
+      "plant",
+      "reference",
+      "horizon"
+    ],
+    "fe_budget": 1000,
+    "np_grid": [
+      8,
+      10,
+      14,
+      20,
+      30
+    ],
+    "seeds_per_candidate": 3,
+    "selection_metric": "mean closed-loop nRMSE on the held-out tuning IC, full simulation length",
+    "initial_condition": "x0_tune only; x0_eval never used during tuning"
+  },
+  "selected": {
+    "pendcart": {
+      "SGO": {
+        "NP": 20,
+        "score": 0.29604027026009083,
+        "maxIter_derived": 105,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 39.2596780111651
+      },
+      "GWO": {
+        "NP": 20,
+        "score": 0.2960541275624124,
+        "maxIter_derived": 55,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 33.547458780230954
+      },
+      "PSO": {
+        "NP": 30,
+        "score": 0.29605101476650936,
+        "maxIter_derived": 39,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 23.592884546378627
+      },
+      "WOA": {
+        "NP": 8,
+        "score": 0.2960557377788122,
+        "maxIter_derived": 130,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 31.695601060119873
+      }
+    },
+    "cstr": {
+      "SGO": {
+        "NP": 30,
+        "score": 0.1967192847813054,
+        "maxIter_derived": 72,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 11.912327950024823
+      },
+      "GWO": {
+        "NP": 20,
+        "score": 0.19668974922622828,
+        "maxIter_derived": 55,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 13.67699228663696
+      },
+      "PSO": {
+        "NP": 8,
+        "score": 0.19523618610931145,
+        "maxIter_derived": 130,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 4.524654557947845
+      },
+      "WOA": {
+        "NP": 10,
+        "score": 0.19666259431616973,
+        "maxIter_derived": 105,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 7.583935685785643
+      }
+    },
+    "flight": {
+      "SGO": {
+        "NP": 8,
+        "score": 0.0213013253066392,
+        "maxIter_derived": 255,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 12.951389345625001
+      },
+      "GWO": {
+        "NP": 30,
+        "score": 0.021350245030250004,
+        "maxIter_derived": 39,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 13.107689389208746
+      },
+      "PSO": {
+        "NP": 30,
+        "score": 0.021349585042683843,
+        "maxIter_derived": 39,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 3.5105217269544178
+      },
+      "WOA": {
+        "NP": 10,
+        "score": 0.021282228211003267,
+        "maxIter_derived": 105,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 7.610217811112913
+      }
+    },
+    "hvac": {
+      "SGO": {
+        "NP": 30,
+        "score": 0.05605993468016956,
+        "maxIter_derived": 72,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 11.402856637135201
+      },
+      "GWO": {
+        "NP": 30,
+        "score": 0.05606101209007022,
+        "maxIter_derived": 39,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 16.717509260815053
+      },
+      "PSO": {
+        "NP": 8,
+        "score": 0.05606066380670669,
+        "maxIter_derived": 130,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 4.372802791547858
+      },
+      "WOA": {
+        "NP": 30,
+        "score": 0.056064529003537644,
+        "maxIter_derived": 39,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 7.314416687987332
+      }
+    },
+    "uav": {
+      "SGO": {
+        "NP": 20,
+        "score": 0.008142189362688254,
+        "maxIter_derived": 105,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 11.520120030307831
+      },
+      "GWO": {
+        "NP": 30,
+        "score": 0.008054360282792864,
+        "maxIter_derived": 39,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 20.282864943651173
+      },
+      "PSO": {
+        "NP": 10,
+        "score": 0.009322613958547695,
+        "maxIter_derived": 105,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 4.024442561921508
+      },
+      "WOA": {
+        "NP": 30,
+        "score": 0.008340422868524482,
+        "maxIter_derived": 39,
+        "mean_nfe_per_step": 1000.0,
+        "mean_time_ms": 7.310042665883278
+      }
+    }
+  }
+}

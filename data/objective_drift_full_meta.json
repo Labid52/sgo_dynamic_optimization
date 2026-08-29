@@ -1,0 +1,14 @@
+{
+  "total_transitions": 2400,
+  "benign_criterion": 0.0001,
+  "overall_benign_fraction": 0.92875,
+  "per_system_benign_fraction": {
+    "cstr": 0.85,
+    "flight": 0.7133333333333334,
+    "hvac": 1.0,
+    "pendcart": 0.6533333333333333,
+    "uav": 0.878
+  },
+  "max_crosscheck_rel_diff": 2.2527732326663356e-10,
+  "wall_seconds": 5.0
+}

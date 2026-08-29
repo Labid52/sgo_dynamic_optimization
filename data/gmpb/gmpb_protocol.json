@@ -1,0 +1,293 @@
+{
+  "study": "GMPB external validation of the Squid Game Optimizer",
+  "sgo_identity": {
+    "name": "Squid Game Optimizer",
+    "reference": "Azizi, Baghalzadeh Shishehgarkhaneh, Basiri, Moehler, Scientific Reports 13:5373 (2023)",
+    "doi": "10.1038/s41598-023-32465-z",
+    "not": "Social Group Optimization or any other algorithm sharing the acronym",
+    "implementation": "codes/sgo.py (unchanged); dynamic driver codes/gmpb_optimizers.py:SGO verified identical by codes/gmpb_sgo_fidelity.py"
+  },
+  "benchmark": {
+    "name": "Generalized Moving Peaks Benchmark (GMPB), simplified single-sub-function variant",
+    "official_repo": "https://github.com/EDOLAB-platform/EDOLAB-MATLAB",
+    "branch": "main",
+    "downloaded": "2026-08-22",
+    "competition_table_url": "https://competition-hub.github.io/GMPB-Competition/",
+    "support_document": "arXiv:2106.06174 v4 (2024-12-10)",
+    "survey": "Yazdani et al., IEEE Trans. Cybernetics 52(5) 3380-3393",
+    "sha256": {
+      "BenchmarkGenerator_GMPB.m": "11ffbfc249344b6b7656139f14dcfcc687e0e3855473f6bec54ac5f0308d1613",
+      "fitness_GMPB.m": "1bbf2fd800607745b86cad7536a8f51a1dd8571ecee7852ee40d5ea17a1b4c9d",
+      "fitness.m": "0b7f479c876457f2778e2f0ca07f704361fa2efa72b034a9cb9f5a07818603c5",
+      "getProConfigurableParameters_GMPB.m": "4eed23160a38bb19064e0082c85299c0c3b0bd3dd1de351e184fb89dafe277b7"
+    },
+    "defaults_from_code": {
+      "Dimension": 5,
+      "PeakNumber": 10,
+      "ChangeFrequency": 5000,
+      "ShiftSeverity": 1,
+      "EnvironmentNumber": 100,
+      "HeightSeverity": 7,
+      "WidthSeverity": 1,
+      "AngleSeverity": "pi/9",
+      "TauSeverity": 0.2,
+      "EtaSeverity": 10,
+      "coordinate_range": [
+        -50,
+        50
+      ],
+      "height_range": [
+        30,
+        70
+      ],
+      "width_range": [
+        1,
+        12
+      ],
+      "angle_range": [
+        "-pi",
+        "pi"
+      ],
+      "tau_range": [
+        0.1,
+        1
+      ],
+      "eta_range": [
+        0,
+        50
+      ]
+    },
+    "deviations_from_arxiv_table_I": [
+      "search range is [-50,50]^d in the released code, [-100,100]^d in Table I",
+      "eta range is [0,50] in the released code, [0,100] in Table I"
+    ],
+    "cases": {
+      "F1": {
+        "PeakNumber": 5,
+        "ChangeFrequency": 5000,
+        "Dimension": 5,
+        "ShiftSeverity": 1,
+        "MaxEvals": 500000
+      },
+      "F2": {
+        "PeakNumber": 10,
+        "ChangeFrequency": 5000,
+        "Dimension": 5,
+        "ShiftSeverity": 1,
+        "MaxEvals": 500000
+      },
+      "F3": {
+        "PeakNumber": 25,
+        "ChangeFrequency": 5000,
+        "Dimension": 5,
+        "ShiftSeverity": 1,
+        "MaxEvals": 500000
+      },
+      "F4": {
+        "PeakNumber": 50,
+        "ChangeFrequency": 5000,
+        "Dimension": 5,
+        "ShiftSeverity": 1,
+        "MaxEvals": 500000
+      },
+      "F5": {
+        "PeakNumber": 100,
+        "ChangeFrequency": 5000,
+        "Dimension": 5,
+        "ShiftSeverity": 1,
+        "MaxEvals": 500000
+      },
+      "F6": {
+        "PeakNumber": 10,
+        "ChangeFrequency": 2500,
+        "Dimension": 5,
+        "ShiftSeverity": 1,
+        "MaxEvals": 250000
+      },
+      "F7": {
+        "PeakNumber": 10,
+        "ChangeFrequency": 1000,
+        "Dimension": 5,
+        "ShiftSeverity": 1,
+        "MaxEvals": 100000
+      },
+      "F8": {
+        "PeakNumber": 10,
+        "ChangeFrequency": 500,
+        "Dimension": 5,
+        "ShiftSeverity": 1,
+        "MaxEvals": 50000
+      },
+      "F9": {
+        "PeakNumber": 10,
+        "ChangeFrequency": 5000,
+        "Dimension": 10,
+        "ShiftSeverity": 1,
+        "MaxEvals": 500000
+      },
+      "F10": {
+        "PeakNumber": 10,
+        "ChangeFrequency": 5000,
+        "Dimension": 20,
+        "ShiftSeverity": 1,
+        "MaxEvals": 500000
+      },
+      "F11": {
+        "PeakNumber": 10,
+        "ChangeFrequency": 5000,
+        "Dimension": 5,
+        "ShiftSeverity": 2,
+        "MaxEvals": 500000
+      },
+      "F12": {
+        "PeakNumber": 10,
+        "ChangeFrequency": 5000,
+        "Dimension": 5,
+        "ShiftSeverity": 5,
+        "MaxEvals": 500000
+      }
+    }
+  },
+  "integration": {
+    "method": "official Octave generation of every environment sequence + validated Python port of fitness_GMPB.m and fitness.m",
+    "octave": "GNU Octave 10.3.0 (conda-forge)",
+    "substituted_library_function": "pdist2 (Octave Forge statistics could not be built); shim validated against the closed form",
+    "gmpb_sources_modified": false
+  },
+  "optimizers": {
+    "list": [
+      "SGO",
+      "GWO",
+      "PSO",
+      "WOA"
+    ],
+    "focal": "SGO",
+    "role_of_others": "controls",
+    "population_size": 20,
+    "per_case_tuning": false,
+    "pso": {
+      "w_max": 0.9,
+      "w_min": 0.4,
+      "c1": 2.0,
+      "c2": 2.0,
+      "velocity_clamp_fraction": 0.5
+    },
+    "woa": {
+      "b": 1.0
+    },
+    "annealing_schedule_index": "progress through the current environment, identically for GWO, WOA and PSO; SGO has none"
+  },
+  "dynamic_state_handling": {
+    "change_notification": "informed, via the official RecentChange flag",
+    "on_change": "acknowledge, re-evaluate the retained population under the new environment, continue",
+    "reevaluations_count_against_budget": true,
+    "optimum_never_disclosed": true,
+    "privileged_information_to_any_optimizer": false
+  },
+  "budget": {
+    "per_environment": "ChangeFrequency",
+    "per_run": "ChangeFrequency * 100",
+    "mpc_1000_fe_rule_imported": false
+  },
+  "runs": {
+    "independent_runs": 31,
+    "environments": 100,
+    "benchmark_seed": "run index, as in EDOLAB rng(RunCounter); identical trajectory for all optimizers and modes",
+    "optimizer_seed": "20260900 + 1000*run + 10*alg_offset + mode_offset",
+    "alg_offset": {
+      "SGO": 1,
+      "GWO": 2,
+      "PSO": 3,
+      "WOA": 4
+    },
+    "mode_offset": {
+      "population_persistence": 0,
+      "cold_restart": 10,
+      "previous_best_seeded": 20
+    }
+  },
+  "experiments": {
+    "primary": {
+      "cases": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12"
+      ],
+      "optimizers": [
+        "SGO",
+        "GWO",
+        "PSO",
+        "WOA"
+      ],
+      "mode": "population_persistence",
+      "runs": 31,
+      "total_runs": 1488
+    },
+    "sgo_temporal": {
+      "cases": [
+        "F2",
+        "F8",
+        "F10",
+        "F12"
+      ],
+      "case_rationale": {
+        "F2": "baseline multimodal",
+        "F8": "highest change frequency",
+        "F10": "highest dimension",
+        "F12": "highest shift severity"
+      },
+      "modes": [
+        "cold_restart",
+        "previous_best_seeded",
+        "population_persistence"
+      ],
+      "runs": 31,
+      "total_runs": 372
+    }
+  },
+  "metrics": {
+    "primary": "offline error E_o = mean(CurrentError) over all MaxEvals, official definition",
+    "secondary_official": "E_bbc = mean(Ebbc)",
+    "per_environment": [
+      "post_change_error",
+      "end_of_environment_error",
+      "mean_error",
+      "error_reduction",
+      "error_reduction_fraction",
+      "recovery_evals_50",
+      "recovery_success_50",
+      "recovery_evals_90",
+      "recovery_success_90"
+    ],
+    "recovery_definition": "evaluations after a change until the best-so-far error first reaches 50% / 90% of that environment's own total error reduction; parameter free, no absolute threshold",
+    "sgo_extra": "mean normalised population diversity",
+    "reporting": [
+      "best",
+      "worst",
+      "mean",
+      "median",
+      "std"
+    ]
+  },
+  "statistics": {
+    "paired_test": "Wilcoxon signed-rank on 31 paired runs",
+    "correction": "Holm within each predeclared family",
+    "families": {
+      "primary": "the three SGO vs control comparisons within a case",
+      "temporal": "the three pairwise mode comparisons within a case"
+    },
+    "effect_size": "Cliff's delta with bootstrap 95% CI, 10000 resamples",
+    "bootstrap_resamples": 10000
+  },
+  "no_ablation_on_gmpb_in_this_pass": true,
+  "manuscript_edits_in_this_task": false
+}

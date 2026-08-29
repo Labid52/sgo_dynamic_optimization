@@ -1,0 +1,6 @@
+{
+  "rows": 500,
+  "fe_exact_everywhere": true,
+  "seeds_per_cell": 5,
+  "wall_seconds": 3027.5
+}

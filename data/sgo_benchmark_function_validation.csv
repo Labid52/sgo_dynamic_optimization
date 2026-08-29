@@ -1,0 +1,14 @@
+fid,name,known_min,value_at_optimiser,validated,note
+F1,Ackley 1,0.0,4.440892098500626e-16,True,
+F2,Alpine 1,0.0,0.0,True,
+F4,Chung Reynolds,0.0,0.0,True,
+F5,Csendes,0.0,0.0,True,
+F6,Deb 1,-1.0,-1.0,True,
+F7,Dixon & Price,0.0,,,optimiser location is dimension-dependent; not validated pointwise
+F10,Griewank,0.0,0.0,True,
+F19,Powell Sum,0.0,0.0,True,
+F20,Rastrigin,0.0,0.0,True,
+F22,Quintic,0.0,0.0,True,
+F23,Rosenbrock,0.0,0.0,True,
+F24,Salomon,0.0,0.0,True,
+F25,Schumer Steiglitz,0.0,0.0,True,

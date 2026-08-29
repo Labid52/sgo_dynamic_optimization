@@ -1,0 +1,33 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Association between finite-horizon optimization error, first applied input error, and downstream tracking, under the fixed-MPC exact-FE protocol. Spearman $\rho$ with bootstrap 95\% CIs. These are observational associations on the same runs; no causal claim is made.}
+\label{tab:input_error_sensitivity}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llccc@{}}
+\toprule
+System & Opt. & $\rho$(gap, $e_u$) [CI] & $\rho$($e_u$, $\Delta$track) [CI] & mean $e_u$ \\
+\midrule
+cstr & GWO & $+0.10$ [-0.02, +0.21] & $-0.00$ [-0.11, +0.12] & 1.648e-04 \\
+cstr & PSO & $+0.49$ [+0.41, +0.58] & $+0.18$ [+0.07, +0.29] & 3.688e-03 \\
+cstr & SGO & $+0.56$ [+0.49, +0.63] & $-0.21$ [-0.31, -0.11] & 1.063e-03 \\
+cstr & WOA & $+0.59$ [+0.50, +0.66] & $-0.25$ [-0.36, -0.14] & 7.143e-03 \\
+flight & GWO & $+0.96$ [+0.95, +0.97] & $-0.71$ [-0.76, -0.65] & 5.374e-03 \\
+flight & PSO & $+0.59$ [+0.54, +0.64] & $-0.21$ [-0.29, -0.14] & 2.009e-02 \\
+flight & SGO & $+0.93$ [+0.91, +0.95] & $-0.62$ [-0.69, -0.55] & 3.262e-02 \\
+flight & WOA & $+0.90$ [+0.88, +0.91] & $-0.60$ [-0.66, -0.53] & 5.184e-03 \\
+hvac & GWO & $+0.93$ [+0.93, +0.93] & $-0.59$ [-0.61, -0.56] & 7.503e-02 \\
+hvac & PSO & $+0.55$ [+0.53, +0.57] & $-0.65$ [-0.68, -0.62] & 4.153e-02 \\
+hvac & SGO & $+0.88$ [+0.87, +0.88] & $-0.54$ [-0.57, -0.51] & 1.346e-01 \\
+hvac & WOA & $+0.98$ [+0.98, +0.98] & $-0.64$ [-0.67, -0.61] & 2.032e-02 \\
+pendcart & GWO & $+0.86$ [+0.84, +0.88] & $-0.54$ [-0.60, -0.48] & 1.090e-04 \\
+pendcart & PSO & $+0.61$ [+0.56, +0.67] & $-0.06$ [-0.14, +0.01] & 7.400e-04 \\
+pendcart & SGO & $+0.82$ [+0.79, +0.85] & $-0.53$ [-0.59, -0.47] & 1.074e-03 \\
+pendcart & WOA & $+0.79$ [+0.75, +0.82] & $-0.47$ [-0.54, -0.41] & 2.915e-06 \\
+uav & GWO & $+0.46$ [+0.42, +0.50] & $-0.00$ [-0.05, +0.04] & 1.523e-04 \\
+uav & PSO & $+0.24$ [+0.20, +0.28] & $+0.05$ [+0.00, +0.09] & 5.767e-02 \\
+uav & SGO & $+0.36$ [+0.33, +0.40] & $+0.03$ [-0.02, +0.07] & 5.584e-03 \\
+uav & WOA & $+0.76$ [+0.73, +0.78] & $-0.07$ [-0.12, -0.02] & 1.159e-02 \\
+\bottomrule
+\end{tabular}}
+\end{table}

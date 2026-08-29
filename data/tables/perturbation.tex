@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Bounded perturbed objective-sequence study. Induced objective drift (median and fraction of non-benign transitions, measured on the deterministic sequence) and the resulting closed-loop nRMSE. Conditions are never combined and magnitudes were fixed before any optimizer result was observed.}
+\label{tab:perturbation}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llccccccc@{}}
+\toprule
+System & Condition & Median drift & Non-benign & SGO & GWO & PSO & WOA & Det.\ ref. \\
+\midrule
+hvac & nominal & 5.57e-05 & 0\% & \textbf{0.04007} & 0.04008 & 0.04007 & 0.04009 & 0.04009 \\
+hvac & process disturbance & 8.52e-03 & 87\% & 0.04434 & 0.04304 & \textbf{0.04138} & 0.04315 & 0.03637 \\
+hvac & measurement noise & 1.46e-02 & 80\% & 0.04011 & 0.0401 & \textbf{0.04004} & 0.0401 & 0.04011 \\
+hvac & reference event & 5.92e-05 & 0\% & 0.04127 & 0.04126 & \textbf{0.04125} & 0.04126 & 0.04126 \\
+\midrule
+uav & nominal & 1.16e-17 & 13\% & 0.001297 & \textbf{0.001137} & 0.003393 & 0.0016 & 0.001138 \\
+uav & process disturbance & 2.14e+00 & 100\% & \textbf{0.006515} & 0.006657 & 0.009056 & 0.007099 & 0.006729 \\
+uav & measurement noise & 2.96e+00 & 100\% & 0.001581 & \textbf{0.001461} & 0.00494 & 0.002541 & 0.001432 \\
+uav & reference event & 3.80e-08 & 30\% & 0.02956 & \textbf{0.02942} & 0.03412 & 0.0299 & 0.02942 \\
+\bottomrule
+\end{tabular}}
+\end{table}

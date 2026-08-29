@@ -1,0 +1,47 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Effect sizes for SGO against each reference optimizer under the fixed-MPC protocol. A negative $\Delta$mean means SGO attains the lower closed-loop nRMSE. Cliff's $\delta$ is oriented SGO$-$other with a bootstrap 95\% CI (10\,000 resamples); $p$ is Holm--Bonferroni adjusted within the six pairwise comparisons of each (system, regime) family. \emph{Uncertain} means the $\delta$ interval contains zero; \emph{negligible} means the difference is resolvable but below the smallest descriptive practical threshold (0.5\%). Across all 60 pairwise comparisons only 9 show clear separation and all 9 are UAV.}
+\label{tab:effects}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llcrrcrl@{}}
+\toprule
+System & Reg. & vs & $\Delta$mean & rel.\ \% & Cliff's $\delta$ [95\% CI] & $p_{\mathrm{Holm}}$ & Evidence \\
+\midrule
+Pendulum-cart & A & GWO & $+1.07e-06$ & 0.000 & $+0.08$ [-0.34, +0.50] & 1 & uncertain \\
+Pendulum-cart & A & PSO & $+3.25e-05$ & 0.015 & $+0.50$ [+0.16, +0.77] & 0.0386 & negligible \\
+Pendulum-cart & A & WOA & $+1.74e-07$ & 0.000 & $+0.10$ [-0.30, +0.50] & 1 & uncertain \\
+Pendulum-cart & B & GWO & $-2.17e-06$ & 0.001 & $+0.08$ [-0.33, +0.50] & 1 & uncertain \\
+Pendulum-cart & B & PSO & $+6.79e-05$ & 0.032 & $+0.65$ [+0.36, +0.86] & 0.00204 & negligible \\
+Pendulum-cart & B & WOA & $-2.11e-06$ & 0.001 & $+0.10$ [-0.30, +0.50] & 1 & uncertain \\
+\addlinespace
+CSTR & A & GWO & $+5.51e-05$ & 0.019 & $+0.20$ [-0.20, +0.60] & 0.856 & uncertain \\
+CSTR & A & PSO & $-4.62e-04$ & 0.157 & $+0.14$ [-0.28, +0.60] & 0.914 & uncertain \\
+CSTR & A & WOA & $-5.12e-04$ & 0.174 & $-0.40$ [-0.71, -0.02] & 0.135 & uncertain \\
+CSTR & B & GWO & $+2.76e-04$ & 0.094 & $+0.59$ [+0.20, +0.90] & 0.00491 & negligible \\
+CSTR & B & PSO & $+2.75e-04$ & 0.093 & $+0.60$ [+0.20, +0.90] & 0.00491 & negligible \\
+CSTR & B & WOA & $+1.62e-05$ & 0.006 & $+0.15$ [-0.22, +0.52] & 0.409 & uncertain \\
+\addlinespace
+Flight control & A & GWO & $-3.13e-05$ & 0.172 & $-0.38$ [-0.75, +0.01] & 0.247 & uncertain \\
+Flight control & A & PSO & $-2.79e-05$ & 0.153 & $-0.34$ [-0.73, +0.05] & 0.319 & uncertain \\
+Flight control & A & WOA & $-1.93e-05$ & 0.106 & $-0.28$ [-0.66, +0.12] & 0.421 & uncertain \\
+Flight control & B & GWO & $-1.06e-05$ & 0.058 & $-0.33$ [-0.67, +0.04] & 0.382 & uncertain \\
+Flight control & B & PSO & $-4.54e-05$ & 0.249 & $-0.45$ [-0.77, -0.08] & 0.0862 & uncertain \\
+Flight control & B & WOA & $-1.06e-05$ & 0.058 & $-0.32$ [-0.69, +0.07] & 0.382 & uncertain \\
+\addlinespace
+HVAC & A & GWO & $-7.02e-06$ & 0.034 & $-0.99$ [-1.00, -0.97] & 4.08e-07 & negligible \\
+HVAC & A & PSO & $-1.43e-06$ & 0.007 & $-0.20$ [-0.59, +0.22] & 0.285 & uncertain \\
+HVAC & A & WOA & $-1.46e-05$ & 0.070 & $-1.00$ [-1.00, -1.00] & 4.08e-07 & negligible \\
+HVAC & B & GWO & $-1.50e-06$ & 0.007 & $-0.53$ [-0.80, -0.19] & 0.0119 & negligible \\
+HVAC & B & PSO & $-1.92e-06$ & 0.009 & $-0.53$ [-0.83, -0.19] & 0.0119 & negligible \\
+HVAC & B & WOA & $-6.85e-06$ & 0.033 & $-1.00$ [-1.00, -1.00] & 4.08e-07 & negligible \\
+\addlinespace
+UAV & A & GWO & $+5.81e-05$ & 6.686 & $+0.80$ [+0.50, +1.00] & 6.4e-05 & clear separation \\
+UAV & A & PSO & $-1.55e-03$ & 62.584 & $-0.21$ [-0.59, +0.20] & 0.501 & uncertain \\
+UAV & A & WOA & $-3.24e-04$ & 25.900 & $-0.93$ [-1.00, -0.80] & 3.01e-06 & clear separation \\
+UAV & B & GWO & $+6.20e-05$ & 7.093 & $+0.75$ [+0.46, +0.98] & 0.000105 & clear separation \\
+UAV & B & PSO & $-1.70e-03$ & 64.498 & $-0.99$ [-1.00, -0.97] & 4.08e-07 & clear separation \\
+UAV & B & WOA & $-3.33e-04$ & 26.233 & $-0.83$ [-1.00, -0.61] & 2e-05 & clear separation \\
+\bottomrule
+\end{tabular}}
+\end{table}

@@ -1,0 +1,17 @@
+{
+  "instances": 135,
+  "rows": 51600,
+  "trials": 20,
+  "fe_budget": 1000,
+  "fe_exact_everywhere": true,
+  "start_conditions": [
+    "cold",
+    "reference_warm",
+    "optimizer_warm"
+  ],
+  "incumbent_tolerance": {
+    "rtol": 1e-12,
+    "atol": 1e-14
+  },
+  "wall_seconds": 3166.3
+}

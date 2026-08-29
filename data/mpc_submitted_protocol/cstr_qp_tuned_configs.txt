@@ -1,0 +1,6 @@
+QP reference under each tuned MPC configuration: CSTR
+Config (P,Nc,Q_scale)       used by                   QP nRMSE
+(20, 3, 1.0)                SGO                       0.270169
+(10, 3, 2.0)                GWO                       0.270168
+(20, 3, 0.25)               PSO                       0.270172
+(20, 2, 1.0)                WOA                       0.271595

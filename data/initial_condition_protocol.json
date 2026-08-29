@@ -1,0 +1,251 @@
+{
+  "purpose": "Separate optimizer tuning from evaluation (reviewer R2.5). Optimizer parameters are selected using x0_tune only; all primary results are produced from x0_eval.",
+  "frozen_before_tuning": true,
+  "validation_thresholds": {
+    "max_abs_state": 10000.0,
+    "min_ic_separation": 0.001,
+    "min_initial_deviation_from_reference": 1e-06,
+    "nrmse_sanity_max": 1000.0
+  },
+  "reserved_for_tuning_only": "The x0_tune values below must be EXCLUDED from the Phase-2B multi-initial-condition evaluation set.",
+  "systems": {
+    "pendcart": {
+      "submitted_x0": [
+        -1.0,
+        0.0,
+        3.3415926535897933,
+        0.0
+      ],
+      "evaluation_x0": [
+        -1.0,
+        0.0,
+        3.3415926535897933,
+        0.0
+      ],
+      "tuning_x0": [
+        0.5,
+        0.0,
+        2.991592653589793,
+        0.0
+      ],
+      "evaluation_equals_submitted": true,
+      "tuning_equals_evaluation": false,
+      "rationale": "Cart displaced to the opposite side of the reference (+0.5 m vs -1 m) and the pendulum perturbed in the opposite angular direction (pi-0.15 vs pi+0.20). Same physical regime, different transient.",
+      "deterministic_validation": {
+        "separation_from_eval_ic": 1.5402921800749363,
+        "initial_deviation_from_reference": 0.5220153254455274,
+        "max_abs_state": 3.237735828824974,
+        "all_finite": true,
+        "deterministic_nrmse": 0.2960558217848961,
+        "final_state_norm": 3.1728137328023327,
+        "checks": {
+          "bounded": true,
+          "distinct_from_eval_ic": true,
+          "not_at_reference": true,
+          "nrmse_sane": true
+        },
+        "accepted": true
+      }
+    },
+    "cstr": {
+      "submitted_x0": [
+        0.5,
+        -1.0
+      ],
+      "evaluation_x0": [
+        0.5,
+        -1.0
+      ],
+      "tuning_x0": [
+        -0.4,
+        0.8
+      ],
+      "evaluation_equals_submitted": true,
+      "tuning_equals_evaluation": false,
+      "rationale": "Deviation state with both components sign-flipped relative to the evaluation IC [0.5, -1.0] and of comparable magnitude, so the regulation task is equally demanding from the opposite quadrant.",
+      "deterministic_validation": {
+        "separation_from_eval_ic": 2.012461179749811,
+        "initial_deviation_from_reference": 0.894427190999916,
+        "max_abs_state": 1.7922799826239995,
+        "all_finite": true,
+        "deterministic_nrmse": 0.19669063865916336,
+        "final_state_norm": 1.903106179819184e-06,
+        "checks": {
+          "bounded": true,
+          "distinct_from_eval_ic": true,
+          "not_at_reference": true,
+          "nrmse_sane": true
+        },
+        "accepted": true
+      }
+    },
+    "flight": {
+      "submitted_x0": [
+        0.1,
+        -0.1,
+        0.05,
+        -0.05
+      ],
+      "evaluation_x0": [
+        0.1,
+        -0.1,
+        0.05,
+        -0.05
+      ],
+      "tuning_x0": [
+        -0.08,
+        0.12,
+        -0.04,
+        0.06
+      ],
+      "evaluation_equals_submitted": true,
+      "tuning_equals_evaluation": false,
+      "rationale": "Longitudinal deviation state sign-flipped and rescaled relative to [0.1, -0.1, 0.05, -0.05]; remains well inside the small-perturbation range where the linearised model is valid.",
+      "deterministic_validation": {
+        "separation_from_eval_ic": 0.3178049716414141,
+        "initial_deviation_from_reference": 0.161245154965971,
+        "max_abs_state": 0.13545238576850682,
+        "all_finite": true,
+        "deterministic_nrmse": 0.021357404663557848,
+        "final_state_norm": 3.365175431428816e-05,
+        "checks": {
+          "bounded": true,
+          "distinct_from_eval_ic": true,
+          "not_at_reference": true,
+          "nrmse_sane": true
+        },
+        "accepted": true
+      }
+    },
+    "hvac": {
+      "submitted_x0": [
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0
+      ],
+      "evaluation_x0": [
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        20.0
+      ],
+      "tuning_x0": [
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0
+      ],
+      "evaluation_equals_submitted": true,
+      "tuning_equals_evaluation": false,
+      "rationale": "Building starting from a uniformly colder state (18 C) instead of 20 C, giving a larger initial deviation from the 22 C room setpoints and a -2 C deviation for the wall states. Physically realistic cold-start scenario.",
+      "deterministic_validation": {
+        "separation_from_eval_ic": 7.211102550927978,
+        "initial_deviation_from_reference": 9.38083151964686,
+        "max_abs_state": 21.96472287435135,
+        "all_finite": true,
+        "deterministic_nrmse": 0.05606453880932762,
+        "final_state_norm": 69.43527388947889,
+        "checks": {
+          "bounded": true,
+          "distinct_from_eval_ic": true,
+          "not_at_reference": true,
+          "nrmse_sane": true
+        },
+        "accepted": true
+      }
+    },
+    "uav": {
+      "submitted_x0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_x0": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tuning_x0": [
+        -1.0,
+        0.5,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "evaluation_equals_submitted": true,
+      "tuning_equals_evaluation": false,
+      "rationale": "Quadrotor starting displaced from the beginning of the ramp reference (1 m behind in x, 0.5 m off in y and z) with zero attitude and rates, so the tracking task starts with a real initial offset instead of exactly on the trajectory.",
+      "deterministic_validation": {
+        "separation_from_eval_ic": 1.224744871391589,
+        "initial_deviation_from_reference": 1.224744871391589,
+        "max_abs_state": 9.98326274466397,
+        "all_finite": true,
+        "deterministic_nrmse": 0.008055769707627407,
+        "final_state_norm": 17.275427148062487,
+        "checks": {
+          "bounded": true,
+          "distinct_from_eval_ic": true,
+          "not_at_reference": true,
+          "nrmse_sane": true
+        },
+        "accepted": true
+      }
+    }
+  },
+  "all_accepted": true,
+  "any_overlap_between_tuning_and_evaluation": false,
+  "wall_seconds": 2.0
+}

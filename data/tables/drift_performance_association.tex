@@ -1,0 +1,32 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Spearman association between instance drift severity (warm-start suboptimality, fixed in advance) and optimizer outcome, computed per system so the result cannot be an artefact of which system supplies the instances. Cold start.}
+\label{tab:drift_performance_association}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+System & Optimizer & $\rho$(drift, gap) & $p$ & $\rho$(drift, conv.) & $p$ \\
+\midrule
+cstr & GWO & +0.546 & 0.00022 & +nan & nan \\
+cstr & PSO & -0.509 & 0.00067 & -0.241 & 0.13 \\
+cstr & SGO & +0.529 & 0.00038 & -0.711 & 1.9e-07 \\
+cstr & WOA & +0.504 & 0.00078 & -0.729 & 6.5e-08 \\
+flight & GWO & +0.876 & 6.8e-14 & -0.503 & 0.00081 \\
+flight & PSO & +0.306 & 0.052 & -0.436 & 0.0044 \\
+flight & SGO & +0.944 & 2.4e-20 & -0.868 & 1.9e-13 \\
+flight & WOA & +0.543 & 0.00025 & -0.717 & 1.3e-07 \\
+hvac & GWO & +0.921 & 7.9e-14 & -0.657 & 4.5e-05 \\
+hvac & PSO & -0.007 & 0.97 & -0.282 & 0.12 \\
+hvac & SGO & +0.791 & 7.1e-08 & -0.774 & 2.1e-07 \\
+hvac & WOA & +0.746 & 9.4e-07 & -0.783 & 1.2e-07 \\
+pendcart & GWO & +0.881 & 1.4e-15 & +nan & nan \\
+pendcart & PSO & -0.119 & 0.44 & +nan & nan \\
+pendcart & SGO & +0.896 & 9.9e-17 & -0.186 & 0.22 \\
+pendcart & WOA & +0.894 & 1.4e-16 & +nan & nan \\
+uav & GWO & +0.784 & 8.9e-13 & -0.718 & 4.8e-10 \\
+uav & PSO & +0.754 & 1.9e-11 & -0.756 & 1.7e-11 \\
+uav & SGO & +0.805 & 7.7e-14 & -0.790 & 4.8e-13 \\
+uav & WOA & +0.887 & 9.7e-20 & -0.793 & 3.4e-13 \\
+\bottomrule
+\end{tabular}
+\end{table}

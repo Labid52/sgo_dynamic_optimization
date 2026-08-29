@@ -1,0 +1,22 @@
+{
+  "instances": 175,
+  "all_hessians_psd": true,
+  "min_lambda_min": 0.02000265849588253,
+  "all_convex_checks_passed": true,
+  "certificate": "J(u_ref) - J* <= ||proj_grad||^2 / (2*lambda_min), normalised by max(1,|J*|)",
+  "certification_tolerance_norm": 1.0000000000000002e-06,
+  "convergence_tolerance_in_paper": 0.0001,
+  "max_subopt_bound_norm": 0.004329784041430186,
+  "certified_fraction": 0.9085714285714286,
+  "uncertified_instances": 16,
+  "uncertified_by_system": {
+    "uav": 16
+  },
+  "max_gradient_fd_rel": 0.0002099200097849807,
+  "max_multistart_spread": 27.08495974435562,
+  "osqp_available": true,
+  "max_osqp_rel_diff": 8.371309850856851e-07,
+  "worst_osqp_minus_ref": -8.371309850856851e-07,
+  "wall_seconds": 16.6,
+  "verdict": "PARTIALLY CERTIFIED"
+}

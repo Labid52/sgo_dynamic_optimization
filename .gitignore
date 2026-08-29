@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# GMPB benchmark state files, regenerated with GNU Octave (see README, Level 2).
+# These are large binary inputs, not results; they are not committed.
+gmpb_states/
+*_state.mat
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*~
+*.swp
+
+# LaTeX build products (the manuscript itself is not part of this repository)
+*.aux
+*.log
+*.out
+*.synctex.gz

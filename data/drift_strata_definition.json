@@ -1,0 +1,2139 @@
+{
+  "stratification_variable": "warm_gap_norm (shifted-reference warm-start normalized suboptimality)",
+  "selection_uses_optimizer_results": false,
+  "strata_definition": {
+    "Benign": {
+      "lower_exclusive": null,
+      "upper_inclusive": 0.0001
+    },
+    "Moderate": {
+      "lower_exclusive": 0.0001,
+      "upper_inclusive": 0.01
+    },
+    "High": {
+      "lower_exclusive": 0.01,
+      "upper_inclusive": 0.1
+    },
+    "Severe": {
+      "lower_exclusive": 0.1,
+      "upper_inclusive": null
+    }
+  },
+  "why_absolute_not_quantile": "93% of all consecutive transitions fall below the 1e-4 optimization-relevance criterion, so quantile boundaries at the 50th/75th percentile would sit in numerical noise (per-system medians span 1e-15 to 1e-6) and would not isolate the severe tail. Absolute cut points on the same scale as the reported optimality gaps keep the strata interpretable.",
+  "known_imbalance": "The Severe stratum contains 19 transitions, 16 of them UAV; HVAC contributes no non-benign transition at all (max warm gap 6.3e-5 over 1500 transitions). This is reported as a finding and handled by also using a continuous Spearman association between warm-gap severity and optimizer error, which does not depend on stratum balance. The strata were NOT redrawn to balance systems.",
+  "n_uniform_per_system": 25,
+  "n_per_stratum_per_system": 8,
+  "global_counts": {
+    "Benign": 2229,
+    "Moderate": 106,
+    "High": 46,
+    "Severe": 19
+  },
+  "systems": {
+    "pendcart": {
+      "Nsim": 150,
+      "stratum_counts_full_trajectory": {
+        "Benign": 98,
+        "Moderate": 40,
+        "High": 12
+      },
+      "uniform_instances": [
+        0,
+        6,
+        12,
+        18,
+        24,
+        31,
+        37,
+        43,
+        49,
+        55,
+        62,
+        68,
+        74,
+        80,
+        86,
+        93,
+        99,
+        105,
+        111,
+        117,
+        124,
+        130,
+        136,
+        142,
+        149
+      ],
+      "stratified_instances_by_stratum": {
+        "Benign": [
+          3,
+          51,
+          75,
+          90,
+          99,
+          119,
+          134,
+          145
+        ],
+        "Moderate": [
+          17,
+          21,
+          29,
+          31,
+          39,
+          57,
+          59,
+          61
+        ],
+        "High": [
+          0,
+          6,
+          7,
+          8,
+          9,
+          10,
+          13,
+          15
+        ],
+        "Severe": []
+      },
+      "duplicates_uniform_and_stratified": [
+        0,
+        6,
+        31,
+        99
+      ],
+      "selected_instances": [
+        0,
+        3,
+        6,
+        7,
+        8,
+        9,
+        10,
+        12,
+        13,
+        15,
+        17,
+        18,
+        21,
+        24,
+        29,
+        31,
+        37,
+        39,
+        43,
+        49,
+        51,
+        55,
+        57,
+        59,
+        61,
+        62,
+        68,
+        74,
+        75,
+        80,
+        86,
+        90,
+        93,
+        99,
+        105,
+        111,
+        117,
+        119,
+        124,
+        130,
+        134,
+        136,
+        142,
+        145,
+        149
+      ],
+      "n_selected": 45,
+      "instance_details": {
+        "0": {
+          "warm_gap_norm": 0.0108202554765163,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0935205359319699,
+          "dU_shift": 0.4763856931531744
+        },
+        "3": {
+          "warm_gap_norm": 0.0,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0031239174902998,
+          "dU_shift": 0.0
+        },
+        "6": {
+          "warm_gap_norm": 0.012630099700594,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0914724481167396,
+          "dU_shift": 0.465952907200255
+        },
+        "7": {
+          "warm_gap_norm": 0.0260111863223741,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.113039468516027,
+          "dU_shift": 0.5758134833824244
+        },
+        "8": {
+          "warm_gap_norm": 0.0507781423440105,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.128893732261873,
+          "dU_shift": 0.6565737607776163
+        },
+        "9": {
+          "warm_gap_norm": 0.0633651292588999,
+          "stratum": "High",
+          "cold_gap_norm": 0.6185960298867788,
+          "df_over_max": 0.1386831503622699,
+          "dU_shift": 0.706440227867617
+        },
+        "10": {
+          "warm_gap_norm": 0.0668564901913047,
+          "stratum": "High",
+          "cold_gap_norm": 0.2787233256281591,
+          "df_over_max": 0.1424525811500126,
+          "dU_shift": 0.725641389204049
+        },
+        "12": {
+          "warm_gap_norm": 0.0588734905406002,
+          "stratum": "High",
+          "cold_gap_norm": 0.0009085069067048,
+          "df_over_max": 0.1336775350492,
+          "dU_shift": 0.6809420472084281
+        },
+        "13": {
+          "warm_gap_norm": 0.0494661994958703,
+          "stratum": "High",
+          "cold_gap_norm": 0.0369671885278245,
+          "df_over_max": 0.1225329271644662,
+          "dU_shift": 0.6241723580787418
+        },
+        "15": {
+          "warm_gap_norm": 0.0272926414694454,
+          "stratum": "High",
+          "cold_gap_norm": 0.3063908275745054,
+          "df_over_max": 0.0910167494453658,
+          "dU_shift": 0.4636316167467731
+        },
+        "17": {
+          "warm_gap_norm": 0.0093148820438461,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.6108038817840916,
+          "df_over_max": 0.0531725166523387,
+          "dU_shift": 0.27085629856362
+        },
+        "18": {
+          "warm_gap_norm": 0.003809649980816,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.7110904512127357,
+          "df_over_max": 0.0340048664854302,
+          "dU_shift": 0.1732179112299201
+        },
+        "21": {
+          "warm_gap_norm": 0.0008429672048386,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.7065878101701524,
+          "df_over_max": 0.0159957230284346,
+          "dU_shift": 0.0814808590055458
+        },
+        "24": {
+          "warm_gap_norm": 0.0067641052872579,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.4061466817657186,
+          "df_over_max": 0.0453110071526182,
+          "dU_shift": 0.230810434681451
+        },
+        "29": {
+          "warm_gap_norm": 0.0063860524201271,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0376193660634288,
+          "df_over_max": 0.044026562261885,
+          "dU_shift": 0.224267581139369
+        },
+        "31": {
+          "warm_gap_norm": 0.0033968994653546,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.004327355116759,
+          "df_over_max": 0.0321099687511302,
+          "dU_shift": 0.1635654625823691
+        },
+        "37": {
+          "warm_gap_norm": 9.266557890255742e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0010495771534243,
+          "df_over_max": 0.0053034411946074,
+          "dU_shift": 0.0270152804880518
+        },
+        "39": {
+          "warm_gap_norm": 0.0004611913452215,
+          "stratum": "Moderate",
+          "cold_gap_norm": 3.096321218983272e-05,
+          "df_over_max": 0.0118314809939735,
+          "dU_shift": 0.0602685626016273
+        },
+        "43": {
+          "warm_gap_norm": 0.0005711339296509,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0111522413875671,
+          "df_over_max": 0.0131664143017479,
+          "dU_shift": 0.0670685998640445
+        },
+        "49": {
+          "warm_gap_norm": 2.256636420686076e-06,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.027651221240902,
+          "df_over_max": 0.0008276168661147,
+          "dU_shift": 0.0042158102549466
+        },
+        "51": {
+          "warm_gap_norm": 9.28083011388324e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0227479799220206,
+          "df_over_max": 0.0053075237664287,
+          "dU_shift": 0.0270360767633034
+        },
+        "55": {
+          "warm_gap_norm": 0.0003180639013258,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0077515071306011,
+          "df_over_max": 0.00982552413789,
+          "dU_shift": 0.0500503881889217
+        },
+        "57": {
+          "warm_gap_norm": 0.0003081910256783,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0027521023962465,
+          "df_over_max": 0.0096718272334096,
+          "dU_shift": 0.04926746916855
+        },
+        "59": {
+          "warm_gap_norm": 0.000224352736712,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0004400220557567,
+          "df_over_max": 0.0082520950535867,
+          "dU_shift": 0.0420354736304775
+        },
+        "61": {
+          "warm_gap_norm": 0.0001197716302947,
+          "stratum": "Moderate",
+          "cold_gap_norm": 9.323368762434189e-06,
+          "df_over_max": 0.0060294197143208,
+          "dU_shift": 0.0307133536105182
+        },
+        "62": {
+          "warm_gap_norm": 7.510266584696045e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0001373489917729,
+          "df_over_max": 0.0047744814746476,
+          "dU_shift": 0.0243208044531093
+        },
+        "68": {
+          "warm_gap_norm": 7.324086372334699e-06,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.00041172297439,
+          "df_over_max": 0.0014909918334237,
+          "dU_shift": 0.0075949861811033
+        },
+        "74": {
+          "warm_gap_norm": 1.666614576077297e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 3.1597047172248606e-05,
+          "df_over_max": 0.0022491381076902,
+          "dU_shift": 0.0114569191221355
+        },
+        "75": {
+          "warm_gap_norm": 1.2289375665776853e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 8.329748639277032e-05,
+          "df_over_max": 0.0019313609496572,
+          "dU_shift": 0.0098381891802086
+        },
+        "80": {
+          "warm_gap_norm": 5.976500127343605e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0002396554663752,
+          "df_over_max": 0.0001346858596687,
+          "dU_shift": 0.0006860783674618
+        },
+        "86": {
+          "warm_gap_norm": 5.9809272210323085e-06,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.8151117945822457e-05,
+          "df_over_max": 0.0013473573472329,
+          "dU_shift": 0.0068633242676747
+        },
+        "90": {
+          "warm_gap_norm": 3.1196830573681813e-06,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.7852045324544757e-05,
+          "df_over_max": 0.0009730917111865,
+          "dU_shift": 0.0049568468007213
+        },
+        "93": {
+          "warm_gap_norm": 5.328445992686508e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 5.601836107089554e-05,
+          "df_over_max": 0.0004021599518442,
+          "dU_shift": 0.0020485687502639
+        },
+        "99": {
+          "warm_gap_norm": 7.15879807213827e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 3.1776663464723165e-05,
+          "df_over_max": 0.0004661423833084,
+          "dU_shift": 0.0023744898397761
+        },
+        "105": {
+          "warm_gap_norm": 5.885472913711216e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.5648257326906362e-08,
+          "df_over_max": 0.0004226581217448,
+          "dU_shift": 0.002152984692486
+        },
+        "111": {
+          "warm_gap_norm": 6.261118774617595e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.832131117255848e-06,
+          "df_over_max": 1.378556300063475e-05,
+          "dU_shift": 7.022249092278852e-05
+        },
+        "117": {
+          "warm_gap_norm": 1.1534433759319813e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 6.269697619577777e-09,
+          "df_over_max": 0.0001871098601844,
+          "dU_shift": 0.0009531217914221
+        },
+        "119": {
+          "warm_gap_norm": 8.822248718217296e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.951532414588398e-07,
+          "df_over_max": 0.0001636395157812,
+          "dU_shift": 0.0008335658387564
+        },
+        "124": {
+          "warm_gap_norm": 2.1847232544517852e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.7274600230612434e-06,
+          "df_over_max": 2.575115730219624e-05,
+          "dU_shift": 0.00013117421536
+        },
+        "130": {
+          "warm_gap_norm": 2.6546571282741965e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 5.381832939865244e-07,
+          "df_over_max": 8.976411514741e-05,
+          "dU_shift": 0.0004572508036734
+        },
+        "134": {
+          "warm_gap_norm": 2.2422924718977842e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 6.553727522805044e-09,
+          "df_over_max": 8.24982362324358e-05,
+          "dU_shift": 0.0004202390333466
+        },
+        "136": {
+          "warm_gap_norm": 1.2358445193454212e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.6357627196748145e-08,
+          "df_over_max": 6.124638415423622e-05,
+          "dU_shift": 0.0003119838973861
+        },
+        "142": {
+          "warm_gap_norm": 4.0874074324591785e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.227304786861351e-07,
+          "df_over_max": 1.1138391516203756e-05,
+          "dU_shift": 5.673802363068852e-05
+        },
+        "145": {
+          "warm_gap_norm": 2.885746412811805e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 4.6557597328549713e-08,
+          "df_over_max": 2.9595631575661023e-05,
+          "dU_shift": 0.0001507576422737
+        },
+        "149": {
+          "warm_gap_norm": 2.814144028980556e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3581898568761418e-10,
+          "df_over_max": 2.922615589932937e-05,
+          "dU_shift": 0.0001488755640414
+        }
+      }
+    },
+    "cstr": {
+      "Nsim": 100,
+      "stratum_counts_full_trajectory": {
+        "Benign": 85,
+        "High": 9,
+        "Moderate": 4,
+        "Severe": 2
+      },
+      "uniform_instances": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        20,
+        24,
+        28,
+        33,
+        37,
+        41,
+        45,
+        49,
+        53,
+        57,
+        61,
+        66,
+        70,
+        74,
+        78,
+        82,
+        86,
+        90,
+        94,
+        99
+      ],
+      "stratified_instances_by_stratum": {
+        "Benign": [
+          0,
+          17,
+          27,
+          33,
+          41,
+          60,
+          71,
+          84
+        ],
+        "Moderate": [
+          12,
+          13,
+          14,
+          16
+        ],
+        "High": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          15
+        ],
+        "Severe": [
+          2,
+          3
+        ]
+      },
+      "duplicates_uniform_and_stratified": [
+        0,
+        8,
+        12,
+        16,
+        33,
+        41
+      ],
+      "selected_instances": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        20,
+        24,
+        27,
+        28,
+        33,
+        37,
+        41,
+        45,
+        49,
+        53,
+        57,
+        60,
+        61,
+        66,
+        70,
+        71,
+        74,
+        78,
+        82,
+        84,
+        86,
+        90,
+        94,
+        99
+      ],
+      "n_selected": 41,
+      "instance_details": {
+        "0": {
+          "warm_gap_norm": 0.0,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.2799737888333754,
+          "dU_shift": 0.0
+        },
+        "2": {
+          "warm_gap_norm": 0.7122049567476606,
+          "stratum": "Severe",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.2910460115586453,
+          "dU_shift": 0.4784456900797073
+        },
+        "3": {
+          "warm_gap_norm": 17.955046114859805,
+          "stratum": "Severe",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.1658769903680725,
+          "dU_shift": 0.6594244936739639
+        },
+        "4": {
+          "warm_gap_norm": 0.0339083980068528,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.006003951032982,
+          "dU_shift": 0.0238711169253981
+        },
+        "5": {
+          "warm_gap_norm": 0.0302818559638332,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0047450738710636,
+          "dU_shift": 0.0188659659746653
+        },
+        "6": {
+          "warm_gap_norm": 0.0268582215661088,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0037478478149769,
+          "dU_shift": 0.014901089270228
+        },
+        "7": {
+          "warm_gap_norm": 0.0237709115076089,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0029601995346582,
+          "dU_shift": 0.0117694740309877
+        },
+        "8": {
+          "warm_gap_norm": 0.0210974974230038,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0023380832088905,
+          "dU_shift": 0.0092959982205519
+        },
+        "9": {
+          "warm_gap_norm": 0.0189110093742742,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0018467111301178,
+          "dU_shift": 0.0073423492005656
+        },
+        "10": {
+          "warm_gap_norm": 0.0160356669849627,
+          "stratum": "High",
+          "cold_gap_norm": 0.9266003076598814,
+          "df_over_max": 0.0014586058826191,
+          "dU_shift": 0.0057992793573551
+        },
+        "11": {
+          "warm_gap_norm": 0.0100038012931925,
+          "stratum": "High",
+          "cold_gap_norm": 0.6075581661155834,
+          "df_over_max": 0.0011520649785567,
+          "dU_shift": 0.0045805016478083
+        },
+        "12": {
+          "warm_gap_norm": 0.0062408400589346,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.3697082330695599,
+          "df_over_max": 0.000909946738527,
+          "dU_shift": 0.0036178623712844
+        },
+        "13": {
+          "warm_gap_norm": 0.0038933286524888,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.1906674874707609,
+          "df_over_max": 0.0007187121377685,
+          "dU_shift": 0.0028575316433272
+        },
+        "14": {
+          "warm_gap_norm": 0.0026193733603016,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0549484645507078,
+          "df_over_max": 0.0005676674153116,
+          "dU_shift": 0.0566547148363067
+        },
+        "15": {
+          "warm_gap_norm": 0.0413489282932192,
+          "stratum": "High",
+          "cold_gap_norm": 0.0009651294191242,
+          "df_over_max": 0.0004289091482959,
+          "dU_shift": 0.8188958597708488
+        },
+        "16": {
+          "warm_gap_norm": 0.0007262704384118,
+          "stratum": "Moderate",
+          "cold_gap_norm": 1.6950734579113983e-05,
+          "df_over_max": 5.697990863486578e-05,
+          "dU_shift": 0.1085199500573558
+        },
+        "17": {
+          "warm_gap_norm": 1.2754400862427467e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.97893912747272e-07,
+          "df_over_max": 7.550971780585409e-06,
+          "dU_shift": 0.0143810442977973
+        },
+        "20": {
+          "warm_gap_norm": 6.907924912047704e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.24507303381206e-12,
+          "df_over_max": 1.757033434281583e-08,
+          "dU_shift": 3.346852077548703e-05
+        },
+        "24": {
+          "warm_gap_norm": 3.0442399605139025e-13,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.80944737305406e-12,
+          "df_over_max": 2.23326731040818e-09,
+          "dU_shift": 2.116055949867283e-06
+        },
+        "27": {
+          "warm_gap_norm": 7.300070989313809e-14,
+          "stratum": "Benign",
+          "cold_gap_norm": 7.235398463114395e-12,
+          "df_over_max": 1.3111647308506316e-09,
+          "dU_shift": 1.0037900864393552e-06
+        },
+        "28": {
+          "warm_gap_norm": 5.5459482374261396e-14,
+          "stratum": "Benign",
+          "cold_gap_norm": 8.316287580291025e-12,
+          "df_over_max": 1.145892860422244e-09,
+          "dU_shift": 8.744111028911212e-07
+        },
+        "33": {
+          "warm_gap_norm": 3.568544730173e-15,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.165387485509089e-11,
+          "df_over_max": 1.123074759114068e-10,
+          "dU_shift": 2.41426562864005e-07
+        },
+        "37": {
+          "warm_gap_norm": 7.713510936840066e-16,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.2685450518137267e-11,
+          "df_over_max": 2.9242098825007884e-11,
+          "dU_shift": 1.1329374958989017e-07
+        },
+        "41": {
+          "warm_gap_norm": 1.4474302171326183e-16,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3129795300661764e-11,
+          "df_over_max": 1.0662375346050675e-10,
+          "dU_shift": 3.1484525769863724e-08
+        },
+        "45": {
+          "warm_gap_norm": 1.641968177532559e-17,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3269946027115611e-11,
+          "df_over_max": 9.983488631773397e-12,
+          "dU_shift": 1.6214990495658353e-08
+        },
+        "49": {
+          "warm_gap_norm": 2.770067763523947e-18,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3339427898867642e-11,
+          "df_over_max": 5.119022498923439e-12,
+          "dU_shift": 6.570337156090373e-09
+        },
+        "53": {
+          "warm_gap_norm": 5.2625754667089865e-19,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3366531394507333e-11,
+          "df_over_max": 2.7355651524258375e-12,
+          "dU_shift": 2.807945429648838e-09
+        },
+        "57": {
+          "warm_gap_norm": 8.02047973642697e-19,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3380502699259175e-11,
+          "df_over_max": 8.00904920735256e-12,
+          "dU_shift": 2.3124764552688563e-09
+        },
+        "60": {
+          "warm_gap_norm": 2.194707596313293e-18,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3390208165802666e-11,
+          "df_over_max": 1.513284809267678e-11,
+          "dU_shift": 2.8054436599688636e-09
+        },
+        "61": {
+          "warm_gap_norm": 4.701327886090236e-18,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3393878679320444e-11,
+          "df_over_max": 2.2988792447137304e-11,
+          "dU_shift": 3.473179158733381e-09
+        },
+        "66": {
+          "warm_gap_norm": 1.910719178057798e-14,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3334412138923644e-11,
+          "df_over_max": 1.5897001425685724e-09,
+          "dU_shift": 3.2658284379136445e-08
+        },
+        "70": {
+          "warm_gap_norm": 2.466767305759656e-17,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3329468971325404e-11,
+          "df_over_max": 3.581587409063155e-11,
+          "dU_shift": 1.5865866728273566e-08
+        },
+        "71": {
+          "warm_gap_norm": 2.586834857889081e-17,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3306063910607728e-11,
+          "df_over_max": 5.1110269976444015e-11,
+          "dU_shift": 1.0186222019724629e-08
+        },
+        "74": {
+          "warm_gap_norm": 3.79332092458273e-17,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3279557851002982e-11,
+          "df_over_max": 7.056465457304622e-11,
+          "dU_shift": 2.6247465565513972e-09
+        },
+        "78": {
+          "warm_gap_norm": 1.439362149606694e-15,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.33283854404561e-11,
+          "df_over_max": 4.2748391272070886e-10,
+          "dU_shift": 3.2328534370450245e-08
+        },
+        "82": {
+          "warm_gap_norm": 2.078628814388643e-15,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3206894900204843e-11,
+          "df_over_max": 5.198605956995789e-10,
+          "dU_shift": 2.657550402408007e-08
+        },
+        "84": {
+          "warm_gap_norm": 8.949185413225074e-16,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3211452826100698e-11,
+          "df_over_max": 3.2564257084369527e-10,
+          "dU_shift": 4.0098134356886787e-08
+        },
+        "86": {
+          "warm_gap_norm": 7.178750024007686e-16,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.3107064296897324e-11,
+          "df_over_max": 3.0817805468204804e-10,
+          "dU_shift": 6.0600591269937414e-09
+        },
+        "90": {
+          "warm_gap_norm": 3.6413691440194414e-16,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.317415446372972e-11,
+          "df_over_max": 2.0315052761999704e-10,
+          "dU_shift": 2.986176829295067e-08
+        },
+        "94": {
+          "warm_gap_norm": 1.1618970598546233e-15,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.2905907566134126e-11,
+          "df_over_max": 3.7188320096823305e-10,
+          "dU_shift": 4.48253701871538e-08
+        },
+        "99": {
+          "warm_gap_norm": 3.040849546293899e-17,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.2668877208646616e-11,
+          "df_over_max": 5.1436405279359125e-11,
+          "dU_shift": 1.3255779656635125e-08
+        }
+      }
+    },
+    "flight": {
+      "Nsim": 150,
+      "stratum_counts_full_trajectory": {
+        "Benign": 107,
+        "Moderate": 37,
+        "High": 5,
+        "Severe": 1
+      },
+      "uniform_instances": [
+        0,
+        6,
+        12,
+        18,
+        24,
+        31,
+        37,
+        43,
+        49,
+        55,
+        62,
+        68,
+        74,
+        80,
+        86,
+        93,
+        99,
+        105,
+        111,
+        117,
+        124,
+        130,
+        136,
+        142,
+        149
+      ],
+      "stratified_instances_by_stratum": {
+        "Benign": [
+          31,
+          69,
+          77,
+          80,
+          84,
+          115,
+          138,
+          147
+        ],
+        "Moderate": [
+          8,
+          14,
+          18,
+          22,
+          33,
+          35,
+          37,
+          47
+        ],
+        "High": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "Severe": [
+          0
+        ]
+      },
+      "duplicates_uniform_and_stratified": [
+        0,
+        6,
+        18,
+        31,
+        37,
+        80
+      ],
+      "selected_instances": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        12,
+        14,
+        18,
+        22,
+        24,
+        31,
+        33,
+        35,
+        37,
+        43,
+        47,
+        49,
+        55,
+        62,
+        68,
+        69,
+        74,
+        77,
+        80,
+        84,
+        86,
+        93,
+        99,
+        105,
+        111,
+        115,
+        117,
+        124,
+        130,
+        136,
+        138,
+        142,
+        147,
+        149
+      ],
+      "n_selected": 41,
+      "instance_details": {
+        "0": {
+          "warm_gap_norm": 0.7966895237734489,
+          "stratum": "Severe",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 1.0819653890665164,
+          "dU_shift": 6.316971216578967
+        },
+        "3": {
+          "warm_gap_norm": 0.0374946245264968,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0597743704146801,
+          "dU_shift": 2.168404174909064
+        },
+        "4": {
+          "warm_gap_norm": 0.0228126150424472,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0487906142766543,
+          "dU_shift": 1.4096221419079422
+        },
+        "5": {
+          "warm_gap_norm": 0.014239254547644,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0378855184063029,
+          "dU_shift": 0.9687239125405812
+        },
+        "6": {
+          "warm_gap_norm": 0.0112797009766693,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0318806226845072,
+          "dU_shift": 0.7679318686068832
+        },
+        "7": {
+          "warm_gap_norm": 0.0101959682201341,
+          "stratum": "High",
+          "cold_gap_norm": 0.9174328864387872,
+          "df_over_max": 0.0292126859380902,
+          "dU_shift": 0.6847739867379645
+        },
+        "8": {
+          "warm_gap_norm": 0.0093667064808969,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.7421427625956711,
+          "df_over_max": 0.0280871538700722,
+          "dU_shift": 0.6555622332689043
+        },
+        "12": {
+          "warm_gap_norm": 0.0084471480371054,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.2379087126286808,
+          "df_over_max": 0.0256439658806182,
+          "dU_shift": 0.6314222590340863
+        },
+        "14": {
+          "warm_gap_norm": 0.0072933093779263,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0991630906511257,
+          "df_over_max": 0.0232837981684354,
+          "dU_shift": 0.5912149518818485
+        },
+        "18": {
+          "warm_gap_norm": 0.0040179031367257,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0024978598779538,
+          "df_over_max": 0.0164685188251203,
+          "dU_shift": 0.4452331713023628
+        },
+        "22": {
+          "warm_gap_norm": 0.0013392969150025,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.028221954214158,
+          "df_over_max": 0.0088537827112246,
+          "dU_shift": 0.2618396993039157
+        },
+        "24": {
+          "warm_gap_norm": 0.0005678444805812,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0482492779037321,
+          "df_over_max": 0.00539398044979,
+          "dU_shift": 0.172986418027382
+        },
+        "31": {
+          "warm_gap_norm": 9.146791087950856e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0571952555161864,
+          "df_over_max": 0.0034626989076755,
+          "dU_shift": 0.0575404538076511
+        },
+        "33": {
+          "warm_gap_norm": 0.0002053613929763,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0454009435166387,
+          "df_over_max": 0.0045726618476557,
+          "dU_shift": 0.0931435111487665
+        },
+        "35": {
+          "warm_gap_norm": 0.0003014579258547,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0323712011057624,
+          "df_over_max": 0.0052112818663012,
+          "dU_shift": 0.1160436110139572
+        },
+        "37": {
+          "warm_gap_norm": 0.0003524862720086,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0204813245100501,
+          "df_over_max": 0.0054217553279552,
+          "dU_shift": 0.1274089381202212
+        },
+        "43": {
+          "warm_gap_norm": 0.0002507429211784,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0014238898357367,
+          "df_over_max": 0.0042343581136791,
+          "dU_shift": 0.1102879223897952
+        },
+        "47": {
+          "warm_gap_norm": 0.0001144854795398,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.000277889154781,
+          "df_over_max": 0.0027114441623244,
+          "dU_shift": 0.0756709608088712
+        },
+        "49": {
+          "warm_gap_norm": 6.287945004689955e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0010493845367166,
+          "df_over_max": 0.0019328667728888,
+          "dU_shift": 0.0566336649665058
+        },
+        "55": {
+          "warm_gap_norm": 9.84607408546518e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0027716088273274,
+          "df_over_max": 0.0002592509379471,
+          "dU_shift": 0.0069586695560429
+        },
+        "62": {
+          "warm_gap_norm": 1.2171673064642488e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0014463007363478,
+          "df_over_max": 0.0010549854150786,
+          "dU_shift": 0.0232443982586593
+        },
+        "68": {
+          "warm_gap_norm": 1.3567183821879892e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0002376947038192,
+          "df_over_max": 0.001011969422198,
+          "dU_shift": 0.025436034581491
+        },
+        "69": {
+          "warm_gap_norm": 1.238112961660841e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0001426414794341,
+          "df_over_max": 0.0009554315065316,
+          "dU_shift": 0.0243909183833749
+        },
+        "74": {
+          "warm_gap_norm": 5.211956820007179e-06,
+          "stratum": "Benign",
+          "cold_gap_norm": 8.412716651673687e-06,
+          "df_over_max": 0.0005814018028893,
+          "dU_shift": 0.0161242782145889
+        },
+        "77": {
+          "warm_gap_norm": 2.058006186049685e-06,
+          "stratum": "Benign",
+          "cold_gap_norm": 5.721469242970091e-05,
+          "df_over_max": 0.0003435976508283,
+          "dU_shift": 0.0102881837212689
+        },
+        "80": {
+          "warm_gap_norm": 4.417133271181493e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0001035845323137,
+          "df_over_max": 0.0001391228366255,
+          "dU_shift": 0.0048943491731773
+        },
+        "84": {
+          "warm_gap_norm": 4.086804671932264e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0001129654705522,
+          "df_over_max": 9.506975761409432e-05,
+          "dU_shift": 0.000847737669167
+        },
+        "86": {
+          "warm_gap_norm": 1.9919371466204394e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 9.7761640337173e-05,
+          "df_over_max": 0.000156201809701,
+          "dU_shift": 0.0027503159930641
+        },
+        "93": {
+          "warm_gap_norm": 6.34592458891521e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.4302146471677796e-05,
+          "df_over_max": 0.0002253518583032,
+          "dU_shift": 0.0054467137629861
+        },
+        "99": {
+          "warm_gap_norm": 3.572389742359804e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 6.432107895902111e-07,
+          "df_over_max": 0.0001571717875368,
+          "dU_shift": 0.0041837179872391
+        },
+        "105": {
+          "warm_gap_norm": 6.540713493392887e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.943569362114691e-06,
+          "df_over_max": 5.998750608119841e-05,
+          "dU_shift": 0.0018427554517175
+        },
+        "111": {
+          "warm_gap_norm": 1.1985655970937143e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 4.814317278989307e-06,
+          "df_over_max": 1.7412991313170584e-05,
+          "dU_shift": 0.0001148691998749
+        },
+        "115": {
+          "warm_gap_norm": 1.561726001165077e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 3.351097661574404e-06,
+          "df_over_max": 3.9759329805108906e-05,
+          "dU_shift": 0.0008134425308536
+        },
+        "117": {
+          "warm_gap_norm": 2.2677032484068658e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.379791054536468e-06,
+          "df_over_max": 4.510809448934872e-05,
+          "dU_shift": 0.0010073084348679
+        },
+        "124": {
+          "warm_gap_norm": 2.1037613873370836e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.0180752569290466e-07,
+          "df_over_max": 3.920878431834493e-05,
+          "dU_shift": 0.0010068296645207
+        },
+        "130": {
+          "warm_gap_norm": 6.324736890111455e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 4.8585323554755926e-08,
+          "df_over_max": 1.977195656832703e-05,
+          "dU_shift": 0.0005652290210985
+        },
+        "136": {
+          "warm_gap_norm": 2.3578549741813013e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.020917442517741e-07,
+          "df_over_max": 2.9629411820057697e-06,
+          "dU_shift": 0.0001144892969296
+        },
+        "138": {
+          "warm_gap_norm": 3.724275284705911e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.045926379447663e-07,
+          "df_over_max": 3.164008656717106e-06,
+          "dU_shift": 1.6977201233209448e-05
+        },
+        "142": {
+          "warm_gap_norm": 6.026028508271065e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.4730584542733254e-07,
+          "df_over_max": 7.907234907611864e-06,
+          "dU_shift": 0.0001587954046809
+        },
+        "147": {
+          "warm_gap_norm": 1.1266078295677346e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 5.2013640505749446e-08,
+          "df_over_max": 9.583979356941355e-06,
+          "dU_shift": 0.000228730506802
+        },
+        "149": {
+          "warm_gap_norm": 1.0733534767426035e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.6346876568471708e-08,
+          "df_over_max": 9.08909903276744e-06,
+          "dU_shift": 0.0002255149383283
+        }
+      }
+    },
+    "hvac": {
+      "Nsim": 1500,
+      "stratum_counts_full_trajectory": {
+        "Benign": 1500
+      },
+      "uniform_instances": [
+        0,
+        62,
+        124,
+        187,
+        249,
+        312,
+        374,
+        437,
+        499,
+        562,
+        624,
+        687,
+        749,
+        811,
+        874,
+        936,
+        999,
+        1061,
+        1124,
+        1186,
+        1249,
+        1311,
+        1374,
+        1436,
+        1499
+      ],
+      "stratified_instances_by_stratum": {
+        "Benign": [
+          0,
+          83,
+          298,
+          511,
+          725,
+          939,
+          1153,
+          1367
+        ],
+        "Moderate": [],
+        "High": [],
+        "Severe": []
+      },
+      "duplicates_uniform_and_stratified": [
+        0
+      ],
+      "selected_instances": [
+        0,
+        62,
+        83,
+        124,
+        187,
+        249,
+        298,
+        312,
+        374,
+        437,
+        499,
+        511,
+        562,
+        624,
+        687,
+        725,
+        749,
+        811,
+        874,
+        936,
+        939,
+        999,
+        1061,
+        1124,
+        1153,
+        1186,
+        1249,
+        1311,
+        1367,
+        1374,
+        1436,
+        1499
+      ],
+      "n_selected": 32,
+      "instance_details": {
+        "0": {
+          "warm_gap_norm": 0.0,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0048000846352984,
+          "dU_shift": 0.0
+        },
+        "62": {
+          "warm_gap_norm": 0.0,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0047768487202393,
+          "dU_shift": 0.0
+        },
+        "83": {
+          "warm_gap_norm": 6.29640399801025e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0047460964807902,
+          "dU_shift": 0.6513842455467186
+        },
+        "124": {
+          "warm_gap_norm": 6.217199386422306e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.003414164925351,
+          "dU_shift": 0.4685815497144611
+        },
+        "187": {
+          "warm_gap_norm": 6.0381839305573375e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0020582902583773,
+          "dU_shift": 0.2824927500927459
+        },
+        "249": {
+          "warm_gap_norm": 5.765457704279834e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0012510705459135,
+          "dU_shift": 0.1717048203648031
+        },
+        "298": {
+          "warm_gap_norm": 5.456946795795032e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.00084424000677,
+          "dU_shift": 0.1158688286455711
+        },
+        "312": {
+          "warm_gap_norm": 5.350699784318543e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0007545312990913,
+          "dU_shift": 0.103556639227073
+        },
+        "374": {
+          "warm_gap_norm": 3.998744621425132e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.8381197280185997,
+          "df_over_max": 0.0004589163144304,
+          "dU_shift": 0.0629845723644939
+        },
+        "437": {
+          "warm_gap_norm": 1.4576592096804395e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.3647128225393027,
+          "df_over_max": 0.0002770764808835,
+          "dU_shift": 0.0380277255611799
+        },
+        "499": {
+          "warm_gap_norm": 5.41118884889169e-06,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.1747372711356167,
+          "df_over_max": 0.0001688177112824,
+          "dU_shift": 0.0231696085284386
+        },
+        "511": {
+          "warm_gap_norm": 4.468386296307969e-06,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.1532738665446063,
+          "df_over_max": 0.0001534076503756,
+          "dU_shift": 0.0210546344780057
+        },
+        "562": {
+          "warm_gap_norm": 1.984134378685276e-06,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0919646965012821,
+          "df_over_max": 0.0001022250198783,
+          "dU_shift": 0.0140300071266351
+        },
+        "624": {
+          "warm_gap_norm": 7.435498037833277e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0550055650061796,
+          "df_over_max": 6.257872267504387e-05,
+          "dU_shift": 0.0085886989912205
+        },
+        "687": {
+          "warm_gap_norm": 2.769370569533081e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0368067246839207,
+          "df_over_max": 3.819110277779955e-05,
+          "dU_shift": 0.005241588065077
+        },
+        "725": {
+          "warm_gap_norm": 1.5372561371074236e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.030484850968068,
+          "df_over_max": 2.8454095211555774e-05,
+          "dU_shift": 0.0039052196720062
+        },
+        "749": {
+          "warm_gap_norm": 1.0639302341908241e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0275687262677446,
+          "df_over_max": 2.3671634032587917e-05,
+          "dU_shift": 0.0032488445056946
+        },
+        "811": {
+          "warm_gap_norm": 4.186740070258321e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0224868093980788,
+          "df_over_max": 1.484942585307867e-05,
+          "dU_shift": 0.0020380289560527
+        },
+        "874": {
+          "warm_gap_norm": 1.6856978188317662e-08,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0195038258535984,
+          "df_over_max": 9.422399741251514e-06,
+          "dU_shift": 0.0012931896288897
+        },
+        "936": {
+          "warm_gap_norm": 7.277737083116742e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0177217299104261,
+          "df_over_max": 6.191128865039015e-06,
+          "dU_shift": 0.0008497096131825
+        },
+        "939": {
+          "warm_gap_norm": 7.000222679298673e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0176545305519439,
+          "df_over_max": 6.071941661624009e-06,
+          "dU_shift": 0.0008333516088965
+        },
+        "999": {
+          "warm_gap_norm": 3.354435989394444e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0165630422748294,
+          "df_over_max": 4.203213180405805e-06,
+          "dU_shift": 0.0005768755139007
+        },
+        "1061": {
+          "warm_gap_norm": 1.7310250767510471e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0157909901469703,
+          "df_over_max": 3.019418715932201e-06,
+          "dU_shift": 0.0004144040877
+        },
+        "1124": {
+          "warm_gap_norm": 9.965268957246032e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0152247953032091,
+          "df_over_max": 2.290952981747472e-06,
+          "dU_shift": 0.0003144248511662
+        },
+        "1153": {
+          "warm_gap_norm": 8.065826652414732e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0150117923982107,
+          "df_over_max": 2.0610859531018983e-06,
+          "dU_shift": 0.0002828764488874
+        },
+        "1186": {
+          "warm_gap_norm": 6.547386261629429e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0147951372323278,
+          "df_over_max": 1.8569732331706235e-06,
+          "dU_shift": 0.0002548627305365
+        },
+        "1249": {
+          "warm_gap_norm": 4.798509280895534e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0144362101197591,
+          "df_over_max": 1.5897353532108297e-06,
+          "dU_shift": 0.0002181853166826
+        },
+        "1311": {
+          "warm_gap_norm": 3.88454997335419e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0141294647879554,
+          "df_over_max": 1.430349004777598e-06,
+          "dU_shift": 0.0001963101279361
+        },
+        "1367": {
+          "warm_gap_norm": 3.4127143819229206e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0138771915995498,
+          "df_over_max": 1.3406691908741064e-06,
+          "dU_shift": 0.0001840019040818
+        },
+        "1374": {
+          "warm_gap_norm": 3.368820257476645e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0138468545002566,
+          "df_over_max": 1.3320194967422604e-06,
+          "dU_shift": 0.0001828147654492
+        },
+        "1436": {
+          "warm_gap_norm": 3.077832502751398e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.013586763956657,
+          "df_over_max": 1.2731927590997432e-06,
+          "dU_shift": 0.0001747410125717
+        },
+        "1499": {
+          "warm_gap_norm": 2.904021849381433e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0133343380536194,
+          "df_over_max": 1.2367206242228474e-06,
+          "dU_shift": 0.0001697353465147
+        }
+      }
+    },
+    "uav": {
+      "Nsim": 500,
+      "stratum_counts_full_trajectory": {
+        "Benign": 439,
+        "Moderate": 25,
+        "High": 20,
+        "Severe": 16
+      },
+      "uniform_instances": [
+        0,
+        20,
+        41,
+        62,
+        83,
+        103,
+        124,
+        145,
+        166,
+        187,
+        207,
+        228,
+        249,
+        270,
+        291,
+        311,
+        332,
+        353,
+        374,
+        395,
+        415,
+        436,
+        457,
+        478,
+        499
+      ],
+      "stratified_instances_by_stratum": {
+        "Benign": [
+          46,
+          148,
+          177,
+          247,
+          275,
+          401,
+          416,
+          464
+        ],
+        "Moderate": [
+          12,
+          22,
+          31,
+          35,
+          37,
+          44,
+          50,
+          52
+        ],
+        "High": [
+          2,
+          10,
+          25,
+          27,
+          30,
+          492,
+          495,
+          497
+        ],
+        "Severe": [
+          0,
+          5,
+          9,
+          15,
+          16,
+          18,
+          490,
+          493
+        ]
+      },
+      "duplicates_uniform_and_stratified": [
+        0
+      ],
+      "selected_instances": [
+        0,
+        2,
+        5,
+        9,
+        10,
+        12,
+        15,
+        16,
+        18,
+        20,
+        22,
+        25,
+        27,
+        30,
+        31,
+        35,
+        37,
+        41,
+        44,
+        46,
+        50,
+        52,
+        62,
+        83,
+        103,
+        124,
+        145,
+        148,
+        166,
+        177,
+        187,
+        207,
+        228,
+        247,
+        249,
+        270,
+        275,
+        291,
+        311,
+        332,
+        353,
+        374,
+        395,
+        401,
+        415,
+        416,
+        436,
+        457,
+        464,
+        478,
+        490,
+        492,
+        493,
+        495,
+        497,
+        499
+      ],
+      "n_selected": 56,
+      "instance_details": {
+        "0": {
+          "warm_gap_norm": 12.449478195019829,
+          "stratum": "Severe",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 1.366621453868153,
+          "dU_shift": 0.7196564506088895
+        },
+        "2": {
+          "warm_gap_norm": 0.037653050051257,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0531535426983664,
+          "dU_shift": 0.0046355064602164
+        },
+        "5": {
+          "warm_gap_norm": 0.4939345449153154,
+          "stratum": "Severe",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0616375834992405,
+          "dU_shift": 0.0029195105122502
+        },
+        "9": {
+          "warm_gap_norm": 0.1056780882446711,
+          "stratum": "Severe",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0244000927330298,
+          "dU_shift": 0.0014420411146217
+        },
+        "10": {
+          "warm_gap_norm": 0.0228851936943586,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0133511933476939,
+          "dU_shift": 0.0011928041953626
+        },
+        "12": {
+          "warm_gap_norm": 0.0032370407799268,
+          "stratum": "Moderate",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0049109889614244,
+          "dU_shift": 0.0008377425967137
+        },
+        "15": {
+          "warm_gap_norm": 0.1720137626274683,
+          "stratum": "Severe",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0176279643177844,
+          "dU_shift": 0.0005611866215876
+        },
+        "16": {
+          "warm_gap_norm": 0.367124701897821,
+          "stratum": "Severe",
+          "cold_gap_norm": 0.6850035912537205,
+          "df_over_max": 0.0179695800924718,
+          "dU_shift": 0.0004956211009598
+        },
+        "18": {
+          "warm_gap_norm": 0.2379941740740523,
+          "stratum": "Severe",
+          "cold_gap_norm": 0.0530595342025718,
+          "df_over_max": 0.0144685641689321,
+          "dU_shift": 0.0003655371150799
+        },
+        "20": {
+          "warm_gap_norm": 0.0720733965873624,
+          "stratum": "High",
+          "cold_gap_norm": 0.7757270196525806,
+          "df_over_max": 0.0079616711667555,
+          "dU_shift": 0.0002413217798818
+        },
+        "22": {
+          "warm_gap_norm": 0.0016692425491167,
+          "stratum": "Moderate",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0013005404687315,
+          "dU_shift": 0.0001511124904107
+        },
+        "25": {
+          "warm_gap_norm": 0.0288646626880535,
+          "stratum": "High",
+          "cold_gap_norm": 0.5440378538235839,
+          "df_over_max": 0.0050388927590345,
+          "dU_shift": 0.0001163135460092
+        },
+        "27": {
+          "warm_gap_norm": 0.0416410824747481,
+          "stratum": "High",
+          "cold_gap_norm": 0.1131288360600501,
+          "df_over_max": 0.0060524591302596,
+          "dU_shift": 0.0001089920161867
+        },
+        "30": {
+          "warm_gap_norm": 0.0187161164726532,
+          "stratum": "High",
+          "cold_gap_norm": 0.0268758938716321,
+          "df_over_max": 0.0040577089848042,
+          "dU_shift": 7.033858430461156e-05
+        },
+        "31": {
+          "warm_gap_norm": 0.009803058901052,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0691234107487617,
+          "df_over_max": 0.0029366410984941,
+          "dU_shift": 5.3588808653932433e-05
+        },
+        "35": {
+          "warm_gap_norm": 0.001123911451877,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0931200205452299,
+          "df_over_max": 0.0009943117208739,
+          "dU_shift": 2.1826552067789535e-05
+        },
+        "37": {
+          "warm_gap_norm": 0.0039008668721349,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0364881740976279,
+          "df_over_max": 0.00185243126448,
+          "dU_shift": 3.826390894378513e-05
+        },
+        "41": {
+          "warm_gap_norm": 0.0022398219659747,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0019683609859323,
+          "df_over_max": 0.0014037385947899,
+          "dU_shift": 2.1262398424046492e-05
+        },
+        "44": {
+          "warm_gap_norm": 0.0001090313547202,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0127040264922447,
+          "df_over_max": 0.0003097103059001,
+          "dU_shift": 4.633124726254953e-06
+        },
+        "46": {
+          "warm_gap_norm": 8.459512387464126e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 0.0106393852626305,
+          "df_over_max": 0.0002727654754222,
+          "dU_shift": 8.265498747050688e-06
+        },
+        "50": {
+          "warm_gap_norm": 0.0004557459634593,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0006121280734445,
+          "df_over_max": 0.0006327166025578,
+          "dU_shift": 3.9375356026267205e-05
+        },
+        "52": {
+          "warm_gap_norm": 0.0002673675093802,
+          "stratum": "Moderate",
+          "cold_gap_norm": 0.0001221358733358,
+          "df_over_max": 0.0004849899449212,
+          "dU_shift": 7.533210758748931e-06
+        },
+        "62": {
+          "warm_gap_norm": 4.279279864138632e-05,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0168161997989813e-05,
+          "df_over_max": 0.0001940253200124,
+          "dU_shift": 3.354441062748521e-06
+        },
+        "83": {
+          "warm_gap_norm": 5.731794495036248e-07,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.991741325983234e-06,
+          "df_over_max": 2.2432051549590356e-05,
+          "dU_shift": 7.539283276103373e-07
+        },
+        "103": {
+          "warm_gap_norm": 2.9176826799687852e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.1542601432806633e-07,
+          "df_over_max": 1.601884574095125e-06,
+          "dU_shift": 2.5359418021111016e-08
+        },
+        "124": {
+          "warm_gap_norm": 1.939942325231003e-12,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.188793010966169e-09,
+          "df_over_max": 3.831725384007896e-08,
+          "dU_shift": 2.3544398112281903e-08
+        },
+        "145": {
+          "warm_gap_norm": 2.552907002992709e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.6798600011672205e-10,
+          "df_over_max": 7.56649328833956e-08,
+          "dU_shift": 1.3057398515329868e-07
+        },
+        "148": {
+          "warm_gap_norm": 3.0228120825488727e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 6.91231665969926e-10,
+          "df_over_max": 3.1125787859703526e-08,
+          "dU_shift": 1.8361527348889162e-07
+        },
+        "166": {
+          "warm_gap_norm": 1.4751147261574204e-12,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.1590064564846258e-10,
+          "df_over_max": 3.5867673268688644e-08,
+          "dU_shift": 3.969925591819028e-09
+        },
+        "177": {
+          "warm_gap_norm": 5.0883523111701056e-12,
+          "stratum": "Benign",
+          "cold_gap_norm": 3.9150112646221336e-10,
+          "df_over_max": 6.598994202791475e-08,
+          "dU_shift": 1.1869459648009312e-08
+        },
+        "187": {
+          "warm_gap_norm": 6.1789812176940055e-12,
+          "stratum": "Benign",
+          "cold_gap_norm": 3.9520585647407206e-10,
+          "df_over_max": 8.784555606602997e-09,
+          "dU_shift": 8.778573268954523e-08
+        },
+        "207": {
+          "warm_gap_norm": 1.9344001103170035e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 4.902435746455217e-10,
+          "df_over_max": 6.255729790730044e-08,
+          "dU_shift": 1.172917865106086e-07
+        },
+        "228": {
+          "warm_gap_norm": 4.9378400741109797e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.0467651580085721e-10,
+          "df_over_max": 1.943310050441682e-07,
+          "dU_shift": 1.1530143004099189e-07
+        },
+        "247": {
+          "warm_gap_norm": 5.5590398229259093e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.6926137428746583e-10,
+          "df_over_max": 2.0258182610326505e-07,
+          "dU_shift": 6.994201782137673e-08
+        },
+        "249": {
+          "warm_gap_norm": 1.2933519127765952e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.5532768520003865e-10,
+          "df_over_max": 5.5923210296386964e-08,
+          "dU_shift": 6.292495688191126e-08
+        },
+        "270": {
+          "warm_gap_norm": 1.1198651819640709e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.4397895119188976e-10,
+          "df_over_max": 9.87482927164076e-08,
+          "dU_shift": 3.596414295722805e-09
+        },
+        "275": {
+          "warm_gap_norm": 1.535852248019092e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.9635011659749656e-11,
+          "df_over_max": 1.1551902664879081e-07,
+          "dU_shift": 6.689085663993024e-09
+        },
+        "291": {
+          "warm_gap_norm": 4.150236638407231e-12,
+          "stratum": "Benign",
+          "cold_gap_norm": 3.6714825328877187e-10,
+          "df_over_max": 6.03297093857936e-08,
+          "dU_shift": 3.2542249933582404e-09
+        },
+        "311": {
+          "warm_gap_norm": 5.313204146987647e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.7358258539811228e-10,
+          "df_over_max": 2.1529524830085218e-07,
+          "dU_shift": 8.068036268966951e-09
+        },
+        "332": {
+          "warm_gap_norm": 9.286527295281603e-12,
+          "stratum": "Benign",
+          "cold_gap_norm": 3.015175651906545e-10,
+          "df_over_max": 2.1375891685392423e-08,
+          "dU_shift": 1.349127517034472e-07
+        },
+        "353": {
+          "warm_gap_norm": 4.979387723140331e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 5.959370586547049e-11,
+          "df_over_max": 2.07176189102885e-07,
+          "dU_shift": 4.6021101179781236e-08
+        },
+        "374": {
+          "warm_gap_norm": 5.610040321928837e-12,
+          "stratum": "Benign",
+          "cold_gap_norm": 3.3594676183194677e-10,
+          "df_over_max": 6.993569093706786e-08,
+          "dU_shift": 1.0347146842148171e-08
+        },
+        "395": {
+          "warm_gap_norm": 2.586999366558873e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 4.4425150202503596e-10,
+          "df_over_max": 5.5368547321933945e-08,
+          "dU_shift": 2.167135137570071e-07
+        },
+        "401": {
+          "warm_gap_norm": 1.2629669910123766e-13,
+          "stratum": "Benign",
+          "cold_gap_norm": 4.195877710825801e-11,
+          "df_over_max": 3.499647453112906e-09,
+          "dU_shift": 1.5354560046114197e-08
+        },
+        "415": {
+          "warm_gap_norm": 7.357952088559942e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 2.998501719906314e-09,
+          "df_over_max": 9.551139596250445e-08,
+          "dU_shift": 3.637807927270887e-07
+        },
+        "416": {
+          "warm_gap_norm": 1.0041573819863015e-10,
+          "stratum": "Benign",
+          "cold_gap_norm": 4.03827908911482e-09,
+          "df_over_max": 1.5982545293720716e-07,
+          "dU_shift": 3.86608408369723e-07
+        },
+        "436": {
+          "warm_gap_norm": 1.0901230966881007e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.40088453385862e-10,
+          "df_over_max": 5.04016067299548e-08,
+          "dU_shift": 1.0299766271528762e-07
+        },
+        "457": {
+          "warm_gap_norm": 3.581780462218632e-11,
+          "stratum": "Benign",
+          "cold_gap_norm": 3.1319754991537804e-10,
+          "df_over_max": 1.3805392346509294e-07,
+          "dU_shift": 1.0976197458631474e-07
+        },
+        "464": {
+          "warm_gap_norm": 1.7020751373226023e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 4.599024373513392e-10,
+          "df_over_max": 1.8946464522301575e-07,
+          "dU_shift": 1.0566728509314512e-06
+        },
+        "478": {
+          "warm_gap_norm": 1.3100971898584964e-09,
+          "stratum": "Benign",
+          "cold_gap_norm": 1.5085637209607374e-09,
+          "df_over_max": 1.0416015363743275e-07,
+          "dU_shift": 1.3348444758186946e-06
+        },
+        "490": {
+          "warm_gap_norm": 1.0000157796058111,
+          "stratum": "Severe",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0454536058171713,
+          "dU_shift": 0.0345219087951349
+        },
+        "492": {
+          "warm_gap_norm": 0.0722690139032564,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0131647812000499,
+          "dU_shift": 0.0174249735367392
+        },
+        "493": {
+          "warm_gap_norm": 0.1638638513521033,
+          "stratum": "Severe",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.023112785633615,
+          "dU_shift": 0.0108438207668229
+        },
+        "495": {
+          "warm_gap_norm": 0.097900899680984,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0209528581051306,
+          "dU_shift": 0.0006926760582779
+        },
+        "497": {
+          "warm_gap_norm": 0.0119944584145897,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0067831756054318,
+          "dU_shift": 0.006627012854453
+        },
+        "499": {
+          "warm_gap_norm": 0.0243706005402393,
+          "stratum": "High",
+          "cold_gap_norm": 1.0,
+          "df_over_max": 0.0053568295396081,
+          "dU_shift": 0.0117671734180818
+        }
+      }
+    }
+  },
+  "total_selected_instances": 215,
+  "wall_seconds": 0.1
+}

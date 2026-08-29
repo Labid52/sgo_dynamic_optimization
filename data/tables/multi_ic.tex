@@ -1,0 +1,38 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Multi-initial-condition robustness under the fixed-MPC exact-FE protocol. Mean closed-loop nRMSE over 5 seeds; the best optimizer for each initial condition is shown in bold. The held-out tuning initial conditions are excluded by construction.}
+\label{tab:multi_ic}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+System & Initial condition & SGO & GWO & PSO & WOA & Det.\ ref. \\
+\midrule
+pendcart & IC1 submitted & 0.21503 & 0.21502 & \textbf{0.21496} & 0.21502 & 0.21502 \\
+pendcart & IC2 far cart & \textbf{0.19924} & 0.19924 & 0.19924 & 0.19924 & 0.19924 \\
+pendcart & IC3 opposite angle & \textbf{0.24463} & 0.24463 & 0.24463 & 0.24463 & 0.24463 \\
+pendcart & IC4 with velocity & \textbf{0.19724} & 0.19726 & 0.19726 & 0.19726 & 0.19726 \\
+pendcart & IC5 near reference & \textbf{0.26421} & 0.26422 & 0.26422 & 0.26422 & 0.26422 \\
+cstr & IC1 submitted & \textbf{0.29405} & 0.29416 & 0.29415 & 0.2946 & 0.29415 \\
+cstr & IC2 larger deviation & 0.73015 & \textbf{0.72882} & 0.72882 & 0.72897 & 0.72882 \\
+cstr & IC3 concentration only & 1.0061 & 1.0053 & \textbf{1.0049} & 1.0052 & 1.0053 \\
+cstr & IC4 temperature only & 0.12245 & \textbf{0.12242} & 0.12242 & 0.12242 & 0.12242 \\
+cstr & IC5 small deviation & 0.071243 & 0.07158 & \textbf{0.071164} & 0.072273 & 0.071156 \\
+flight & IC1 submitted & \textbf{0.018159} & 0.018189 & 0.018192 & 0.018193 & 0.018196 \\
+flight & IC2 larger alpha & \textbf{0.064437} & 0.064797 & 0.064792 & 0.064781 & 0.064798 \\
+flight & IC3 pitch rate & 0.11921 & 0.11615 & 0.11615 & \textbf{0.11595} & 0.11615 \\
+flight & IC4 theta offset & 2.3394 & \textbf{2.3241} & 2.3241 & 2.3257 & 2.3241 \\
+flight & IC5 small & \textbf{0.0074151} & 0.0074606 & 0.0074665 & 0.0074272 & 0.0074613 \\
+hvac & IC1 submitted & \textbf{0.020752} & 0.020759 & 0.020759 & 0.020767 & 0.020767 \\
+hvac & IC2 cold building & \textbf{0.10261} & 0.10261 & 0.10261 & 0.10261 & 0.10261 \\
+hvac & IC3 warm building & \textbf{0.020741} & 0.020747 & 0.020746 & 0.020755 & 0.020755 \\
+hvac & IC4 warm rooms cold walls & \textbf{0.0090456} & 0.0090606 & 0.0090605 & 0.0090691 & 0.009069 \\
+hvac & IC5 at room setpoint & 0.00078564 & \textbf{0.00078372} & 0.000784 & 0.00078399 & 0.000784 \\
+uav & IC1 submitted & 0.0009683 & \textbf{0.00086935} & 0.0025668 & 0.0011221 & 0.0008693 \\
+uav & IC2 offset xy & 0.010931 & \textbf{0.010828} & 0.010886 & 0.011115 & 0.010818 \\
+uav & IC3 altitude offset & 0.0094263 & \textbf{0.0092008} & 0.010697 & 0.0095954 & 0.0092014 \\
+uav & IC4 attitude perturbed & 0.0013993 & \textbf{0.0012822} & 0.0028995 & 0.0018526 & 0.0012838 \\
+uav & IC5 with velocity & \textbf{0.0019558} & 0.0019684 & 0.0019686 & 0.0019785 & 0.0019676 \\
+\bottomrule
+\end{tabular}}
+\end{table}

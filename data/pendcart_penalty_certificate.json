@@ -1,0 +1,23 @@
+{
+  "limit_m": 10.0,
+  "instances_checked": 2265,
+  "Nc_values": [
+    1,
+    2,
+    3
+  ],
+  "state_sources": [
+    "GWO",
+    "PSO",
+    "SGO",
+    "WOA",
+    "deterministic"
+  ],
+  "method": "exact vertex extrema of an affine function over the input box (no sampling, no optimisation)",
+  "worst_abs_cart_over_box": 3.2009861972429663,
+  "smallest_margin_m": 6.799013802757034,
+  "any_instance_can_activate_penalty": false,
+  "n_instances_that_can_activate": 0,
+  "wall_seconds": 11.2,
+  "verdict": "PENALTY GLOBALLY INACTIVE over the admissible input box for all checked instances; the pendulum-cart subproblems are exactly bound-constrained QPs"
+}

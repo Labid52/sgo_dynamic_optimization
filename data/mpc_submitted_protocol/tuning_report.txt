@@ -1,0 +1,41 @@
+Tuning system: Inverted Pendulum on Cart
+trials=12, steps=80
+
+SGO: best normalized RMSE=0.262624 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+GWO: best normalized RMSE=0.262706 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+PSO: best normalized RMSE=0.262621 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+WOA: best normalized RMSE=0.262703 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+
+Tuning system: CSTR
+trials=12, steps=80
+
+SGO: best normalized RMSE=0.304477 params={'P': 20, 'Nc': 3, 'Q_scale': 1.0, 'NP': 30, 'maxIter': 60}
+GWO: best normalized RMSE=0.302547 params={'P': 10, 'Nc': 3, 'Q_scale': 2.0, 'NP': 14, 'maxIter': 60}
+PSO: best normalized RMSE=0.3029 params={'P': 20, 'Nc': 3, 'Q_scale': 0.25, 'NP': 30, 'maxIter': 60}
+WOA: best normalized RMSE=0.304755 params={'P': 20, 'Nc': 2, 'Q_scale': 1.0, 'NP': 20, 'maxIter': 100}
+
+Tuning system: Aircraft Longitudinal Flight Control
+trials=12, steps=80
+
+SGO: best normalized RMSE=0.0204235 params={'P': 20, 'Nc': 1, 'Q_scale': 0.5, 'NP': 30, 'maxIter': 100}
+GWO: best normalized RMSE=0.0196855 params={'P': 20, 'Nc': 3, 'Q_scale': 2.0, 'NP': 20, 'maxIter': 40}
+PSO: best normalized RMSE=0.0204183 params={'P': 20, 'Nc': 1, 'Q_scale': 0.5, 'NP': 30, 'maxIter': 40}
+WOA: best normalized RMSE=0.020897 params={'P': 15, 'Nc': 3, 'Q_scale': 5.0, 'NP': 30, 'maxIter': 20}
+
+Tuning system: HVAC 13-State Thermal Building
+trials=12, steps=80
+
+SGO: best normalized RMSE=0.074191 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+GWO: best normalized RMSE=0.074191 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+PSO: best normalized RMSE=0.074191 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+WOA: best normalized RMSE=0.074191 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+
+Tuning system: Quadrotor UAV Trajectory Tracking
+trials=12, steps=80
+
+SGO: best normalized RMSE=0.0154691 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+GWO: best normalized RMSE=0.0126297 params={'P': 10, 'Nc': 1, 'Q_scale': 0.5, 'NP': 14, 'maxIter': 40}
+PSO: best normalized RMSE=0.09623 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+WOA: best normalized RMSE=0.0159955 params={'NP': 20, 'maxIter': 60, 'P': None, 'Nc': 1, 'Q_scale': 1.0}
+
+Total tuning wall time: 162.9 s

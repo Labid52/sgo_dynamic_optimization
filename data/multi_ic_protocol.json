@@ -1,0 +1,554 @@
+{
+  "purpose": "Test whether the Phase-2A conclusions are specific to one trajectory (reviewer R2.12).",
+  "protocol": {
+    "ics_per_system": 5,
+    "seeds_per_optimizer_per_ic": 5,
+    "mpc": "frozen Phase-2A fixed MPC",
+    "fe_budget": 1000,
+    "nrmse_scale": "computed from each run's own initial condition",
+    "tuning_ics_excluded": true
+  },
+  "systems": {
+    "pendcart": {
+      "tuning_ic_reserved": [
+        0.5,
+        0.0,
+        2.991592653589793,
+        0.0
+      ],
+      "ics": {
+        "IC1_submitted": {
+          "x0": [
+            -1.0,
+            0.0,
+            3.3415926535897933,
+            0.0
+          ],
+          "deterministic_nrmse": 0.21502249100609086,
+          "max_abs_state": 3.3415926535897933,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC2_far_cart": {
+          "x0": [
+            -2.0,
+            0.0,
+            3.241592653589793,
+            0.0
+          ],
+          "deterministic_nrmse": 0.19923874992587898,
+          "max_abs_state": 3.241592653589793,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC3_opposite_angle": {
+          "x0": [
+            -1.0,
+            0.0,
+            2.941592653589793,
+            0.0
+          ],
+          "deterministic_nrmse": 0.24462833486936347,
+          "max_abs_state": 3.3214507352830647,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC4_with_velocity": {
+          "x0": [
+            -1.0,
+            0.3,
+            3.3415926535897933,
+            -0.2
+          ],
+          "deterministic_nrmse": 0.19726496235904012,
+          "max_abs_state": 3.3415926535897933,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC5_near_reference": {
+          "x0": [
+            0.6,
+            0.0,
+            3.191592653589793,
+            0.0
+          ],
+          "deterministic_nrmse": 0.26422071066851766,
+          "max_abs_state": 3.191592653589793,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        }
+      }
+    },
+    "cstr": {
+      "tuning_ic_reserved": [
+        -0.4,
+        0.8
+      ],
+      "ics": {
+        "IC1_submitted": {
+          "x0": [
+            0.5,
+            -1.0
+          ],
+          "deterministic_nrmse": 0.2941525546770811,
+          "max_abs_state": 2.599669649955,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC2_larger_deviation": {
+          "x0": [
+            1.0,
+            -1.5
+          ],
+          "deterministic_nrmse": 0.7288229751429192,
+          "max_abs_state": 8.128011580005001,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC3_concentration_only": {
+          "x0": [
+            0.8,
+            0.0
+          ],
+          "deterministic_nrmse": 1.0052659766658212,
+          "max_abs_state": 7.957296379462562,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC4_temperature_only": {
+          "x0": [
+            0.0,
+            -1.2
+          ],
+          "deterministic_nrmse": 0.12242190435811635,
+          "max_abs_state": 1.5042,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC5_small_deviation": {
+          "x0": [
+            0.2,
+            -0.3
+          ],
+          "deterministic_nrmse": 0.07115553120106793,
+          "max_abs_state": 0.7094737329999999,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        }
+      }
+    },
+    "flight": {
+      "tuning_ic_reserved": [
+        -0.08,
+        0.12,
+        -0.04,
+        0.06
+      ],
+      "ics": {
+        "IC1_submitted": {
+          "x0": [
+            0.1,
+            -0.1,
+            0.05,
+            -0.05
+          ],
+          "deterministic_nrmse": 0.018195653502689445,
+          "max_abs_state": 0.11910695378033778,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC2_larger_alpha": {
+          "x0": [
+            0.05,
+            -0.25,
+            0.05,
+            -0.05
+          ],
+          "deterministic_nrmse": 0.06479822579713684,
+          "max_abs_state": 0.72534234998302,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC3_pitch_rate": {
+          "x0": [
+            0.1,
+            -0.1,
+            0.2,
+            -0.05
+          ],
+          "deterministic_nrmse": 0.11615212412629604,
+          "max_abs_state": 0.7508942934634765,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC4_theta_offset": {
+          "x0": [
+            0.1,
+            -0.1,
+            0.05,
+            0.2
+          ],
+          "deterministic_nrmse": 2.3240773760956475,
+          "max_abs_state": 17.05956077183924,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC5_small": {
+          "x0": [
+            0.03,
+            -0.03,
+            0.02,
+            -0.02
+          ],
+          "deterministic_nrmse": 0.007461288484941245,
+          "max_abs_state": 0.05300817150701766,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        }
+      }
+    },
+    "hvac": {
+      "tuning_ic_reserved": [
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0,
+        18.0
+      ],
+      "ics": {
+        "IC1_submitted": {
+          "x0": [
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0
+          ],
+          "deterministic_nrmse": 0.020766893738445827,
+          "max_abs_state": 21.982944229485827,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC2_cold_building": {
+          "x0": [
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0,
+            16.0
+          ],
+          "deterministic_nrmse": 0.10261083524760088,
+          "max_abs_state": 21.94616110443191,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC3_warm_building": {
+          "x0": [
+            24.0,
+            24.0,
+            24.0,
+            24.0,
+            24.0,
+            24.0,
+            24.0,
+            24.0,
+            24.0,
+            24.0,
+            24.0,
+            24.0,
+            24.0
+          ],
+          "deterministic_nrmse": 0.020754824114289337,
+          "max_abs_state": 24.303828114723988,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC4_warm_rooms_cold_walls": {
+          "x0": [
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            18.0,
+            23.0,
+            23.0,
+            23.0
+          ],
+          "deterministic_nrmse": 0.009069017298942727,
+          "max_abs_state": 23.0,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC5_at_room_setpoint": {
+          "x0": [
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            20.0,
+            22.0,
+            22.0,
+            22.0
+          ],
+          "deterministic_nrmse": 0.0007839952774648286,
+          "max_abs_state": 22.0,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        }
+      }
+    },
+    "uav": {
+      "tuning_ic_reserved": [
+        -1.0,
+        0.5,
+        0.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ics": {
+        "IC1_submitted": {
+          "x0": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "deterministic_nrmse": 0.0008692986026327382,
+          "max_abs_state": 9.983262746516978,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC2_offset_xy": {
+          "x0": [
+            1.5,
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "deterministic_nrmse": 0.01081766982445975,
+          "max_abs_state": 9.983262754095529,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC3_altitude_offset": {
+          "x0": [
+            0.0,
+            0.0,
+            2.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "deterministic_nrmse": 0.00920144780154077,
+          "max_abs_state": 9.983262735413218,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC4_attitude_perturbed": {
+          "x0": [
+            0.0,
+            0.0,
+            0.0,
+            0.05,
+            -0.05,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "deterministic_nrmse": 0.0012838281036897717,
+          "max_abs_state": 9.983262744912155,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        },
+        "IC5_with_velocity": {
+          "x0": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5,
+            -0.5,
+            0.2,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "deterministic_nrmse": 0.0019675502542653013,
+          "max_abs_state": 9.983262763743973,
+          "checks": {
+            "bounded": true,
+            "nrmse_sane": true,
+            "not_equal_to_tuning_ic": true
+          },
+          "accepted": true
+        }
+      }
+    }
+  },
+  "all_accepted": true
+}

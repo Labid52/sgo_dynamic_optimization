@@ -1,0 +1,17 @@
+{
+  "runs_per_cell": 20,
+  "fe_budget": 1000,
+  "regimes": [
+    "A_tuned_NP",
+    "B_common_NP"
+  ],
+  "all_runs_exactly_on_budget": true,
+  "systems": [
+    "pendcart",
+    "cstr",
+    "flight",
+    "hvac",
+    "uav"
+  ],
+  "wall_seconds": 4317.4
+}

@@ -1,0 +1,57 @@
+check,case,seed,batch,quantity,n,max_rel_diff,passed
+shim,pdist2,,,Euclidean norm identity used by the generator,37,0.0,True
+fitness,F10,1,,fitness_GMPB at probe points,2400,3.5887833338098026e-14,True
+fitness,F1,1,,fitness_GMPB at probe points,2400,3.5532687903128135e-13,True
+fitness,F2,1,,fitness_GMPB at probe points,2400,5.186961971048731e-13,True
+fitness,F3,1,,fitness_GMPB at probe points,2400,1.0917277724148933e-12,True
+fitness,F5,1,,fitness_GMPB at probe points,2400,9.379164112033322e-13,True
+fitness,F9,1,,fitness_GMPB at probe points,2400,3.5487646072428346e-14,True
+run,F10,2,8,per-evaluation objective values,15000,3.4439269898011545e-14,True
+run,F10,2,8,NaN pattern of returned values,15000,0.0,True
+run,F10,2,8,CurrentError trace (all FEs),15000,3.865447583285496e-15,True
+run,F10,2,8,Ebbc vector,3,1.7706926444104441e-15,True
+run,F10,2,8,offline error E_o,1,6.51159788355469e-14,True
+run,F10,2,8,final FE counter,1,0,True
+run,F10,2,8,final environment counter,1,0,True
+run,F12,7,12,per-evaluation objective values,10000,4.402576374744109e-13,True
+run,F12,7,12,NaN pattern of returned values,10000,0.0,True
+run,F12,7,12,CurrentError trace (all FEs),10000,2.2118095201872022e-15,True
+run,F12,7,12,Ebbc vector,2,3.030545963720245e-16,True
+run,F12,7,12,offline error E_o,1,1.3441681395645985e-13,True
+run,F12,7,12,final FE counter,1,0,True
+run,F12,7,12,final environment counter,1,0,True
+run,F1,6,50,per-evaluation objective values,10000,2.5579538487363607e-13,True
+run,F1,6,50,NaN pattern of returned values,10000,0.0,True
+run,F1,6,50,CurrentError trace (all FEs),10000,5.322726659335418e-15,True
+run,F1,6,50,Ebbc vector,2,0.0,True
+run,F1,6,50,offline error E_o,1,5.275397223507919e-14,True
+run,F1,6,50,final FE counter,1,0,True
+run,F1,6,50,final environment counter,1,0,True
+run,F2,1,23,per-evaluation objective values,15000,1.0302869668521453e-12,True
+run,F2,1,23,NaN pattern of returned values,15000,0.0,True
+run,F2,1,23,CurrentError trace (all FEs),15000,4.253715760091313e-15,True
+run,F2,1,23,Ebbc vector,3,2.1052363689296208e-15,True
+run,F2,1,23,offline error E_o,1,6.745151693375178e-14,True
+run,F2,1,23,final FE counter,1,0,True
+run,F2,1,23,final environment counter,1,0,True
+run,F5,4,31,per-evaluation objective values,15000,1.1084466677857563e-12,True
+run,F5,4,31,NaN pattern of returned values,15000,0.0,True
+run,F5,4,31,CurrentError trace (all FEs),15000,9.736143532268527e-15,True
+run,F5,4,31,Ebbc vector,3,1.3603149498569873e-15,True
+run,F5,4,31,offline error E_o,1,5.731344950063138e-14,True
+run,F5,4,31,final FE counter,1,0,True
+run,F5,4,31,final environment counter,1,0,True
+run,F7,5,40,per-evaluation objective values,6000,1.0089706847793423e-12,True
+run,F7,5,40,NaN pattern of returned values,6000,0.0,True
+run,F7,5,40,CurrentError trace (all FEs),6000,6.957135693206153e-15,True
+run,F7,5,40,Ebbc vector,6,2.3041293150526158e-15,True
+run,F7,5,40,offline error E_o,1,2.623272954958692e-14,True
+run,F7,5,40,final FE counter,1,0,True
+run,F7,5,40,final environment counter,1,0,True
+run,F8,3,17,per-evaluation objective values,4000,3.907985046680551e-13,True
+run,F8,3,17,NaN pattern of returned values,4000,0.0,True
+run,F8,3,17,CurrentError trace (all FEs),4000,1.0490884128934921e-14,True
+run,F8,3,17,Ebbc vector,8,2.5785603881778265e-15,True
+run,F8,3,17,offline error E_o,1,8.006364425742359e-15,True
+run,F8,3,17,final FE counter,1,0,True
+run,F8,3,17,final environment counter,1,0,True

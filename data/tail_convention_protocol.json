@@ -1,0 +1,71 @@
+{
+  "purpose": "Answer reviewer 1 comment 2 with evidence: does replacing the zero-tail prediction convention with hold-last materially change the deterministic solution, the closed-loop behaviour, or the optimizer/SGO conclusions?",
+  "not_a_ranking_study": true,
+  "conventions": {
+    "zero_tail": "u_j = 0 for j >= Nc; Gamma[i,j]=A^{i-j}B for j<min(i+1,Nc). This is the submitted and revised implementation (mpc_utils.build_prediction_matrices).",
+    "hold_last": "u_j = u_{Nc-1} for j >= Nc; last column block becomes sum_{p=0}^{i-(Nc-1)} A^p B.",
+    "note_Nc1": "At Nc=1 (the primary configuration) hold-last applies u_0 over the whole prediction horizon, so Gamma[i,0]=sum_{p=0}^{i}A^p B instead of A^i B. Substantially different prediction model, not a marginal correction.",
+    "distinct_from_warm_start": "The tail convention governs the prediction model inside one optimisation; shift-and-hold warm starting constructs the initial guess for the next optimisation. Independent choices; only the first varies."
+  },
+  "decision_vector_semantics": "U=[u_0..u_{Nc-1}] absolute physical inputs, box bounded; verified by code inspection, not assumed.",
+  "held_fixed": [
+    "P",
+    "Nc",
+    "Q",
+    "R",
+    "Q_scale",
+    "plant",
+    "reference",
+    "evaluation IC",
+    "input bounds",
+    "objective definition",
+    "sampling time",
+    "Phase-2A optimizer parameters"
+  ],
+  "mpc_configuration": "frozen Phase-2A fixed-MPC primary (P from system_defs, Nc=1, Q_scale=1)",
+  "systems_deterministic": [
+    "pendcart",
+    "cstr",
+    "flight",
+    "hvac",
+    "uav"
+  ],
+  "instants_per_system": 25,
+  "systems_stochastic": [
+    "flight",
+    "uav"
+  ],
+  "stochastic_replacement_if_identical": "cstr",
+  "optimizers": [
+    "SGO",
+    "GWO",
+    "PSO",
+    "WOA"
+  ],
+  "fe_budget": 1000,
+  "early_stopping": "disabled",
+  "runs_per_cell": 10,
+  "no_retuning_under_hold_last": true,
+  "reference_solver": "OSQP primary, multistart L-BFGS-B cross-check; convexity verified not assumed",
+  "pendcart_penalty": "exact box-extrema certificate recomputed under hold-last; if the penalty can activate, that instance is not a pure QP and OSQP is not used for it",
+  "metric_families": [
+    "finite-horizon optimization accuracy (gap vs the SAME convention's reference)",
+    "first-applied-control accuracy",
+    "closed-loop tracking nRMSE"
+  ],
+  "never": "compare a hold-last stochastic solution against a zero-tail optimum; treat lower nRMSE as evidence of better finite-horizon optimization",
+  "material_change_criteria": {
+    "negligible": "mean first-input change < 1e-6 of input range AND relative nRMSE change < 0.1% AND no ordering change in either metric family",
+    "small": "mean first-input change < 1% of input range AND relative nRMSE change < 1% AND no ordering change in either metric family",
+    "material": "anything else, in particular ANY ordering change in either metric family or relative nRMSE change >= 1%"
+  },
+  "seed_base": 17000000,
+  "seeds_paired_across_conventions": true,
+  "stop_conditions": [
+    "standalone zero-tail does not reproduce production",
+    "hold-last loses convexity and the reference cannot be certified",
+    "exact FE accounting fails",
+    "production-code defect discovered",
+    "tail convention materially changes an established conclusion"
+  ]
+}

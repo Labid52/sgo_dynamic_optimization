@@ -1,0 +1,42 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Deterministic-reference check. OSQP is the primary solver and multistart L-BFGS-B is an independent cross-check. A cell is accepted when the OSQP solution carries a strong-convexity suboptimality bound far below the $10^{-4}$ convergence criterion and the two solvers agree to better than $10^{-4}$ relative. Twenty-two of 25 cells are accepted. The three UAV cells at $N_c\ge3$ are not, and are excluded from every optimality-gap computation in this study.}
+\label{tab:refcert}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lrrcccc@{}}
+\toprule
+System & $N_c$ & $d$ & Suboptimality bound & Solver disagreement & $\kappa(H)$ & Accepted \\
+\midrule
+Pendulum-cart & 1 & 1 & 2.6e-20 & 2.1e-16 & 1 & yes \\
+Pendulum-cart & 2 & 2 & 1.9e-19 & 2.2e-16 & 1.5 & yes \\
+Pendulum-cart & 3 & 3 & 3.7e-17 & 1.5e-16 & 1.71 & yes \\
+Pendulum-cart & 5 & 5 & 5.3e-35 & 2.0e-16 & 2.02 & yes \\
+Pendulum-cart & 8 & 8 & 2.5e-18 & 9.9e-16 & 2.3 & yes \\
+\addlinespace
+CSTR & 1 & 2 & 2.3e-25 & 7.0e-14 & 8.01e+03 & yes \\
+CSTR & 2 & 4 & 1.1e-12 & 4.7e-13 & 8.81e+04 & yes \\
+CSTR & 3 & 6 & 1.7e-12 & 5.5e-13 & 1.31e+05 & yes \\
+CSTR & 5 & 10 & 1.6e-12 & 2.6e-12 & 2.1e+05 & yes \\
+CSTR & 8 & 16 & 3.8e-20 & 7.4e-12 & 3.07e+05 & yes \\
+\addlinespace
+Flight control & 1 & 2 & 4.0e-31 & 4.0e-16 & 7.24 & yes \\
+Flight control & 2 & 4 & 1.9e-30 & 1.3e-15 & 23.5 & yes \\
+Flight control & 3 & 6 & 3.2e-29 & 1.9e-14 & 32.7 & yes \\
+Flight control & 5 & 10 & 2.8e-26 & 2.2e-13 & 47.5 & yes \\
+Flight control & 8 & 16 & 6.0e-26 & 4.9e-13 & 62.8 & yes \\
+\addlinespace
+HVAC & 1 & 3 & 2.3e-18 & 1.8e-14 & 1 & yes \\
+HVAC & 2 & 6 & 2.7e-31 & 5.1e-13 & 1.02 & yes \\
+HVAC & 3 & 9 & 1.1e-31 & 5.9e-13 & 1.02 & yes \\
+HVAC & 5 & 15 & 1.5e-31 & 4.2e-12 & 1.03 & yes \\
+HVAC & 8 & 24 & 1.1e-31 & 9.1e-12 & 1.05 & yes \\
+\addlinespace
+UAV & 1 & 4 & 5.6e-26 & 2.3e-10 & 1.11e+04 & yes \\
+UAV & 2 & 8 & 1.7e-23 & 2.7e-09 & 3.8e+06 & yes \\
+UAV & 3 & 12 & 8.7e-21 & 2.1e-05 & 2.3e+07 & \textbf{no} \\
+UAV & 5 & 20 & 6.3e-21 & 6.1e-04 & 3.5e+07 & \textbf{no} \\
+UAV & 8 & 32 & 3.2e-20 & 7.9e-04 & 3.84e+07 & \textbf{no} \\
+\bottomrule
+\end{tabular}}
+\end{table}

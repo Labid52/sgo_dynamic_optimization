@@ -1,0 +1,13 @@
+{
+  "instances": 9,
+  "budgets": [
+    250,
+    500,
+    1000,
+    2000,
+    5000
+  ],
+  "trials": 30,
+  "fe_exact_everywhere": true,
+  "wall_seconds": 125.4
+}

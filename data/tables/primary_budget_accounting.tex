@@ -1,0 +1,52 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Evaluation-budget accounting. The nominal budget is enforced at the objective-call level, with early stopping and stagnation stopping disabled, so the realized number of objective evaluations per MPC step is identical for every optimizer.}
+\label{tab:primary_budget}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+Regime & System & Optimizer & $NP$ & Nominal FE & Realized FE/step & Exact \\
+\midrule
+A (tuned $NP$, exact FE) & Pendulum-cart & GWO & 20 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & Pendulum-cart & PSO & 30 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & Pendulum-cart & SGO & 20 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & Pendulum-cart & WOA & 8 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & CSTR & GWO & 20 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & CSTR & PSO & 8 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & CSTR & SGO & 30 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & CSTR & WOA & 10 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & Flight control & GWO & 30 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & Flight control & PSO & 30 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & Flight control & SGO & 8 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & Flight control & WOA & 10 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & HVAC & GWO & 30 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & HVAC & PSO & 8 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & HVAC & SGO & 30 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & HVAC & WOA & 30 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & UAV & GWO & 30 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & UAV & PSO & 10 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & UAV & SGO & 20 & 1000 & 1000.0 & yes \\
+A (tuned $NP$, exact FE) & UAV & WOA & 30 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & Pendulum-cart & GWO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & Pendulum-cart & PSO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & Pendulum-cart & SGO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & Pendulum-cart & WOA & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & CSTR & GWO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & CSTR & PSO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & CSTR & SGO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & CSTR & WOA & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & Flight control & GWO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & Flight control & PSO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & Flight control & SGO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & Flight control & WOA & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & HVAC & GWO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & HVAC & PSO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & HVAC & SGO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & HVAC & WOA & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & UAV & GWO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & UAV & PSO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & UAV & SGO & 20 & 1000 & 1000.0 & yes \\
+B (common $NP{=}20$, exact FE) & UAV & WOA & 20 & 1000 & 1000.0 & yes \\
+\bottomrule
+\end{tabular}
+\end{table}

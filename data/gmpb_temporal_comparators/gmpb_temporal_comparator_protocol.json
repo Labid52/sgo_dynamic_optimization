@@ -1,0 +1,129 @@
+{
+  "study": "comparator temporal-transfer validation on GMPB",
+  "question": "are SGO's temporal-information effects peculiar to SGO or general to population-based optimizers on GMPB",
+  "head_at_freeze": "3307a08fd1e3da3096f445a0fb107a4fffabddc2",
+  "sgo_identity": {
+    "name": "Squid Game Optimizer",
+    "reference": "Azizi, Baghalzadeh Shishehgarkhaneh, Basiri, Moehler, Scientific Reports 13:5373 (2023)",
+    "doi": "10.1038/s41598-023-32465-z",
+    "not": "Social Group Optimization"
+  },
+  "benchmark": {
+    "inherited_from": "results_v2/gmpb/gmpb_protocol.json",
+    "state_files_reused": true,
+    "cases": [
+      "F2",
+      "F8",
+      "F10",
+      "F12"
+    ],
+    "environments": 100,
+    "benchmark_seed": "run index; identical environment trajectory for every optimizer and mode"
+  },
+  "optimizers": {
+    "list": [
+      "SGO",
+      "GWO",
+      "PSO",
+      "WOA"
+    ],
+    "implementation": "codes/gmpb_optimizers.py (unmodified)",
+    "population_size": 20,
+    "tuning": false,
+    "added_algorithms": []
+  },
+  "modes": {
+    "cold_restart": "rebuild population and all algorithm state as a brand-new run; evaluate in the new environment",
+    "previous_best_seeded": "same fresh rebuild with exactly one slot replaced by that optimizer's own previous-environment best, re-evaluated in the new environment; no old objective value reused",
+    "population_persistence": "the native persistence path of the committed primary study, unchanged"
+  },
+  "native_persistence_by_optimizer": {
+    "SGO": {
+      "survives": [
+        "population X",
+        "best BS",
+        "global best"
+      ],
+      "reevaluated": "X"
+    },
+    "GWO": {
+      "survives": [
+        "population X"
+      ],
+      "reevaluated": "X",
+      "note": "alpha/beta/delta recomputed from refreshed costs"
+    },
+    "PSO": {
+      "survives": [
+        "positions X",
+        "velocities V",
+        "personal bests P"
+      ],
+      "reevaluated": "P",
+      "note": "standard PSO change reaction, matches official EDOLAB ChangeReaction_RPSO"
+    },
+    "WOA": {
+      "survives": [
+        "population X"
+      ],
+      "reevaluated": "X",
+      "note": "leader X* reselected from refreshed costs"
+    }
+  },
+  "data_reuse": {
+    "sgo_all_modes": 372,
+    "comparators_persistence": 372,
+    "total_reused": 744,
+    "new_scientific_runs": 744,
+    "reproduction_runs": "every reusable cell is re-executed to obtain the secondary diagnostics; each must reproduce its committed offline error exactly and is not new evidence"
+  },
+  "validation": {
+    "script": "codes/gmpb_temporal_validation.py",
+    "checks": 23,
+    "failures": 0,
+    "note": "committed CSVs must be read with float_precision='round_trip'; the pandas default parser is off by one ulp on 296 of 1488 rows"
+  },
+  "budget": {
+    "per_environment": "ChangeFrequency",
+    "per_run": "ChangeFrequency * 100",
+    "initialization_FE": 20,
+    "reevaluation_FE": 1980,
+    "extra_FE_for_any_mode": false
+  },
+  "effects": {
+    "E1": "previous_best_seeded - cold_restart",
+    "E2": "population_persistence - cold_restart",
+    "E3": "population_persistence - previous_best_seeded",
+    "sign_convention": "lower offline error is better; negative E1 means seeding helps",
+    "cross_optimizer_scale": "paired log ratio log(error_A/error_B)"
+  },
+  "secondary_diagnostics": [
+    "normalised population diversity",
+    "normalised evaluation fraction to 50% and 90% recovery",
+    "late-half improvement fraction",
+    "end-of-environment error"
+  ],
+  "statistics": {
+    "independent_unit": "run (benchmark seed)",
+    "pseudoreplication_control": "environments aggregated within run before testing",
+    "paired_test": "Wilcoxon signed-rank",
+    "effect_size": "Cliff's delta with bootstrap CI",
+    "bootstrap_resamples": 10000,
+    "cross_optimizer_family": "SGO vs GWO, PSO, WOA, Holm corrected within each effect and case"
+  },
+  "interpretation_categories": [
+    "GENERAL",
+    "ALGORITHM-DEPENDENT",
+    "SGO-AMPLIFIED",
+    "SGO-DISTINCTIVE",
+    "INCONCLUSIVE"
+  ],
+  "prohibited": [
+    "calling anything SGO-specific without cross-optimizer support",
+    "turning the study into a ranking of optimizers under previous-best seeding",
+    "assuming lower diversity is better",
+    "highlighting a result merely because p < 0.05 or because a harder case is harder"
+  ],
+  "manuscript_edits_in_this_task": false,
+  "further_experiments_after_this": false
+}

@@ -1,0 +1,78 @@
+{
+  "certified_cases": {
+    "pendcart": [
+      1,
+      2,
+      3,
+      5,
+      8
+    ],
+    "cstr": [
+      1,
+      2,
+      3,
+      5,
+      8
+    ],
+    "flight": [
+      1,
+      2,
+      3,
+      5,
+      8
+    ],
+    "hvac": [
+      1,
+      2,
+      3,
+      5,
+      8
+    ],
+    "uav": [
+      1,
+      2
+    ]
+  },
+  "excluded_cases": {
+    "uav": [
+      3,
+      5,
+      8
+    ]
+  },
+  "exclusion_reason": "UAV N_c >= 3 lacks independent reference-solver agreement: OSQP reports a 1e-20 KKT certificate but multistart L-BFGS-B disagrees by up to 7.9e-4, above the 1e-4 convergence criterion (REFERENCE_NC_CERTIFICATION.md). No optimality gap may be computed against that reference.",
+  "budget_fe": 1000,
+  "trials": 20,
+  "analysis": "frozen subproblems; performance reported against BOTH decision dimension and condition number, since changing N_c changes both.",
+  "instants": {
+    "pendcart": {
+      "initial_transient": 4,
+      "mid_trajectory": 75,
+      "near_settled": 135,
+      "high_drift": 10
+    },
+    "cstr": {
+      "initial_transient": 3,
+      "mid_trajectory": 50,
+      "near_settled": 90
+    },
+    "flight": {
+      "initial_transient": 4,
+      "mid_trajectory": 75,
+      "near_settled": 135,
+      "high_drift": 0
+    },
+    "hvac": {
+      "initial_transient": 45,
+      "mid_trajectory": 750,
+      "near_settled": 1350,
+      "high_drift": 83
+    },
+    "uav": {
+      "initial_transient": 15,
+      "mid_trajectory": 250,
+      "near_settled": 450,
+      "high_drift": 0
+    }
+  }
+}

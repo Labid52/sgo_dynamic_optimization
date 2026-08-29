@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Multi-initial-condition robustness (5 systems $\times$ 5 initial conditions $\times$ 4 optimizers $\times$ 5 seeds $=$ 500 runs, fixed MPC, exact budget). The initial conditions were frozen before running and exclude those used for optimizer tuning. $\bar\tau$ is the mean pairwise Kendall correlation between the per-IC optimizer rankings. The last column counts the (system, IC) cells in which the best optimizer is separated from the runner-up at $\alpha=0.05$.}
+\label{tab:multi_ic}
+\begin{tabular}{@{}lccl@{}}
+\toprule
+System & $\bar\tau$ across ICs & Distinct winners & Winner by IC \\
+\midrule
+Pendulum-cart & $+0.07$ & 2 & PSO, SGO \\
+CSTR & $+0.13$ & 3 & GWO, PSO, SGO \\
+Flight control & $-0.13$ & 3 & GWO, SGO, WOA \\
+HVAC & $+0.33$ & 2 & GWO, SGO \\
+UAV & $+0.53$ & 2 & GWO, SGO \\
+\bottomrule
+\end{tabular}
+\end{table}

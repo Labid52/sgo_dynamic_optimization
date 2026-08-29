@@ -1,0 +1,38 @@
+OPTIMIZER-ONLY TUNING (fixed MPC, held-out initial condition)
+========================================================================
+FE budget (exact, per MPC step): 1000
+NP grid: [8, 10, 14, 20, 30]
+seeds per candidate: 3
+MPC parameters were NOT tuned: P, Nc, Q, R, Q_scale are frozen at the nominal per-system design.
+
+pendcart  (P=20, Nc=1, Q_scale=1.0)
+  SGO  NP= 20  maxIter(derived)= 105  held-out nRMSE=2.960403e-01  realized NFE/step=1000.0  time/step=39.26 ms
+  GWO  NP= 20  maxIter(derived)=  55  held-out nRMSE=2.960541e-01  realized NFE/step=1000.0  time/step=33.55 ms
+  PSO  NP= 30  maxIter(derived)=  39  held-out nRMSE=2.960510e-01  realized NFE/step=1000.0  time/step=23.59 ms
+  WOA  NP=  8  maxIter(derived)= 130  held-out nRMSE=2.960557e-01  realized NFE/step=1000.0  time/step=31.70 ms
+
+cstr  (P=20, Nc=1, Q_scale=1.0)
+  SGO  NP= 30  maxIter(derived)=  72  held-out nRMSE=1.967193e-01  realized NFE/step=1000.0  time/step=11.91 ms
+  GWO  NP= 20  maxIter(derived)=  55  held-out nRMSE=1.966897e-01  realized NFE/step=1000.0  time/step=13.68 ms
+  PSO  NP=  8  maxIter(derived)= 130  held-out nRMSE=1.952362e-01  realized NFE/step=1000.0  time/step=4.52 ms
+  WOA  NP= 10  maxIter(derived)= 105  held-out nRMSE=1.966626e-01  realized NFE/step=1000.0  time/step=7.58 ms
+
+flight  (P=20, Nc=1, Q_scale=1.0)
+  SGO  NP=  8  maxIter(derived)= 255  held-out nRMSE=2.130133e-02  realized NFE/step=1000.0  time/step=12.95 ms
+  GWO  NP= 30  maxIter(derived)=  39  held-out nRMSE=2.135025e-02  realized NFE/step=1000.0  time/step=13.11 ms
+  PSO  NP= 30  maxIter(derived)=  39  held-out nRMSE=2.134959e-02  realized NFE/step=1000.0  time/step=3.51 ms
+  WOA  NP= 10  maxIter(derived)= 105  held-out nRMSE=2.128223e-02  realized NFE/step=1000.0  time/step=7.61 ms
+
+hvac  (P=20, Nc=1, Q_scale=1.0)
+  SGO  NP= 30  maxIter(derived)=  72  held-out nRMSE=5.605993e-02  realized NFE/step=1000.0  time/step=11.40 ms
+  GWO  NP= 30  maxIter(derived)=  39  held-out nRMSE=5.606101e-02  realized NFE/step=1000.0  time/step=16.72 ms
+  PSO  NP=  8  maxIter(derived)= 130  held-out nRMSE=5.606066e-02  realized NFE/step=1000.0  time/step=4.37 ms
+  WOA  NP= 30  maxIter(derived)=  39  held-out nRMSE=5.606453e-02  realized NFE/step=1000.0  time/step=7.31 ms
+
+uav  (P=10, Nc=1, Q_scale=1.0)
+  SGO  NP= 20  maxIter(derived)= 105  held-out nRMSE=8.142189e-03  realized NFE/step=1000.0  time/step=11.52 ms
+  GWO  NP= 30  maxIter(derived)=  39  held-out nRMSE=8.054360e-03  realized NFE/step=1000.0  time/step=20.28 ms
+  PSO  NP= 10  maxIter(derived)= 105  held-out nRMSE=9.322614e-03  realized NFE/step=1000.0  time/step=4.02 ms
+  WOA  NP= 30  maxIter(derived)=  39  held-out nRMSE=8.340423e-03  realized NFE/step=1000.0  time/step=7.31 ms
+
+wall time: 1676.0 s

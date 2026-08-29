@@ -1,0 +1,219 @@
+{
+  "purpose": "Diagnostic ablation of SGO mechanisms (R2.15). No variant is proposed as a new algorithm.",
+  "frozen_sgo_untouched": true,
+  "variants": {
+    "baseline": "frozen defaults",
+    "A_no_greedy": {
+      "greedy_accept": false
+    },
+    "B_no_bridge": {
+      "bridge_stage": false
+    },
+    "C_fitness_group": {
+      "grouping": "fitness"
+    },
+    "D_no_warm_slot": {
+      "warm_slot": false
+    }
+  },
+  "variant_C_note": "The Phase-2C brief described the frozen grouping as cost-based and proposed random grouping as the ablation. That premise is inverted: sgo.py:50 already groups by a fresh random permutation each iteration (decision D11). The meaningful predeclared alternative is therefore the fitness-based split (best half offensive), which is D11's documented rejected alternative.",
+  "harness_note": "Under strict FE the solve harness returns the best point actually evaluated, so disabling greedy acceptance changes the SEARCH TRAJECTORY rather than the best-found bookkeeping. Variant A therefore tests whether greedy acceptance helps the search, not whether it prevents losing good solutions.",
+  "budgets": {
+    "primary": 1000,
+    "plateau_only": 5000
+  },
+  "trials": 30,
+  "seeds": "paired across variants; SEED_BASE=14000000",
+  "instances": [
+    {
+      "system": "flight",
+      "k": 6,
+      "role": "plateau",
+      "stratum": "High",
+      "drift_warm_gap": 0.0112797009766693,
+      "sgo_cold_gap_median": 0.00029873896869619997,
+      "sgo_cold_conv": 0.25,
+      "sgo_incumbent_return": 0.0,
+      "plateau": true
+    },
+    {
+      "system": "flight",
+      "k": 7,
+      "role": "plateau",
+      "stratum": "High",
+      "drift_warm_gap": 0.0101959682201341,
+      "sgo_cold_gap_median": 8.879690851140044e-05,
+      "sgo_cold_conv": 0.5,
+      "sgo_incumbent_return": 0.0,
+      "plateau": true
+    },
+    {
+      "system": "uav",
+      "k": 0,
+      "role": "plateau",
+      "stratum": "Severe",
+      "drift_warm_gap": 12.449478195019829,
+      "sgo_cold_gap_median": 0.3063610468041278,
+      "sgo_cold_conv": 0.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": true
+    },
+    {
+      "system": "uav",
+      "k": 495,
+      "role": "plateau",
+      "stratum": "High",
+      "drift_warm_gap": 0.097900899680984,
+      "sgo_cold_gap_median": 0.41570366330095865,
+      "sgo_cold_conv": 0.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": true
+    },
+    {
+      "system": "uav",
+      "k": 497,
+      "role": "plateau",
+      "stratum": "High",
+      "drift_warm_gap": 0.0119944584145897,
+      "sgo_cold_gap_median": 0.32921413390943316,
+      "sgo_cold_conv": 0.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": true
+    },
+    {
+      "system": "cstr",
+      "k": 11,
+      "role": "recoverable_difficult",
+      "stratum": "High",
+      "drift_warm_gap": 0.0100038012931925,
+      "sgo_cold_gap_median": 0.00012582056564185,
+      "sgo_cold_conv": 0.35,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    },
+    {
+      "system": "cstr",
+      "k": 15,
+      "role": "recoverable_difficult",
+      "stratum": "High",
+      "drift_warm_gap": 0.0413489282932192,
+      "sgo_cold_gap_median": 6.313889074444079e-05,
+      "sgo_cold_conv": 0.75,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    },
+    {
+      "system": "hvac",
+      "k": 298,
+      "role": "recoverable_difficult",
+      "stratum": "Benign",
+      "drift_warm_gap": 5.456946795795032e-05,
+      "sgo_cold_gap_median": 0.0014280327083775498,
+      "sgo_cold_conv": 0.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    },
+    {
+      "system": "pendcart",
+      "k": 10,
+      "role": "recoverable_difficult",
+      "stratum": "High",
+      "drift_warm_gap": 0.0668564901913047,
+      "sgo_cold_gap_median": 2.735829456868011e-07,
+      "sgo_cold_conv": 1.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    },
+    {
+      "system": "cstr",
+      "k": 0,
+      "role": "benign_reliable",
+      "stratum": "Benign",
+      "drift_warm_gap": 0.0,
+      "sgo_cold_gap_median": 0.0,
+      "sgo_cold_conv": 1.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    },
+    {
+      "system": "flight",
+      "k": 130,
+      "role": "benign_reliable",
+      "stratum": "Benign",
+      "drift_warm_gap": 6.324736890111455e-09,
+      "sgo_cold_gap_median": 5.908329821446694e-12,
+      "sgo_cold_conv": 1.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    },
+    {
+      "system": "hvac",
+      "k": 0,
+      "role": "benign_reliable",
+      "stratum": "Benign",
+      "drift_warm_gap": 0.0,
+      "sgo_cold_gap_median": 0.0,
+      "sgo_cold_conv": 1.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    },
+    {
+      "system": "pendcart",
+      "k": 3,
+      "role": "benign_reliable",
+      "stratum": "Benign",
+      "drift_warm_gap": 0.0,
+      "sgo_cold_gap_median": 0.0,
+      "sgo_cold_conv": 1.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    },
+    {
+      "system": "uav",
+      "k": 275,
+      "role": "benign_reliable",
+      "stratum": "Benign",
+      "drift_warm_gap": 1.535852248019092e-11,
+      "sgo_cold_gap_median": 4.0705697404560627e-11,
+      "sgo_cold_conv": 1.0,
+      "sgo_incumbent_return": 1.0,
+      "plateau": false
+    },
+    {
+      "system": "uav",
+      "k": 31,
+      "role": "stratum_Moderate",
+      "stratum": "Moderate",
+      "drift_warm_gap": 0.009803058901052,
+      "sgo_cold_gap_median": 0.00217670515133675,
+      "sgo_cold_conv": 0.0,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    },
+    {
+      "system": "cstr",
+      "k": 3,
+      "role": "stratum_Severe",
+      "stratum": "Severe",
+      "drift_warm_gap": 17.955046114859805,
+      "sgo_cold_gap_median": 0.0001379551475972776,
+      "sgo_cold_conv": 0.5,
+      "sgo_incumbent_return": 0.0,
+      "plateau": false
+    }
+  ],
+  "n_instances": 16,
+  "systems_covered": [
+    "cstr",
+    "flight",
+    "hvac",
+    "pendcart",
+    "uav"
+  ],
+  "strata_covered": [
+    "Benign",
+    "High",
+    "Moderate",
+    "Severe"
+  ]
+}

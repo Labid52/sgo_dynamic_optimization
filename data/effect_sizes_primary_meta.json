@@ -1,0 +1,17 @@
+{
+  "comparisons": 60,
+  "bootstrap_resamples": 10000,
+  "alpha": 0.05,
+  "holm_family": "6 pairwise comparisons per (system, regime)",
+  "descriptive_thresholds_pct": [
+    0.5,
+    1.0,
+    2.0
+  ],
+  "evidence_counts": {
+    "numerically ordered but statistically uncertain": 29,
+    "practically negligible under descriptive thresholds": 22,
+    "clear separation": 9
+  },
+  "wall_seconds": 45.1
+}

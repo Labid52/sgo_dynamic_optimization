@@ -1,0 +1,5 @@
+QP reference under each tuned MPC configuration: Aircraft Longitudinal Flight Control
+Config (P,Nc,Q_scale)       used by                   QP nRMSE
+(20, 1, 0.5)                SGO,PSO                   0.015002
+(20, 3, 2.0)                GWO                       0.014453
+(15, 3, 5.0)                WOA                       0.014304

@@ -1,0 +1,24 @@
+check,detail,passed,note
+1_persistence_reproduces_primary,96 cells over 4 cases x 4 optimizers x 6 seeds,True,"max abs offline-error difference 0.000e+00; committed CSVs read with round-trip float parsing, since the pandas default parser is off by one ulp on some rows"
+2_sgo_temporal_reproduces_committed,72 cells over 4 cases x 3 modes x 6 seeds,True,"max abs offline-error difference 0.000e+00; committed CSVs read with round-trip float parsing, since the pandas default parser is off by one ulp on some rows"
+3_fresh_state_initialisation,SGO cold restart,True,identical to a brand-new optimizer: True; differs from the pre-restart population: True. 
+3_fresh_state_initialisation,GWO cold restart,True,identical to a brand-new optimizer: True; differs from the pre-restart population: True. 
+3_fresh_state_initialisation,PSO cold restart,True,identical to a brand-new optimizer: True; differs from the pre-restart population: True. pbest equals current population: True; velocity magnitude finite: True
+3_fresh_state_initialisation,WOA cold restart,True,identical to a brand-new optimizer: True; differs from the pre-restart population: True. 
+4_previous_best_seeds_one_slot,SGO,True,slot 0 holds the carried point and every other slot is identical to an unseeded initialisation from the same RNG
+4_previous_best_seeds_one_slot,GWO,True,slot 0 holds the carried point and every other slot is identical to an unseeded initialisation from the same RNG
+4_previous_best_seeds_one_slot,PSO,True,slot 0 holds the carried point and every other slot is identical to an unseeded initialisation from the same RNG
+4_previous_best_seeds_one_slot,WOA,True,slot 0 holds the carried point and every other slot is identical to an unseeded initialisation from the same RNG
+5_exact_fe,12 optimizer x mode cells on F8,True,"realized FE equals MaxEvals, 100 environments, 99 changes in every cell"
+6_no_stale_objective_values,SGO / previous_best_seeded,True,"stored costs equal a re-evaluation of X in the new environment, max difference 0.000e+00; 0 of 20 values coincide with a pre-change value"
+6_no_stale_objective_values,SGO / population_persistence,True,"stored costs equal a re-evaluation of X in the new environment, max difference 0.000e+00; 0 of 20 values coincide with a pre-change value"
+6_no_stale_objective_values,GWO / previous_best_seeded,True,"stored costs equal a re-evaluation of X in the new environment, max difference 0.000e+00; 0 of 20 values coincide with a pre-change value"
+6_no_stale_objective_values,GWO / population_persistence,True,"stored costs equal a re-evaluation of X in the new environment, max difference 0.000e+00; 0 of 20 values coincide with a pre-change value"
+6_no_stale_objective_values,PSO / previous_best_seeded,True,"stored costs equal a re-evaluation of X in the new environment, max difference 0.000e+00; 0 of 20 values coincide with a pre-change value"
+6_no_stale_objective_values,PSO / population_persistence,True,"stored costs equal a re-evaluation of P in the new environment, max difference 0.000e+00; 0 of 20 values coincide with a pre-change value"
+6_no_stale_objective_values,WOA / previous_best_seeded,True,"stored costs equal a re-evaluation of X in the new environment, max difference 0.000e+00; 0 of 20 values coincide with a pre-change value"
+6_no_stale_objective_values,WOA / population_persistence,True,"stored costs equal a re-evaluation of X in the new environment, max difference 0.000e+00; 0 of 20 values coincide with a pre-change value"
+7_paired_environment_trajectory,F2 seed 8,True,every optimizer and mode loads the same official state file
+7_paired_environment_trajectory,F8 seed 8,True,every optimizer and mode loads the same official state file
+7_paired_environment_trajectory,F10 seed 8,True,every optimizer and mode loads the same official state file
+7_paired_environment_trajectory,F12 seed 8,True,every optimizer and mode loads the same official state file

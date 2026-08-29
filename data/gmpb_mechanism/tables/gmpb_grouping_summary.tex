@@ -1,0 +1,25 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Fitness-based grouping ablation of SGO on GMPB, 31 paired runs per case. Baseline is vanilla SGO under the same official protocol. Paired Wilcoxon with Holm correction across the 12 cases. Diagnostic only; the ablation is not proposed as an algorithm and is not compared with the controls.}
+\label{tab:gmpb_grouping}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lcccccccc@{}}
+\toprule
+Case & $E_o$ random & $E_o$ fitness & median diff [95\% CI] & rel. & $p_{\mathrm{Holm}}$ & Cliff's $\delta$ & diversity r$\to$f & 90\% rec. r$\to$f \\
+\midrule
+F1 & 35.86 & 14.14 & -22.2 [-26.2, -18.8] & -62.0\% & 1.1e-08 & -0.98 & 0.106$\to$0.182 & 0.0808$\to$0.101 \\
+F2 & 40.04 & 15.68 & -25.3 [-30, -18.4] & -63.3\% & 1.1e-08 & -0.98 & 0.0829$\to$0.192 & 0.0853$\to$0.1 \\
+F3 & 41.18 & 15.69 & -25.5 [-30.6, -18.3] & -61.9\% & 1.1e-08 & -1.00 & 0.0797$\to$0.222 & 0.0922$\to$0.0999 \\
+F4 & 41.51 & 14.55 & -27.5 [-28.3, -23.5] & -66.3\% & 1.1e-08 & -1.00 & 0.0633$\to$0.232 & 0.0877$\to$0.112 \\
+F5 & 34.66 & 13.64 & -21.9 [-24.6, -18.6] & -63.1\% & 1.1e-08 & -1.00 & 0.0766$\to$0.244 & 0.0954$\to$0.116 \\
+F6 & 41.77 & 17.36 & -24.9 [-30.4, -19.6] & -59.6\% & 1.1e-08 & -0.94 & 0.0786$\to$0.189 & 0.119$\to$0.0951 \\
+F7 & 42.41 & 20.97 & -20.6 [-31.9, -15.9] & -48.6\% & 1.1e-08 & -0.85 & 0.0778$\to$0.206 & 0.159$\to$0.121 \\
+F8 & 46.29 & 23.41 & -20.7 [-28.7, -14.1] & -44.7\% & 1.1e-08 & -0.88 & 0.0786$\to$0.201 & 0.215$\to$0.136 \\
+F9 & 117.1 & 39.91 & -76.8 [-88.3, -70.9] & -65.6\% & 1.1e-08 & -1.00 & 0.042$\to$0.156 & 0.0792$\to$0.134 \\
+F10 & 229.7 & 107.7 & -121 [-126, -118] & -52.6\% & 1.1e-08 & -1.00 & 0.0315$\to$0.141 & 0.0722$\to$0.243 \\
+F11 & 46.33 & 16.98 & -28.3 [-35.5, -23.9] & -61.1\% & 1.1e-08 & -0.99 & 0.0755$\to$0.179 & 0.0819$\to$0.109 \\
+F12 & 52.18 & 18.78 & -33.3 [-40.5, -29.6] & -63.8\% & 1.1e-08 & -1.00 & 0.0616$\to$0.197 & 0.0826$\to$0.14 \\
+\bottomrule
+\end{tabular}}
+\end{table}

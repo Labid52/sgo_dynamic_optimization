@@ -1,0 +1,90 @@
+{
+  "criteria": {
+    "top_decile_cold_start_difficulty": "median cold-start gap >= 2.657e-04",
+    "drift_strata": "High or Severe"
+  },
+  "selection_independent_of_budget_experiment": true,
+  "uav_k0_qualifies_on_criteria": true,
+  "n_selected": 9,
+  "systems_covered": [
+    "cstr",
+    "flight",
+    "hvac",
+    "pendcart",
+    "uav"
+  ],
+  "instances": [
+    {
+      "system": "uav",
+      "k": 497,
+      "stratum": "High",
+      "drift_warm_gap": 0.0119944584145897,
+      "median_cold_gap": 0.0589601046694605,
+      "cold_conv_rate": 0.0
+    },
+    {
+      "system": "uav",
+      "k": 495,
+      "stratum": "High",
+      "drift_warm_gap": 0.097900899680984,
+      "median_cold_gap": 0.051763854441138596,
+      "cold_conv_rate": 0.075
+    },
+    {
+      "system": "hvac",
+      "k": 298,
+      "stratum": "Benign",
+      "drift_warm_gap": 5.456946795795032e-05,
+      "median_cold_gap": 0.00027604830935284996,
+      "cold_conv_rate": 0.375
+    },
+    {
+      "system": "flight",
+      "k": 7,
+      "stratum": "High",
+      "drift_warm_gap": 0.0101959682201341,
+      "median_cold_gap": 3.288512413519681e-05,
+      "cold_conv_rate": 0.7875
+    },
+    {
+      "system": "cstr",
+      "k": 15,
+      "stratum": "High",
+      "drift_warm_gap": 0.0413489282932192,
+      "median_cold_gap": 3.2555541692892015e-05,
+      "cold_conv_rate": 0.6125
+    },
+    {
+      "system": "flight",
+      "k": 6,
+      "stratum": "High",
+      "drift_warm_gap": 0.0112797009766693,
+      "median_cold_gap": 2.813466379549208e-05,
+      "cold_conv_rate": 0.7125
+    },
+    {
+      "system": "cstr",
+      "k": 11,
+      "stratum": "High",
+      "drift_warm_gap": 0.0100038012931925,
+      "median_cold_gap": 1.1418310208455296e-07,
+      "cold_conv_rate": 0.7375
+    },
+    {
+      "system": "pendcart",
+      "k": 10,
+      "stratum": "High",
+      "drift_warm_gap": 0.0668564901913047,
+      "median_cold_gap": 1.2448292008304662e-08,
+      "cold_conv_rate": 1.0
+    },
+    {
+      "system": "uav",
+      "k": 0,
+      "stratum": "Severe",
+      "drift_warm_gap": 12.449478195019829,
+      "median_cold_gap": 0.0279485792217061,
+      "cold_conv_rate": 0.3
+    }
+  ]
+}

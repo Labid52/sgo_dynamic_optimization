@@ -1,0 +1,29 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Decision dimension and SGO mechanism. \emph{Upper block}: rank associations across the 22 accepted (system, $N_c$) cells spanning $d=1$ to $24$, at the exact 1000-evaluation budget, with $p$ values for the conditioning association. The UAV at $N_c\ge3$ is excluded because the two reference solvers do not agree there. Per-cell convergence rates appear in Figure~\ref{fig:mechanism}(a) and, in full, in the supplement. \emph{Lower block}: SGO ablation on the three plateau instances at 5000 evaluations, reported as median gap and convergence rate.}
+\label{tab:dim_abl}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\multicolumn{7}{@{}l}{\textit{(a) rank association over the 22 accepted cells}} \\
+Quantity & & SGO & GWO & PSO & WOA & \\
+\midrule
+$\rho(d,\ \mathrm{convergence})$ & & $-0.69$ & $-0.85$ & $-0.82$ & $-0.63$ & \\
+$\rho(d,\ \mathrm{median\ gap})$ & & $+0.62$ & $+0.61$ & $+0.44$ & $+0.40$ & \\
+$\rho(\kappa(H),\ \mathrm{median\ gap})$ & & $-0.25$ ($p=0.27$) & $-0.15$ ($p=0.50$) & $-0.25$ ($p=0.26$) & $-0.05$ ($p=0.83$) & \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{HVAC control case: }$\kappa(H)$\textit{ stays near 1 while convergence falls}} \\
+$d$ & & 3 & 6 & 9 & 15 & 24 \\
+$\kappa(H)$ & & 1.000 & 1.015 & 1.022 & 1.034 & 1.049 \\
+SGO convergence & & 72\% & 15\% & 6\% & 0\% & 0\% \\
+GWO convergence & & 100\% & 74\% & 44\% & 0\% & 0\% \\
+\midrule
+\multicolumn{7}{@{}l}{\textit{(b) SGO ablation at 5000 evaluations, plateau instances: median gap / convergence}} \\
+Instance & baseline & fitness grouping & no warm slot & no bridge & no greedy & \\
+Flight control $k=6$ & 3.8e-04 / 30\% & 1.5e-05 / 87\% & 3.3e-04 / 33\% & 1.1e-04 / 50\% & 5.4e-04 / 17\% & \\
+Flight control $k=7$ & 1.8e-04 / 43\% & 1.4e-05 / 97\% & 2.2e-04 / 40\% & 1.2e-04 / 47\% & 5.7e-04 / 7\% & \\
+UAV $k=0$ & 2.9e-01 / 0\% & 2.6e-02 / 0\% & 2.2e-01 / 3\% & 4.0e-01 / 0\% & 1.5e-01 / 0\% & \\
+\bottomrule
+\end{tabular}}
+\end{table}

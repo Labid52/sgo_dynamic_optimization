@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Warm-start semantics on the three systems where they matter. \emph{Cold} starts from the zero sequence. \emph{Reference warm} shifts the deterministic reference solution of the previous step, which is not available to a deployed controller. \emph{Optimizer warm} shifts the optimizer's own previous solution, which is the deployed condition. The start gap is the normalized suboptimality of the point the optimizer is initialised from and is reported for SGO. The lower block gives the fraction of SGO trials that return the start point unchanged. Per-optimizer detail for all five systems is in the supplement.}
+\label{tab:warm}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llcccccc@{}}
+\toprule
+& & \multicolumn{2}{c}{start point (SGO)} & \multicolumn{4}{c}{convergence at $10^{-4}$} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-8}
+System & Start condition & median gap & within $10^{-4}$ & SGO & GWO & PSO & WOA \\
+\midrule
+HVAC & cold & 2.91e-02 & 0.0\% & 40.3\% & 87.0\% & 99.2\% & 63.7\% \\
+ & reference warm & 7.53e-08 & 96.9\% & 100.0\% & 100.0\% & 100.0\% & 100.0\% \\
+ & optimizer warm & 1.22e-05 & 74.7\% & 79.7\% & 92.5\% & 100.0\% & 100.0\% \\
+\addlinespace
+Flight control & cold & 3.64e-04 & 41.5\% & 82.4\% & 97.7\% & 96.8\% & 93.0\% \\
+ & reference warm & 1.36e-05 & 58.5\% & 88.7\% & 97.8\% & 97.6\% & 98.5\% \\
+ & optimizer warm & 1.45e-05 & 57.9\% & 86.0\% & 96.5\% & 97.8\% & 98.0\% \\
+\addlinespace
+UAV & cold & 7.05e-06 & 55.4\% & 55.5\% & 73.5\% & 58.2\% & 65.0\% \\
+ & reference warm & 3.28e-07 & 55.4\% & 56.2\% & 75.7\% & 58.3\% & 78.7\% \\
+ & optimizer warm & 2.19e-03 & 1.6\% & 8.8\% & 73.2\% & 2.7\% & 58.5\% \\
+\midrule
+\multicolumn{8}{@{}l}{\textit{SGO trials returning the start point unchanged}} \\
+HVAC & & \multicolumn{6}{l}{cold 0.0\%, reference warm 93.9\%, optimizer warm 83.8\%} \\
+Flight control & & \multicolumn{6}{l}{cold 0.0\%, reference warm 1.0\%, optimizer warm 1.2\%} \\
+UAV & & \multicolumn{6}{l}{cold 55.1\%, reference warm 60.2\%, optimizer warm 13.1\%} \\
+\bottomrule
+\end{tabular}}
+\end{table}

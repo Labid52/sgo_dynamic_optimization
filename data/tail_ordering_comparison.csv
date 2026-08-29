@@ -1,0 +1,5 @@
+system,metric_family,ordering_zero,ordering_hold_last,ordering_unchanged,sgo_rank_zero,sgo_rank_hold_last,sgo_rank_unchanged
+flight,optimization_accuracy_mean_gap,"GWO,WOA,PSO,SGO","WOA,GWO,PSO,SGO",False,4,4,True
+flight,closed_loop_nrmse,"SGO,WOA,PSO,GWO","PSO,GWO,WOA,SGO",False,1,4,False
+uav,optimization_accuracy_mean_gap,"GWO,SGO,WOA,PSO","GWO,SGO,PSO,WOA",False,2,2,True
+uav,closed_loop_nrmse,"GWO,SGO,WOA,PSO","GWO,PSO,SGO,WOA",False,2,3,False

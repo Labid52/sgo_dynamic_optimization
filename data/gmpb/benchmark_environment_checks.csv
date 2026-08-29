@@ -1,0 +1,19 @@
+gate,detail,passed,note
+A_change_points,F2: 99 changes,True,all at multiples of ChangeFrequency=5000
+A_change_points,F8: 99 changes,True,all at multiples of ChangeFrequency=500
+A_change_points,F10: 99 changes,True,all at multiples of ChangeFrequency=5000
+B_paired_trajectories,F2 seed 3,True,same state file is loaded by every optimizer and mode
+B_paired_trajectories,F12 seed 3,True,same state file is loaded by every optimizer and mode
+C_optimum_tracking,F1: max height vs OptimumValue,True,peak 5 evaluates to 49.8324896553 vs 49.8324896553
+C_optimum_tracking,F5: max height vs OptimumValue,True,peak 26 evaluates to 69.5036676489 vs 69.5036676489
+C_optimum_tracking,F10: max height vs OptimumValue,True,peak 7 evaluates to 69.4819887171 vs 69.4819887171
+D_fe_accounting,1488 primary runs,True,realized FE equals MaxEvals = ChangeFrequency x 100 in every run
+E_budget_not_exceeded,1488 primary runs,True,0 runs exceeded the budget
+E_equal_reevaluation,post-change re-evaluation cost,True,"identical for all four optimizers in every (case, seed)"
+F_no_hidden_information,codes/gmpb_optimizers.py,True,forbidden references: none
+G_sgo_is_squid_game,12 fidelity checks,True,dynamic driver identical to codes/sgo.py evaluation by evaluation
+H_no_social_group_optimization,codes/ tree,True,codes/sgo.py cites Azizi et al. 2023 Sci. Rep. 13:5373; no SGO acronym collision found
+I_no_per_case_tuning,population sizes used: [20],True,"one population size for every optimizer, case and mode"
+J_primary_run_count,"1488 runs, 48 case x alg cells",True,12 cases x 4 optimizers x 31 runs = 1488
+J_temporal_run_count,"372 runs, 12 case x mode cells",True,4 cases x 3 modes x 31 runs = 372
+D_fe_accounting_temporal,372 temporal runs,True,realized FE equals MaxEvals in every temporal run

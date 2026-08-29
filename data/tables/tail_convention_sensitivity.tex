@@ -1,0 +1,39 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Zero-tail versus hold-last prediction-tail sensitivity. Upper block: deterministic effect on all five systems. Lower block: paired-seed stochastic effect on the two tested systems, with bootstrap 95\% confidence intervals. Nothing was retuned for hold-last, so this measures sensitivity, not the relative merit of the two conventions.}
+\label{tab:tail_convention_sensitivity}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+\multicolumn{6}{@{}l}{\textit{Deterministic (all five systems)}} \\
+System & & nRMSE zero-tail & nRMSE hold-last & Rel.\ change (\%) & Mean $|\Delta u_0|$ \\
+\midrule
+pendcart & & 0.215022 & 3.88534 & +1706.9 & 3.047e+00 \\
+cstr & & 0.294153 & 0.784045 & +166.5 & 7.977e-01 \\
+flight & & 0.0181957 & 0.020442 & +12.3 & 1.006e+00 \\
+hvac & & 0.0207669 & 0.0196736 & +5.3 & 4.027e+00 \\
+uav & & 0.000869298 & 0.00121147 & +39.4 & 4.389e-03 \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{Stochastic, paired seeds (flight, UAV)}} \\
+System & Opt. & $\Delta$nRMSE (\%) & 95\% CI & $\Delta$ mean gap & $\Delta$ first-input err. \\
+\midrule
+flight & GWO & +12.2 & [+12.1, +12.4] & +1.82e-05 & +5.95e-03 \\
+flight & PSO & +12.2 & [+12.1, +12.4] & +1.77e-04 & +1.52e-02 \\
+flight & SGO & +13.6 & [+12.6, +14.8] & +3.36e-04 & +1.60e-02 \\
+flight & WOA & +12.3 & [+12.3, +12.4] & +6.29e-06 & +2.70e-03 \\
+uav & GWO & +39.3 & [+39.2, +39.5] & +1.11e-04 & +4.45e-05 \\
+uav & PSO & -28.9 & [-56.1, +1.5] & -4.96e-01 & -3.98e-02 \\
+uav & SGO & +33.9 & [+30.1, +37.5] & +7.46e-03 & -3.24e-03 \\
+uav & WOA & +54.9 & [+41.5, +69.9] & +2.57e-01 & +8.67e-04 \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{SGO rank under each convention}} \\
+System & Metric family & zero-tail & hold-last & \multicolumn{2}{c}{Unchanged?} \\
+\midrule
+flight & optimization accuracy & 4 & 4 & \multicolumn{2}{c}{yes} \\
+flight & closed-loop nRMSE & 1 & 4 & \multicolumn{2}{c}{no} \\
+uav & optimization accuracy & 2 & 2 & \multicolumn{2}{c}{yes} \\
+uav & closed-loop nRMSE & 2 & 3 & \multicolumn{2}{c}{no} \\
+\bottomrule
+\end{tabular}}
+\end{table}

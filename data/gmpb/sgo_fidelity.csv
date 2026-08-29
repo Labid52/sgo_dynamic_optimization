@@ -1,0 +1,13 @@
+objective,d,NP,seed,iterations,n_evals_reference,n_evals_driver,same_evaluation_count,max_abs_diff_point,max_abs_diff_value,passed
+sphere,5,10,11,6,84,84,True,0.0,0.0,True
+sphere,5,20,12,5,124,124,True,0.0,0.0,True
+sphere,10,20,13,5,126,126,True,0.0,0.0,True
+sphere,20,30,14,4,142,142,True,0.0,0.0,True
+rosenbrock,5,10,11,6,82,82,True,0.0,0.0,True
+rosenbrock,5,20,12,5,120,120,True,0.0,0.0,True
+rosenbrock,10,20,13,5,130,130,True,0.0,0.0,True
+rosenbrock,20,30,14,4,162,162,True,0.0,0.0,True
+rastrigin,5,10,11,6,84,84,True,0.0,0.0,True
+rastrigin,5,20,12,5,122,122,True,0.0,0.0,True
+rastrigin,10,20,13,5,126,126,True,0.0,0.0,True
+rastrigin,20,30,14,4,142,142,True,0.0,0.0,True

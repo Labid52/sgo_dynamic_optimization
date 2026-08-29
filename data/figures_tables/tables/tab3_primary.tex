@@ -1,0 +1,24 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Fixed-MPC primary comparison. The MPC formulation, the initial condition and the deterministic reference are identical for all four optimizers; every run consumes exactly 1000 objective calls per MPC step (verified per run). Values are mean $\pm$ standard deviation of the closed-loop nRMSE over 20 runs. The last two columns report how the ranking and the between-optimizer spread compare with the jointly tuned, nominally-equal-budget protocol of the co-design analysis (Section~\ref{subsec:codesign}).}
+\label{tab:primary}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}llccccccc@{}}
+\toprule
+Regime & System & SGO & GWO & PSO & WOA & Ref. & Rank & Spread \\
+\midrule
+A ($NP$ per optimizer) & Pendulum-cart & 0.21502\,$\pm$3e-05 & 0.21502\,$\pm$4e-06 & \textbf{0.21499\,$\pm$4e-05} & 0.21502\,$\pm$7e-08 & 0.215022 & yes & 1.8$\times$ \\
+ & CSTR & 0.29421\,$\pm$2e-04 & \textbf{0.29415\,$\pm$6e-06} & 0.29467\,$\pm$2e-03 & 0.29472\,$\pm$7e-04 & 0.294153 & yes & 10.7$\times$ \\
+ & Flight control & \textbf{0.018166\,$\pm$7e-05} & 0.018198\,$\pm$1e-05 & 0.018194\,$\pm$6e-06 & 0.018186\,$\pm$3e-05 & 0.0181957 & yes & 41.3$\times$ \\
+ & HVAC & \textbf{0.020752\,$\pm$2e-06} & 0.020759\,$\pm$2e-06 & 0.020754\,$\pm$8e-06 & 0.020767\,$\pm$4e-08 & 0.0207669 & no & 4.4$\times$ \\
+ & UAV & 0.00092729\,$\pm$4e-05 & \textbf{0.00086918\,$\pm$9e-07} & 0.0024784\,$\pm$3e-03 & 0.0012514\,$\pm$2e-04 & 0.000869299 & yes & 15.0$\times$ \\
+\midrule
+B ($NP{=}20$ common) & Pendulum-cart & 0.21502\,$\pm$2e-05 & 0.21502\,$\pm$3e-06 & \textbf{0.21495\,$\pm$9e-05} & 0.21502\,$\pm$8e-08 & 0.215022 & yes & 0.8$\times$ \\
+ & CSTR & 0.29443\,$\pm$4e-04 & \textbf{0.29415\,$\pm$4e-06} & 0.29415\,$\pm$1e-06 & 0.29441\,$\pm$4e-04 & 0.294153 & yes & 22.0$\times$ \\
+ & Flight control & \textbf{0.018184\,$\pm$2e-05} & 0.018195\,$\pm$1e-05 & 0.01823\,$\pm$8e-05 & 0.018195\,$\pm$4e-06 & 0.0181957 & yes & 28.4$\times$ \\
+ & HVAC & \textbf{0.02076\,$\pm$1e-06} & 0.020762\,$\pm$2e-06 & 0.020762\,$\pm$3e-06 & 0.020767\,$\pm$3e-08 & 0.0207669 & yes & 9.5$\times$ \\
+ & UAV & 0.00093557\,$\pm$5e-05 & \textbf{0.00087361\,$\pm$1e-05} & 0.0026352\,$\pm$1e-03 & 0.0012683\,$\pm$2e-04 & 0.000869299 & yes & 13.7$\times$ \\
+\bottomrule
+\end{tabular}}
+\end{table}

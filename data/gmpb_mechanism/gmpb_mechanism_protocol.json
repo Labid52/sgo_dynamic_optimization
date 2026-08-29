@@ -1,0 +1,170 @@
+{
+  "study": "GMPB grouping / intensification mechanism ablation of the Squid Game Optimizer",
+  "purpose": "diagnostic mechanism test, not an attempt to improve SGO",
+  "sgo_identity": {
+    "name": "Squid Game Optimizer",
+    "reference": "Azizi, Baghalzadeh Shishehgarkhaneh, Basiri, Moehler, Scientific Reports 13:5373 (2023)",
+    "doi": "10.1038/s41598-023-32465-z",
+    "not": "Social Group Optimization"
+  },
+  "benchmark": {
+    "inherited_from": "results_v2/gmpb/gmpb_protocol.json",
+    "cases": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8",
+      "F9",
+      "F10",
+      "F11",
+      "F12"
+    ],
+    "environments": 100,
+    "state_files_reused": true,
+    "benchmark_seed": "run index; environment trajectory identical to the committed baseline"
+  },
+  "baseline": {
+    "implementation": "codes/gmpb_optimizers.py:SGO (unmodified)",
+    "results_reused": "results_v2/gmpb/gmpb_primary_raw.csv (population persistence)",
+    "reruns": 0
+  },
+  "intervention": {
+    "name_in_prior_work": "C_fitness_group",
+    "source": "codes/sgo_ablation_impl.py",
+    "implementation": "codes/gmpb_sgo_mechanism.py:SGOGrouping(grouping='fitness')",
+    "rule_baseline": "fresh uniformly random permutation each iteration; half offensive, half defensive",
+    "rule_intervention": "stable argsort of current evaluated cost; best half offensive, worst half defensive",
+    "other_changes": "none",
+    "new_parameters": 0,
+    "tuned": false,
+    "other_variants_tested_on_gmpb": []
+  },
+  "equivalence_gate": {
+    "script": "codes/gmpb_mechanism_equivalence.py",
+    "configurations": 28,
+    "checks": 308,
+    "failures": 0,
+    "max_abs_diff": 0.0,
+    "quantities": [
+      "evaluated points",
+      "objective values",
+      "FE counter",
+      "environment counter",
+      "population after run",
+      "population costs",
+      "best solution",
+      "best cost",
+      "CurrentError trace",
+      "Ebbc vector",
+      "offline error"
+    ]
+  },
+  "design": {
+    "primary": {
+      "cases": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12"
+      ],
+      "grouping": "fitness",
+      "temporal_mode": "population_persistence",
+      "runs": 31,
+      "total_runs": 372
+    },
+    "interaction": {
+      "cases": [
+        "F2",
+        "F8",
+        "F10",
+        "F12"
+      ],
+      "grouping": "fitness",
+      "temporal_mode": "previous_best_seeded",
+      "runs": 31,
+      "total_runs": 124,
+      "cells_already_committed": [
+        "random+population_persistence",
+        "random+previous_best_seeded"
+      ],
+      "cold_restart_added": false
+    },
+    "total_new_runs": 496
+  },
+  "settings": {
+    "population_size": 20,
+    "optimizer_seed_formula": "20260900 + 1000*run + 10*1 + mode_offset",
+    "mode_offset": {
+      "population_persistence": 0,
+      "cold_restart": 10,
+      "previous_best_seeded": 20
+    },
+    "fe_accounting": "official GMPB; sorting consumes no objective evaluations",
+    "comparator_runs_repeated": false
+  },
+  "diagnostics": {
+    "fractions": [
+      0.0,
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "diversity": "mean(std(X,axis=0))/(ub-lb), first completed iteration at or after each target fraction, actual fraction stored",
+    "error_trace": "official CurrentError at the same fractions",
+    "recovery_levels": [
+      0.5,
+      0.9
+    ],
+    "late_half_reduction": "error_at_50 - end_of_environment_error",
+    "late_half_fraction": "late_half_reduction / (post_change_error - end_of_environment_error), where positive",
+    "optimum_distance_recorded": false,
+    "optimum_leakage_to_optimizer": false
+  },
+  "hypotheses": {
+    "H1": "fitness grouping lowers persistent population diversity",
+    "H2": "fitness grouping shifts improvement later in the environment and/or raises the evaluation fraction to 90% recovery",
+    "H3": "fitness grouping reduces official offline error",
+    "H4": "if H1-H3 hold under persistence but vanish under previous-best seeding, grouping and stale carryover interact strongly",
+    "H5": "if the effect survives under previous-best seeding, grouping acts beyond stale carryover",
+    "H6": "the effect need not appear on every case"
+  },
+  "statistics": {
+    "independent_unit": "run (benchmark seed)",
+    "pseudoreplication_control": "environment-level data aggregated to one value per run before any test",
+    "paired_test": "Wilcoxon signed-rank on 31 paired benchmark seeds",
+    "correction": "Holm across the 12 primary case comparisons, and within each diagnostic family",
+    "effect_size": "Cliff's delta with bootstrap 95% CI",
+    "bootstrap_resamples": 10000,
+    "interaction": "paired fitness-minus-random effect within each temporal mode plus a difference-of-differences summary"
+  },
+  "interpretation_categories": [
+    "STRONG MECHANISM SUPPORT",
+    "MODERATE MECHANISM SUPPORT",
+    "PERFORMANCE EFFECT WITHOUT MECHANISM SUPPORT",
+    "NO SUPPORT",
+    "CONTRADICTORY"
+  ],
+  "prohibited": [
+    "naming the intervention as a new algorithm",
+    "comparing the intervention with GWO/PSO/WOA as though it were the original algorithm",
+    "claiming diversity is intrinsically harmful",
+    "using 'cause' merely because offline error improves",
+    "changing the manuscript's object of study away from vanilla SGO"
+  ],
+  "manuscript_edits_in_this_task": false
+}

@@ -1,0 +1,29 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{SGO mechanism ablation at the primary 1000-evaluation budget: median normalized optimality gap and strict convergence rate by instance role, plus incumbent-return rates. Diagnostic only; no variant is proposed as an algorithm. The lower block reports the 5000-evaluation plateau instances, where fitness-based grouping breaks the flight plateau but not the UAV one.}
+\label{tab:sgo_ablation}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Role (instances) & baseline & A: no greedy & B: no bridge & C: fitness group & D: no warm slot \\
+\midrule
+plateau (5) & 4.6e-03 / 14.7\% & 4.0e-02 / 3.3\% & 4.0e-02 / 5.3\% & 4.0e-02 / 4.7\% & 4.6e-02 / 13.3\% \\
+recoverable difficult (4) & 4.2e-05 / 83.3\% & 1.3e-04 / 48.3\% & 2.3e-03 / 37.5\% & 5.5e-05 / 52.5\% & 1.1e-04 / 48.3\% \\
+benign reliable (5) & 0.0e+00 / 100.0\% & 0.0e+00 / 92.7\% & 7.2e-09 / 54.0\% & 0.0e+00 / 99.3\% & 0.0e+00 / 80.7\% \\
+stratum Moderate (1) & 2.1e-03 / 3.3\% & 1.9e-02 / 0.0\% & 4.8e-03 / 0.0\% & 1.9e-02 / 0.0\% & 2.9e-03 / 0.0\% \\
+stratum Severe (1) & 1.2e-04 / 46.7\% & 3.0e-03 / 6.7\% & 2.1e-02 / 0.0\% & 1.3e-03 / 30.0\% & 1.1e-04 / 46.7\% \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{incumbent-return rate, 1000 FE}} \\
+plateau & 0.0\% & 44.0\% & 40.7\% & 40.7\% & 0.0\% \\
+recoverable difficult & 22.5\% & 56.7\% & 72.5\% & 49.2\% & 0.0\% \\
+\midrule
+\multicolumn{6}{@{}l}{\textit{plateau instances at 5000 FE: gap / convergence}} \\
+flight $k{=}6$ & 3.8e-04 / 30\% & 5.4e-04 / 17\% & 1.1e-04 / 50\% & 1.5e-05 / 87\% & 3.3e-04 / 33\% \\
+flight $k{=}7$ & 1.8e-04 / 43\% & 5.7e-04 / 7\% & 1.2e-04 / 47\% & 1.4e-05 / 97\% & 2.2e-04 / 40\% \\
+uav $k{=}0$ & 2.9e-01 / 0\% & 1.5e-01 / 0\% & 4.0e-01 / 0\% & 2.6e-02 / 0\% & 2.2e-01 / 3\% \\
+uav $k{=}495$ & 2.7e-03 / 0\% & 2.5e-02 / 0\% & 1.6e-01 / 0\% & 1.5e-01 / 0\% & 2.2e-02 / 7\% \\
+uav $k{=}497$ & 9.3e-04 / 10\% & 1.7e-02 / 0\% & 3.2e-02 / 0\% & 4.0e-02 / 0\% & 4.1e-02 / 3\% \\
+\bottomrule
+\end{tabular}}
+\end{table}

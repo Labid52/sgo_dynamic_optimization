@@ -1,0 +1,4 @@
+QP reference under each tuned MPC configuration: Quadrotor UAV Trajectory Tracking
+Config (P,Nc,Q_scale)       used by                   QP nRMSE
+(10, 1, 1.0)                SGO,PSO,WOA               0.000869
+(10, 1, 0.5)                GWO                       0.000869

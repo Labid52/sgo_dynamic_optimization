@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Deterministic reference verification. OSQP is the primary reference solver and multistart L-BFGS-B the independent cross-check; both are evaluated on the implemented objective. The suboptimality bound is the strong-convexity certificate $\|\mathrm{proj}\,\nabla J\|^2/(2\lambda_{\min})$, normalized as the optimality gaps are.}
+\label{tab:reference_crosscheck}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+System & Instances & Max $|J_{\mathrm{OSQP}}-J_{\mathrm{L\text{-}BFGS\text{-}B}}|$ & Max rel. & Max $\|u\|_\infty$ diff & Max subopt. bound & OSQP status \\
+\midrule
+Pendulum-cart & 25 & $4.441{\times}10^{-16}$ & $2.077{\times}10^{-16}$ & $2.003{\times}10^{-8}$ & $3.907{\times}10^{-17}$ & solved \\
+CSTR & 25 & $8.351{\times}10^{-14}$ & $8.351{\times}10^{-14}$ & $1.095{\times}10^{-6}$ & $2.857{\times}10^{-24}$ & solved \\
+Flight control & 25 & $8.882{\times}10^{-16}$ & $1.620{\times}10^{-16}$ & $8.912{\times}10^{-8}$ & $1.072{\times}10^{-17}$ & solved \\
+HVAC & 25 & $6.466{\times}10^{-13}$ & $1.850{\times}10^{-14}$ & $6.785{\times}10^{-6}$ & $1.255{\times}10^{-18}$ & solved \\
+UAV & 25 & $2.213{\times}10^{-10}$ & $2.109{\times}10^{-10}$ & $6.078{\times}10^{-7}$ & $4.942{\times}10^{-26}$ & solved \\
+\bottomrule
+\end{tabular}}
+\end{table}

@@ -1,0 +1,31 @@
+fid              name    variant      our_mean      our_std      pub_mean      pub_std  known_min                                 verdict
+ F1          Ackley 1 def_ge_off  5.849947e-06 5.017806e-06  0.000000e+00 0.000000e+00        0.0 published at optimum, ours 5.8e-06 away
+ F1          Ackley 1 def_le_off  8.984635e-13 9.731191e-14  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+ F2          Alpine 1 def_ge_off  3.542104e-05 3.987663e-05  6.150000e-08 6.150000e-07        0.0             ours WORSE (576.0x further)
+ F2          Alpine 1 def_le_off  8.965435e-13 8.960207e-14  6.150000e-08 6.150000e-07        0.0           ours BETTER (68596.8x closer)
+ F4    Chung Reynolds def_ge_off  5.946284e-13 2.207514e-12  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+ F4    Chung Reynolds def_le_off  6.920168e-13 2.301141e-13  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+ F5           Csendes def_ge_off  3.788776e-13 2.992991e-13  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+ F5           Csendes def_le_off  6.095578e-13 2.489541e-13  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+ F6             Deb 1 def_ge_off -5.662756e-01 7.207545e-02 -6.000000e-01 2.260000e-01       -1.0           match (within 2x, ratio 1.08)
+ F6             Deb 1 def_le_off -5.591559e-01 7.871067e-02 -6.000000e-01 2.260000e-01       -1.0           match (within 2x, ratio 1.10)
+ F7     Dixon & Price def_ge_off  9.997113e-01 2.647454e-04  1.000000e+00 2.070000e-04        0.0           match (within 2x, ratio 1.00)
+ F7     Dixon & Price def_le_off  9.961344e-01 1.059757e-03  1.000000e+00 2.070000e-04        0.0           match (within 2x, ratio 1.00)
+F10          Griewank def_ge_off  5.952979e-09 1.177426e-08  0.000000e+00 0.000000e+00        0.0 published at optimum, ours 6.0e-09 away
+F10          Griewank def_le_off  7.975798e-13 1.599794e-13  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+F19        Powell Sum def_ge_off  4.477810e-13 4.490650e-13  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+F19        Powell Sum def_le_off  5.543099e-13 2.498351e-13  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+F20         Rastrigin def_ge_off  8.857797e-08 1.377960e-07  0.000000e+00 0.000000e+00        0.0 published at optimum, ours 8.9e-08 away
+F20         Rastrigin def_le_off  8.345147e-13 1.280813e-13  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+F22           Quintic def_ge_off  3.242843e+02 1.715215e+01  2.360000e+01 9.400000e+01        0.0              ours WORSE (13.7x further)
+F22           Quintic def_le_off  3.065223e+02 1.535345e+01  2.360000e+01 9.400000e+01        0.0              ours WORSE (13.0x further)
+F23        Rosenbrock def_ge_off  9.898065e+01 1.962571e-02  9.610000e+01 1.380000e+01        0.0           match (within 2x, ratio 1.03)
+F23        Rosenbrock def_le_off  9.885413e+01 4.746886e-02  9.610000e+01 1.380000e+01        0.0           match (within 2x, ratio 1.03)
+F24           Salomon def_ge_off  6.540100e-05 6.045709e-05  0.000000e+00 0.000000e+00        0.0 published at optimum, ours 6.5e-05 away
+F24           Salomon def_le_off  8.786564e-13 9.381720e-14  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+F25 Schumer Steiglitz def_ge_off  2.305931e-13 3.003995e-13  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+F25 Schumer Steiglitz def_le_off  6.783270e-13 2.363178e-13  0.000000e+00 0.000000e+00        0.0                 match (both at optimum)
+
+literal (as implemented, D1): 11/13 functions agree with the published SGO mean
+flipped (D1-alt): 7/13 functions agree with the published SGO mean
+literal closer to published on 7/13 functions

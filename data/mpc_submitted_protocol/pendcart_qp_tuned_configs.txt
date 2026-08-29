@@ -1,0 +1,3 @@
+QP reference under each tuned MPC configuration: Inverted Pendulum on Cart
+Config (P,Nc,Q_scale)       used by                   QP nRMSE
+(20, 1, 1.0)                SGO,GWO,PSO,WOA           0.215022

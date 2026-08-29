@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\small
+\caption{Objective drift over EVERY consecutive transition of the deterministic trajectory ($N_c=1$, fixed MPC). The warm-start suboptimality is the optimization-relevant measure: the cost of reusing the previous optimum for the next problem, normalized as the optimality gaps are. A transition is called benign when it falls below the $10^{-4}$ criterion at which the study declares convergence.}
+\label{tab:objective_drift_full}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+System & Transitions & Benign & Warm-gap median & p90 & p99 & max & Ref.-driven drift \\
+\midrule
+cstr & 100 & 85.0\% & 1.11e-15 & 1.06e-02 & 8.85e-01 & 1.80e+01 & none \\
+flight & 150 & 71.3\% & 1.71e-06 & 4.94e-03 & 3.03e-02 & 7.97e-01 & none \\
+hvac & 1500 & 100.0\% & 3.10e-08 & 5.85e-05 & 6.27e-05 & 6.30e-05 & none \\
+pendcart & 150 & 65.3\% & 4.61e-06 & 8.16e-03 & 6.43e-02 & 6.69e-02 & none \\
+uav & 500 & 87.8\% & 5.52e-11 & 1.14e-03 & 4.94e-01 & 1.24e+01 & 1.77e+04 \\
+\bottomrule
+\end{tabular}}
+\end{table}

@@ -1,0 +1,26 @@
+{
+  "cells": 88,
+  "dims": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    15,
+    16,
+    24
+  ],
+  "excluded": {
+    "uav": [
+      3,
+      5,
+      8
+    ]
+  },
+  "fe_exact_everywhere": true,
+  "wall_seconds": 143.7
+}

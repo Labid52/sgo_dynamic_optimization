@@ -1,0 +1,13 @@
+{
+  "instances": 16,
+  "variants": [
+    "baseline",
+    "A_no_greedy",
+    "B_no_bridge",
+    "C_fitness_group",
+    "D_no_warm_slot"
+  ],
+  "trials": 30,
+  "fe_exact_everywhere": true,
+  "wall_seconds": 99.5
+}
