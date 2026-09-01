@@ -1,110 +1,92 @@
-# Dynamic optimization behavior of the Squid Game Optimizer — code and data
+# SGO Dynamic Optimization
 
-This repository contains the code and the raw repeated-run data supporting a
-controlled study of the **Squid Game Optimizer (SGO)** under standardized and
-MPC-generated dynamic optimization problems. It evaluates the *original* SGO of
-Azizi et al. (2023) — it does not propose a modified algorithm and makes no claim
-that SGO is superior. GWO, PSO and WOA are used as matched controls so that a
-behavior can be tested for being SGO-specific rather than generic to
-population-based search. The repository accompanies the manuscript but is designed
-to stand alone: everything needed to regenerate the reported tables, statistics and
-figures is here, and no manuscript file is required.
+Code, data, protocols, and analysis scripts for the study of the **Squid Game Optimizer (SGO)** under standardized and MPC-generated dynamic optimization problems.
 
-> **SGO here means the Squid Game Optimizer** (Azizi, Baghalzadeh Shishehgarkhaneh,
-> Basiri & Moehler, *Scientific Reports* 13:5373, 2023; doi:10.1038/s41598-023-32465-z),
-> **not** Social Group Optimization, which shares the acronym.
+This repository contains:
 
-## The question this repository supports
+- implementations of SGO, GWO, PSO, and WOA;
+- dynamic MPC benchmark problems;
+- Generalized Moving Peaks Benchmark (GMPB) experiments;
+- frozen experimental protocols and random-seed rules;
+- run-level production data;
+- deterministic-reference evidence;
+- scripts for regenerating analyses, tables, and figures;
+- commands for generating fresh experimental data from the saved protocols.
 
-SGO was introduced and validated mainly on static problems. This study asks how it
-behaves when the objective changes during operation, and — more importantly — which of
-its apparent dynamic weaknesses survive matched controls. Two settings are used:
+> **SGO refers to the Squid Game Optimizer** of Azizi et al. (2023), not Social Group Optimization.
 
-1. **GMPB** — the 12 official Generalized Moving Peaks Benchmark competition instances,
-   which give standardized, controlled environmental change.
-2. **MPC-generated objective sequences** — five receding-horizon control problems, in
-   which each sampling instant poses a new but related finite-horizon problem and the
-   optimizer's own decision helps define the next one.
-
-The two settings are complementary, not equivalent: GMPB directly manipulates how much
-optimizer state survives a change, while the MPC warm-start analysis changes the source
-and quality of the carried candidate sequence.
+---
 
 ## Repository structure
 
-```
+```text
 .
-├── README.md                    this file
-├── requirements.txt             pinned versions of the environment that produced data/
-├── .gitignore
-├── code/                        all analysis and experiment code (flat, prefix-grouped)
-│   ├── reproduce.py             single entry point (Level 1 / Level 2 / verification)
-│   ├── verify_claims.py         independent recomputation of the headline numbers
-│   ├── sgo.py gwo.py pso.py woa.py            optimizer implementations
-│   ├── sgo_ablation_impl.py                   ablation-capable copy of SGO
-│   ├── system_defs.py mpc_utils.py sim_common.py   MPC plants, cost construction, engine
-│   ├── reference_solvers.py tail_prediction.py     deterministic reference, tail convention
-│   ├── phase2_protocol.py initial_condition_protocol.py   frozen protocol and initial conditions
-│   ├── primary_experiment.py  … frozen_sweep_v2.py  …     MPC experiments
-│   ├── gmpb_*.py gmpb_*.sh                    GMPB benchmark, runners, gates, analysis
-│   ├── sgo_benchmark_verification.py summarize_sgo_benchmark.py  original-SGO reproduction
-│   └── phase2a_analysis.py phase3_artifact_prep.py phase3b_manuscript_artifacts.py  figures/tables
+├── README.md
+├── requirements.txt
+├── code/
+│   ├── reproduce.py
+│   ├── verify_claims.py
+│   ├── sgo.py
+│   ├── gwo.py
+│   ├── pso.py
+│   ├── woa.py
+│   ├── system_defs.py
+│   ├── mpc_utils.py
+│   ├── sim_common.py
+│   ├── reference_solvers.py
+│   ├── phase2_protocol.py
+│   ├── primary_experiment.py
+│   ├── frozen_sweep_v2.py
+│   ├── objective_drift*.py
+│   ├── budget_sensitivity_v2.py
+│   ├── multi_ic_experiment.py
+│   ├── dimension_sweep.py
+│   ├── perturbation_experiment.py
+│   ├── input_error_sensitivity.py
+│   ├── sgo_ablation*.py
+│   ├── tail_convention_*.py
+│   ├── reference_nc_sweep.py
+│   ├── strict_fe_verification.py
+│   ├── gmpb_*.py
+│   ├── gmpb_*.sh
+│   └── sgo_benchmark_verification.py
 ├── data/
-│   ├── gmpb/                    primary GMPB study (raw runs, environments, statistics, Octave generator)
-│   ├── gmpb_temporal_comparators/  matched temporal-transfer study, 4 optimizers
-│   ├── gmpb_mechanism/          SGO grouping diagnostic and the 2x2 temporal interaction
-│   ├── mpc_submitted_protocol/  earlier jointly tuned protocol (co-design comparison only)
-│   ├── protocols/               frozen seed, drift-strata and tail-convention protocols
-│   ├── provenance/              hardware, OS, interpreter and package records
-│   ├── cache/                   regenerable optimizer warm-start histories
-│   ├── figures/ tables/ figures_tables/   generated outputs
-│   └── *.csv *.json             MPC raw and processed data (see docs/DATA_INDEX.md)
+│   ├── gmpb/
+│   ├── gmpb_temporal_comparators/
+│   ├── gmpb_mechanism/
+│   ├── protocols/
+│   ├── provenance/
+│   ├── figures/
+│   ├── tables/
+│   ├── figures_tables/
+│   └── *.csv / *.json
 └── docs/
-    ├── DATA_INDEX.md            every data file, raw vs processed, and what it contains
-    └── THIRD_PARTY.md           third-party components, hashes and attribution
+    ├── DATA_INDEX.md
+    └── THIRD_PARTY.md
 ```
 
-**A note on paths inside the frozen protocol files.** The `*_protocol.json` and
-`*_PROTOCOL.md` records under `data/` are the pre-registration documents as they were
-written before each study ran, and they are reproduced here unaltered. They refer to the
-working directory `results_v2/`, which is this package's `data/`, and to `codes/`, which
-is `code/`. Nothing else changed: the exported scripts differ from the working copies
-only in those directory names (plus two shell launchers made portable). No optimization
-mathematics or numerical procedure was modified when the package was assembled.
+Run-level `*_raw.csv` files are the primary numerical evidence. Summary files, statistical outputs, tables, and figures are derived from those records.
 
-`code/` is intentionally flat. The modules import each other by plain module name
-(`import system_defs`), so they must sit in one directory; the filename prefixes
-(`gmpb_*`, `sim_*`/`system_*`, `sgo_*`) carry the grouping instead. Every file is listed
-by role in the table further below.
+---
 
-## Installation
+## Environment setup
+
+The production data were generated with Python 3.11.15 and the package versions pinned in `requirements.txt`.
+
+Create a Conda environment:
 
 ```bash
-git clone <this repository>
-cd SGO_Dynamic_Optimization_Reproducibility
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+conda create -n sgo_repro python=3.11.15 pip -y
+conda activate sgo_repro
+
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-Python **3.11** is expected (3.11.15 was used). The pinned `matplotlib` and `pandas`
-versions matter: older combinations fail when plotting pandas Series directly.
+Recorded principal versions:
 
-GNU Octave is required **only** for a full GMPB rerun (Level 2), to regenerate the
-benchmark state files. It is not needed for anything else. Octave 10.3 was used here.
-If Octave comes from a Conda environment, export `OCTAVE_HOME` to that environment
-prefix as well as putting its `bin` on `PATH`; without it Octave cannot find its own
-m-file tree and core functions such as `fullfile` fail to resolve.
-
-## Environment that produced the data in `data/`
-
-All results under `data/` were produced in one environment, recorded at the time in
-`data/provenance/environment_phase2.md` and reproduced here verbatim:
-
-| Component | Version |
-|---|---|
-| OS | Ubuntu 22.04, Linux 6.8.0-124-generic, x86_64 |
-| CPU | 12th Gen Intel Core i7-12800H, 14 cores / 20 threads |
-| RAM | 15 GiB |
+| Package | Version |
+|---|---:|
 | Python | 3.11.15 |
 | NumPy | 2.4.6 |
 | SciPy | 1.17.1 |
@@ -112,343 +94,825 @@ All results under `data/` were produced in one environment, recorded at the time
 | matplotlib | 3.10.9 |
 | OSQP | 1.1.3 |
 
-Full listings: `data/provenance/conda_list.txt`, `pip_freeze_phase2.txt`,
-`numpy_config_phase2.txt`, `lscpu_phase2.txt`, `uname_phase2.txt`.
-
-**Threading.** Every production run was executed single-threaded:
+Verify the environment:
 
 ```bash
-export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
+python - <<'PY'
+import sys, numpy, scipy, pandas, matplotlib, osqp
+
+expected = {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pandas": "3.0.3",
+    "matplotlib": "3.10.9",
+    "osqp": "1.1.3",
+}
+
+got = {
+    "numpy": numpy.__version__,
+    "scipy": scipy.__version__,
+    "pandas": pandas.__version__,
+    "matplotlib": matplotlib.__version__,
+    "osqp": osqp.__version__,
+}
+
+print("Python:", sys.version.split()[0])
+for name, version in expected.items():
+    print(f"{'PASS' if got[name] == version else 'MISMATCH'}  "
+          f"{name}: {got[name]} (expected {version})")
+PY
 ```
 
-The problems are small (the largest Hessian in the primary MPC experiment is 4x4), so
-multithreaded BLAS adds contention rather than speed, and pinning to one thread makes
-timings reproducible. Use the same setting to reproduce timing numbers.
+Use single-threaded numerical libraries to match the recorded production configuration:
 
-**Timing results are machine- and environment-dependent.** They come from an
-unoptimized single-process Python implementation on one machine and support relative
-comparison between the methods *as implemented here*. They are not a hardware-in-the-loop
-result, not an embedded or real-time certification, and not a deployability claim.
+```bash
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+```
 
-An earlier audit environment (Python 3.10.12 / NumPy 1.26.4 / SciPy 1.8.0) is recorded in
-`data/provenance/environment.md` for provenance only. It is superseded and must not be
-used to regenerate anything.
+Detailed environment provenance is stored under `data/provenance/`.
 
-## Two levels of reproduction
+---
 
-A full rerun of every optimizer experiment costs on the order of hundreds of millions of
-objective evaluations. You do not need it to check the reported numbers.
+## Experimental protocols and random seeds
 
-### Level 1 — analysis reproduction (recommended; minutes)
+Experimental design choices were frozen before the final production runs.
 
-Regenerates every summary table, reported statistic and figure from the committed raw
-per-run data. Runs no optimizer, no MPC simulation and no benchmark environment, and
-needs no GMPB state files.
+The seed protocol is documented in:
+
+```text
+data/protocols/SEED_PROTOCOL.md
+```
+
+The run-level data also retain the seeds used for individual experiments.
+
+For MPC experiments, seeds are generated deterministically from the experiment, instance, condition, optimizer, and trial indices.
+
+Relevant configuration files include:
+
+```text
+code/phase2_protocol.py
+data/initial_condition_protocol.json
+data/tuned_params_optimizer_only.json
+data/protocols/
+```
+
+For GMPB, the benchmark seed is the run index. The same benchmark seed generates the same dynamic environment trajectory for all optimizers and temporal conditions. Optimizer seeds are stored separately in the run records.
+
+---
+
+# 1. Reproduce analyses from the supplied raw data
+
+This mode starts from the committed raw run-level data and regenerates derived analyses, statistics, tables, and figures.
 
 ```bash
 python code/reproduce.py --from-data
 ```
 
-Nine analysis stages run in dependency order. Outputs are written to
-`data/figures_tables/{figures,tables}`, `data/{figures,tables}` and
-`data/gmpb*/{figures,tables}`, overwriting the committed copies with identical content.
+Expected final line:
 
-To check the headline numbers independently of the table generators:
-
-```bash
-python code/verify_claims.py     # or: python code/reproduce.py --verify
+```text
+Level-1 analysis reproduction: 9/9 stages succeeded
 ```
 
-This recomputes 147 reported quantities directly from the raw CSVs and prints PASS/FAIL
-for each — run counts, budget exactness, the GMPB rankings and pairwise outcomes, the
-matched temporal-transfer counts, the grouping-diagnostic magnitudes and directions, the
-MPC drift, convergence, budget, dimension, warm-start, tail and perturbation results, and
-the original-SGO reproduction.
-
-### Testing safely: never overwrite the released data
-
-Every experiment script writes into `data/` by default, which is where the released
-evidence lives. Set `SGO_OUTPUT_DIR` to send all generated files somewhere else, so a
-smoke test cannot damage the committed data:
+The principal numerical claims can also be recomputed independently:
 
 ```bash
-mkdir -p repro_test_output
-SGO_OUTPUT_DIR=$PWD/repro_test_output python code/reference_verification.py --instants 2
+python code/verify_claims.py
 ```
 
-Use this for every script under Level 2 unless you deliberately intend to replace the
-released files. The Level-1 analysis path (`code/reproduce.py --from-data`) is the one
-exception where rewriting `data/` in place is the intended behaviour, since it
-regenerates the derived tables and figures from the raw data.
+Expected final line:
 
-`code/reference_verification.py` is a Phase-1 structural diagnostic of the objective and
-solver implementation (Hessian, convexity, gradient, KKT, multistart spread). It is not
-the production certification and it certifies the multistart L-BFGS-B point, so on the
-UAV it reports "PARTIALLY CERTIFIED". The production gate for which
-`(system, N_c)` configurations may serve as optimality-gap denominators is
-`code/reference_nc_sweep.py`, which certifies the OSQP reference and is the source of
-`data/reference_nc_sweep_summary.csv`.
+```text
+147/147 checks passed
+```
 
-### Level 2 — full experiment rerun (expensive)
+The claim checker reads the raw data directly and verifies quantities including:
+
+- GMPB run counts, budgets, rankings, and pairwise comparisons;
+- temporal-transfer effects;
+- SGO grouping and interaction results;
+- MPC drift and convergence results;
+- deterministic-reference certification;
+- budget, dimension, warm-start, tail, perturbation, and multi-initial-condition results;
+- original-SGO benchmark reproduction.
+
+`verify_claims.py` does not parse a manuscript `.tex` file.
+
+### Optional isolated analysis run
+
+To avoid rewriting derived files in the working tree, analysis can be run from a temporary copy:
+
+```bash
+PKG="$(pwd)"
+
+rm -rf /tmp/sgo_analysis_check
+cp -a "$PKG" /tmp/sgo_analysis_check
+cd /tmp/sgo_analysis_check
+
+python code/reproduce.py --from-data
+python code/verify_claims.py
+```
+
+To compare regenerated machine-readable outputs with the repository copy:
+
+```bash
+diff -rq data "$PKG/data" \
+  | grep -vE '\.(eps|pdf)( |$)' \
+  | grep -v '_meta.json'
+```
+
+Expected: no output.
+
+PDF/EPS binaries may differ because of serialization metadata. Runtime-only metadata such as `wall_seconds` may also differ.
+
+---
+
+# 2. Generate fresh MPC experimental data
+
+The following validated test executes all four optimizers again using the stored protocol and deterministic seed rules.
+
+Fresh results are written only under `scratch/`.
+
+```bash
+mkdir -p scratch/audit
+
+python - <<'EOF' 2>&1 | grep -v "Polish"
+import sys, numpy as np, pandas as pd
+sys.path.insert(0, "code")
+
+from system_defs import get_systems
+from sim_common import simulate, build_problem, make_cost, solve_one_step
+import phase2_protocol as P2
+from reference_solvers import osqp_reference, problem_linear_term
+
+ics = P2.load_initial_conditions()
+systems = get_systems()
+tuned = P2.load_tuned_np()["selected"]
+
+key = "flight"
+sysdef = systems[key]
+mpc = P2.fixed_mpc_params(sysdef)
+
+problem = build_problem(sysdef, mpc["Nc"], mpc["Q_scale"], mpc["P"])
+lb, ub = problem.lb_seq, problem.ub_seq
+
+det = simulate(
+    key,
+    "QP",
+    params=mpc,
+    seed=11,
+    verbose=False,
+    x0_override=ics[key]["eval"],
+)
+
+k = 6
+x = det["x_hist"][:, k]
+
+f = problem_linear_term(problem, sysdef, x, k)
+u, _, _ = osqp_reference(problem, f)
+cost = make_cost(problem, x, k)
+Jstar = float(cost(np.clip(u, lb, ub)))
+
+production = pd.read_csv(
+    "data/frozen_sweep_v2_raw.csv",
+    float_precision="round_trip",
+)
+
+stored = float(
+    production[
+        (production.system == key) &
+        (production.k == k)
+    ].J_star.iloc[0]
+)
+
+print(
+    f"fresh J*={Jstar:.12g}  stored={stored:.12g}  "
+    f"bit-identical={Jstar == stored}"
+)
+
+rows = []
+
+for alg in ["SGO", "GWO", "PSO", "WOA"]:
+    NP = int(tuned[key][alg]["NP"])
+    params = dict(mpc)
+    params.update(P2.strict_fe_params(NP, alg=alg))
+
+    for trial in range(20):
+        seed = P2.seed_for(
+            "frozen_v2",
+            P2.SYSTEM_INDEX[key],
+            0,
+            P2.ALG_INDEX[alg],
+            trial,
+        )
+
+        np.random.seed(seed)
+
+        _, Jf, _, _, _, nfe = solve_one_step(
+            problem,
+            x,
+            k,
+            alg,
+            params,
+            np.zeros_like(lb),
+        )
+
+        rows.append({
+            "alg": alg,
+            "trial": trial,
+            "nfe": int(nfe),
+            "gap": abs(float(Jf) - Jstar) / max(1, abs(Jstar)),
+        })
+
+fresh = pd.DataFrame(rows)
+fresh.to_csv("scratch/audit/fresh_mpc_smoke.csv", index=False)
+
+prod_medians = (
+    production[
+        (production.system == key) &
+        (production.k == k) &
+        (production.start == "cold")
+    ]
+    .groupby("alg")
+    .final_gap_norm
+    .median()
+)
+
+comparison = (
+    fresh.groupby("alg").gap.median()
+    .to_frame("fresh")
+    .join(prod_medians.to_frame("production"))
+)
+
+comparison["PASS"] = np.isclose(
+    comparison.fresh,
+    comparison.production,
+    rtol=0,
+    atol=0,
+)
+
+print(comparison.to_string())
+
+print(
+    "realized FE:",
+    sorted(set(fresh.nfe)),
+    "-> all exactly 1000:",
+    sorted(set(fresh.nfe)) == [1000],
+)
+EOF
+```
+
+Expected:
+
+```text
+bit-identical=True
+
+        fresh  production  PASS
+GWO     ...       ...      True
+PSO     ...       ...      True
+SGO     ...       ...      True
+WOA     ...       ...      True
+
+realized FE: [1000] -> all exactly 1000: True
+```
+
+This checks the complete path:
+
+```text
+code + saved protocol + saved seeds
+        ->
+fresh optimizer execution
+        ->
+new run-level result
+        ->
+comparison with production data
+```
+
+---
+
+# 3. Deterministic MPC reference evidence
+
+The canonical deterministic-reference workflow is the Phase-2 OSQP-based `reference_nc_sweep.py` analysis.
+
+Production evidence:
+
+```text
+data/reference_nc_sweep_raw.csv
+data/reference_nc_sweep_summary.csv
+data/reference_certificates.csv
+```
+
+The accepted production sweep contains 25 `(system, Nc)` configurations:
+
+- 22 accepted;
+- all five primary `Nc=1` configurations accepted;
+- only UAV `Nc = 3, 5, 8` rejected from analyses requiring an optimality gap.
+
+Inspect the stored certification:
+
+```bash
+python - <<'PY'
+import pandas as pd
+
+s = pd.read_csv(
+    "data/reference_nc_sweep_summary.csv",
+    float_precision="round_trip",
+)
+
+print("cells tested:", len(s))
+print("accepted:", int(s.certified.sum()))
+
+primary = s[s.Nc == 1]
+print("all five primary Nc=1 accepted:", bool(primary.certified.all()))
+
+rejected = sorted(zip(
+    s[~s.certified].system,
+    s[~s.certified].Nc,
+))
+print("rejected:", rejected)
+
+print("\nPrimary Nc=1 reference quality:")
+print(
+    primary[
+        [
+            "system",
+            "max_solver_rel_disagreement",
+            "max_subopt_bound_norm",
+            "cond_H",
+        ]
+    ].to_string(index=False)
+)
+PY
+```
+
+Expected:
+
+```text
+cells tested: 25
+accepted: 22
+all five primary Nc=1 accepted: True
+rejected: [('uav', 3), ('uav', 5), ('uav', 8)]
+```
+
+`reference_verification.py` is retained as an earlier Phase-1 diagnostic and is not the canonical manuscript certification.
+
+---
+
+# 4. Generate fresh GMPB experimental data
+
+GNU Octave is required to regenerate GMPB benchmark states from the official benchmark implementation.
+
+## 4.1 Create an Octave Conda environment
+
+```bash
+conda create -n octave_gmpb -c conda-forge octave=10.3.0 -y
+conda activate octave_gmpb
+
+export OCTAVE_HOME="$CONDA_PREFIX"
+export PATH="$OCTAVE_HOME/bin:$PATH"
+
+which octave
+octave --no-gui -q --eval "disp(fullfile('a','b')); disp(version)"
+```
+
+Expected:
+
+```text
+.../envs/octave_gmpb/bin/octave
+a/b
+10.3.0
+```
+
+With Conda Octave, `OCTAVE_HOME` should be set so that the standard Octave function path is resolved correctly.
+
+## 4.2 Generate one fresh dynamic environment
+
+From the repository root:
+
+```bash
+ROOT="$(pwd)"
+
+mkdir -p \
+  scratch/gmpb_states \
+  scratch/gmpb_out \
+  scratch/audit
+```
+
+Generate case `F2`, benchmark seed `1`:
+
+```bash
+cd "$ROOT/data/gmpb/octave"
+
+octave --no-gui -q gmpb_dump.m \
+  F2 \
+  1 \
+  "$ROOT/scratch/gmpb_states"
+```
+
+Expected:
+
+```text
+DUMP OK F2 seed 1  d=5 m=10 T=100 CF=5000 MaxEvals=500000 probes=2400
+```
+
+Run the official Octave reference evaluator:
+
+```bash
+octave --no-gui -q gmpb_refrun.m \
+  F2 \
+  1 \
+  20000 \
+  500 \
+  "$ROOT/scratch/gmpb_states"
+```
+
+Expected:
+
+```text
+REFRUN OK F2 seed 1 batch 500  FE=20000 env=4
+Eo=23.7523181571321 Ebbc=15.9498585853071
+```
+
+Return to the repository root:
+
+```bash
+cd "$ROOT"
+```
+
+## 4.3 Validate the Python GMPB implementation
+
+Activate the Python environment again:
+
+```bash
+conda activate sgo_repro
+
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+```
+
+Python versus official Octave benchmark:
+
+```bash
+python code/gmpb_equivalence.py \
+  scratch/gmpb_states \
+  scratch/audit
+```
+
+Expected:
+
+```text
+9 checks, 0 failures
+```
+
+SGO dynamic-driver fidelity:
+
+```bash
+python code/gmpb_sgo_fidelity.py scratch/audit
+```
+
+Expected:
+
+```text
+12 checks, 0 failures
+```
+
+## 4.4 Run all four optimizers on the freshly generated GMPB state
+
+Use a new output directory:
+
+```bash
+rm -rf scratch/gmpb_out_user
+mkdir -p scratch/gmpb_out_user
+
+python code/gmpb_run.py \
+  primary \
+  scratch/gmpb_states \
+  scratch/gmpb_out_user \
+  F2 \
+  1 \
+  4
+```
+
+A fresh execution should begin with:
+
+```text
+primary: 4 jobs, 0 already done, 4 to run
+```
+
+and finish with:
+
+```text
+4/4 runs
+"completed_now": 4
+```
+
+## 4.5 Compare fresh GMPB results with production
+
+```bash
+python - <<'PY'
+import pandas as pd
+
+RT = dict(float_precision="round_trip")
+
+fresh = pd.read_csv(
+    "scratch/gmpb_out_user/gmpb_primary_raw.csv",
+    **RT,
+).set_index("alg")
+
+production = pd.read_csv(
+    "data/gmpb/gmpb_primary_raw.csv",
+    **RT,
+)
+
+production = production[
+    (production.case == "F2") &
+    (production.seed == 1)
+].set_index("alg")
+
+columns = [
+    "realized_FE",
+    "environments_completed",
+    "offline_error",
+    "best_error_before_change",
+    "mean_population_diversity",
+]
+
+all_pass = True
+
+for alg in ["SGO", "GWO", "PSO", "WOA"]:
+    print(f"\n{alg}")
+
+    for col in columns:
+        a = fresh.loc[alg, col]
+        b = production.loc[alg, col]
+        ok = a == b
+        all_pass &= ok
+
+        print(
+            f"  {'PASS - identical' if ok else 'FAIL - difference found'}"
+            f"  {col}: fresh={a}  production={b}"
+        )
+
+print("\nOVERALL:", "PASS" if all_pass else "FAIL")
+PY
+```
+
+On the recorded environment, the validated F2/seed-1 test reproduces the stored production values exactly.
+
+Expected:
+
+```text
+OVERALL: PASS
+```
+
+---
+
+# 5. Full experimental rerun
+
+The tests above regenerate selected MPC and GMPB production cells. The full experimental study can also be rerun from the frozen protocols.
+
+List the ordered MPC production entry points:
 
 ```bash
 python code/reproduce.py --list-full-rerun
 ```
 
-prints the ordered entry points. In outline:
+The complete MPC workflow includes:
 
-**MPC** (hours, single machine): freeze the protocol and initial conditions, certify the
-deterministic reference, verify the evaluation budget, tune optimizer-only parameters on
-held-out initial conditions, then run the closed-loop primary experiment, the drift
-measurement, the frozen sweep, and the budget / multi-IC / dimension / perturbation /
-input-error / tail / ablation studies.
+- protocol and initial-condition preparation;
+- deterministic-reference certification;
+- exact FE-budget verification;
+- held-out optimizer tuning;
+- primary closed-loop experiments;
+- objective-drift calculation;
+- frozen-subproblem experiments;
+- budget sensitivity;
+- multi-initial-condition experiments;
+- control-horizon/dimension sweep;
+- perturbation experiments;
+- input-error sensitivity;
+- prediction-tail sensitivity;
+- SGO ablation.
 
-**GMPB** (days): first regenerate the benchmark states with Octave, then run the studies.
+Full regeneration is computationally expensive. New experiment output should be directed to a separate location rather than the committed production-data tree.
+
+Where supported by the experiment scripts:
 
 ```bash
-# 0. Generate the official GMPB generator states (Octave; 12 cases x 31 seeds).
-#    Octave must be on PATH, or point OCTAVE_ACTIVATE at a script that puts it there.
-bash code/gmpb_generate.sh ./gmpb_states 1 31 8
-
-# 1. Equivalence gates first -- nothing downstream is valid unless these pass.
-#    The Octave reference dumps go in their own directory:
-#      cd data/gmpb/octave && octave --no-gui -q gmpb_refrun.m F2 1 20000 500 <refdir>
-python code/gmpb_equivalence.py <refdir> data/gmpb          # Python port vs official Octave
-python code/gmpb_sgo_fidelity.py data/gmpb                  # dynamic driver vs static SGO
-
-# 2. Primary study (12 cases x 4 optimizers x 31 runs) and the SGO temporal modes.
-bash code/gmpb_launch.sh ./gmpb_states data/gmpb 16
-#   equivalently:
-#     python code/gmpb_run.py primary  ./gmpb_states data/gmpb ALL 31 16
-#     python code/gmpb_run.py temporal ./gmpb_states data/gmpb ALL 31 16
-python code/gmpb_gates.py ./gmpb_states data/gmpb           # validation gates A-J
-
-# 3. Matched comparator temporal transfer, then its validation gate.
-#      <cache> <outdir> <cases> <seeds> <algs> <modes> [nproc]
-python code/gmpb_temporal_comparators.py \
-    ./gmpb_states data/gmpb_temporal_comparators ALL 31 ALL ALL 16
-python code/gmpb_temporal_validation.py ./gmpb_states data/gmpb_temporal_comparators
-
-# 4. Grouping diagnostic, after its equivalence gate.
-#      <cache> <outdir> <cases> <seeds> <grouping> <mode> [nproc]
-python code/gmpb_mechanism_equivalence.py ./gmpb_states data/gmpb_mechanism
-python code/gmpb_mechanism_run.py ./gmpb_states data/gmpb_mechanism \
-    ALL 31 random  population_persistence 16      # baseline reproduction
-python code/gmpb_mechanism_run.py ./gmpb_states data/gmpb_mechanism \
-    ALL 31 fitness population_persistence 16      # primary grouping diagnostic
-python code/gmpb_mechanism_run.py ./gmpb_states data/gmpb_mechanism \
-    F2,F8,F10,F12 31 fitness previous_best_seeded 16   # 2x2 temporal interaction
+mkdir -p scratch/full_mpc
+export SGO_OUTPUT_DIR="$PWD/scratch/full_mpc"
 ```
 
-All the run scripts write incrementally and skip cells that already exist, so an
-interrupted study can simply be relaunched with the same arguments.
+Then execute the commands printed by:
 
-**Original-SGO static reproduction** (hours):
+```bash
+python code/reproduce.py --list-full-rerun
+```
+
+in the displayed order.
+
+---
+
+## Full GMPB state generation
+
+Generate the complete set of benchmark states for seeds 1–31:
+
+```bash
+mkdir -p scratch/full_gmpb_states
+
+bash code/gmpb_generate.sh \
+  scratch/full_gmpb_states \
+  1 \
+  31 \
+  8
+```
+
+The full primary GMPB study can then be written to a separate directory:
+
+```bash
+mkdir -p scratch/full_gmpb_primary
+
+python code/gmpb_run.py \
+  primary \
+  scratch/full_gmpb_states \
+  scratch/full_gmpb_primary \
+  ALL \
+  31 \
+  16
+```
+
+Additional temporal-comparator and mechanism experiments are available through:
+
+```text
+code/gmpb_temporal_comparators.py
+code/gmpb_mechanism_run.py
+```
+
+The complete GMPB study involves hundreds of millions of objective evaluations and may require substantial computation time.
+
+---
+
+# 6. Function-evaluation budget policy
+
+Budgets are enforced at the objective-function call level.
+
+The primary MPC protocol uses exactly 1000 objective evaluations per MPC step unless a budget-sensitivity experiment explicitly changes that value.
+
+Retained evidence:
+
+```text
+data/strict_fe_budget_verification.csv
+data/strict_fe_budget_verification.json
+```
+
+The validated fresh MPC test should report:
+
+```text
+realized FE: [1000] -> all exactly 1000: True
+```
+
+For GMPB, run-level records retain:
+
+```text
+realized_FE
+environments_completed
+```
+
+The primary GMPB study uses the benchmark-defined budget and 100 environments per run.
+
+---
+
+# 7. Original-SGO benchmark reproduction
+
+The repository also contains the static original-SGO implementation verification.
 
 ```bash
 python code/sgo_benchmark_verification.py
 ```
 
-The GMPB state files are **not** committed: they are large binary generator states, and
-they are regenerated deterministically from the seed by the unmodified official Octave
-code. Level 1 does not need them.
+Retained evidence:
 
-## How to reproduce each reported result
+```text
+data/sgo_benchmark_raw.csv
+data/sgo_benchmark_summary.csv
+data/sgo_benchmark_comparison.txt
+data/sgo_benchmark_verification.json
+```
 
-| Result | Data | Regenerate with |
-|---|---|---|
-| GMPB primary table and figure, pairwise statistics | `data/gmpb/gmpb_primary_raw.csv` | `python code/gmpb_analysis.py` |
-| Matched temporal-transfer comparison and behavioural diagnostics | `data/gmpb_temporal_comparators/gmpb_temporal_comparator_raw.csv` | `python code/gmpb_temporal_analysis.py` |
-| SGO grouping diagnostic, diversity, 2x2 temporal interaction | `data/gmpb_mechanism/gmpb_*_raw.csv` | `python code/gmpb_mechanism_analysis.py` |
-| MPC primary tables, budget accounting, timing, co-design comparison | `data/primary_closed_loop_raw.csv`, `data/mpc_submitted_protocol/` | `python code/phase2a_analysis.py` |
-| MPC effect sizes and practical-significance labels | `data/primary_closed_loop_raw.csv` | `python code/effect_sizes_primary.py` |
-| Drift strata, frozen-sweep difficulty, warm-start mechanism | `data/objective_drift_full_raw.csv`, `data/frozen_sweep_v2_raw.csv` | `python code/drift_performance_analysis.py` |
-| SGO ablation and warm-start tables | `data/sgo_ablation_raw.csv` | `python code/phase3_artifact_prep.py` |
-| Original-SGO 13-function reproduction | `data/sgo_benchmark_raw.csv` | `python code/summarize_sgo_benchmark.py` |
-| All main figures (fig1–fig7) and tables | the files above | `python code/phase3b_manuscript_artifacts.py` |
+The as-implemented convention agrees with the published SGO mean on 11 of the 13 tested functions. Alpine 1 and Quintic are retained and reported as exceptions.
 
-### Original SGO implementation verification (Reviewer 2)
+---
 
-This is deliberately easy to find. The evidence that the SGO implementation reproduces
-the behavior of the original paper lives in four places:
+# 8. Raw and derived data
 
-- `code/sgo.py` — the implementation used for every result in this study.
-- `code/sgo_benchmark_verification.py` — reruns the original paper's own protocol:
-  13 benchmark functions, 100 dimensions, 150 000 evaluations, 100 independent runs,
-  population 50, under both readings of the ambiguous winning-condition branch.
-- `data/sgo_benchmark_raw.csv` — all 2600 individual runs (13 functions x 2 conventions
-  x 100 runs), not only the means.
-- `data/sgo_benchmark_summary.csv`, `data/sgo_benchmark_comparison.txt`,
-  `data/sgo_benchmark_verification.json` — per-function comparison against the published
-  means and the pass/fail verdicts.
+`docs/DATA_INDEX.md` provides a file-level index.
 
-Under the as-implemented convention the reproduction agrees with the published mean on
-**11 of the 13 functions**. Two fall outside the agreement band: Quintic, where this
-implementation reaches a mean of 306.5 against a published 23.6, and Alpine 1, where this
-implementation lands closer to the optimum than the published value. Both are reported
-rather than adjusted.
+General convention:
 
-For the dynamic setting, two further gates check that the same implementation is what
-actually ran: `data/gmpb/sgo_fidelity.csv` (dynamic driver vs static implementation,
-evaluation by evaluation) and `data/gmpb_mechanism/baseline_equivalence.csv` (308 checks
-that the ablation driver with random grouping is bit-identical to the validated SGO).
+- `*_raw.csv`: independent run/trial/transition records;
+- `*_summary.csv`: derived summary statistics;
+- `*_statistics.csv`: statistical comparisons;
+- `*_association.csv` and `*_effects.csv`: derived analyses;
+- `figures/` and `tables/`: generated presentation artifacts.
 
-## Raw vs processed data
+The run-level data are retained even when derived summaries are also supplied.
 
-`docs/DATA_INDEX.md` labels every file. In short: `*_raw.csv` files hold one row per
-independent run, trial or transition and are the primary evidence; `*_summary.csv`,
-`*_statistics.csv`, `*_association.csv`, `*_effects.csv` and everything in `tables/` and
-`figures/` are recomputed from them by Level 1. Per-run data is retained everywhere,
-including where a summary also exists — summaries are a convenience, not a replacement.
+---
 
-Running Level 1 rewrites every processed file. On the recorded environment this
-reproduces all committed processed CSVs, JSONs and LaTeX tables byte-for-byte, except two
-`wall_seconds` fields that record how long the analysis itself took.
+# 9. Output isolation
 
-## Seeds and randomness
+Fresh experimental output should be stored under `scratch/` or another user-selected output directory.
 
-The seed protocol is `data/protocols/SEED_PROTOCOL.md`. Every experiment records the
-seeds it used in its own output CSV.
+After running local checks:
 
-- **MPC.** `seed = SEED_BASE[experiment] + 1_000_000*instance_index + 1_000*condition_index
-  + trial_index`. `trial_index` varies fastest, so different conditions (start condition,
-  budget, optimizer) see identical trial streams and comparisons are paired.
-- **GMPB.** The benchmark seed is the run index, so run *r* presents the same environment
-  trajectory to every optimizer and every temporal mode. 31 independent runs per case and
-  optimizer; comparisons are paired by benchmark seed. Optimizer seeds are recorded
-  separately in the run records.
+```bash
+git status --short
+```
 
-## Function-evaluation budget policy
+A clean source/data tree may show only untracked test output such as:
 
-Budgets are enforced at the **objective-call** level, not through iteration limits, because
-one SGO iteration can evaluate the objective a variable number of times. Early stopping and
-stagnation termination are disabled.
+```text
+?? scratch/
+```
 
-- **MPC.** Exactly `B = 1000` objective calls per MPC step unless a budget curve is shown
-  explicitly. Enforcement was verified over 2000 cells spanning four budgets, five
-  population sizes, five systems and all four optimizers; realized equalled requested in
-  every cell (`data/strict_fe_budget_verification.*`). Every production run also records
-  its own realized count.
-- **GMPB.** Each optimizer receives exactly the benchmark-defined change frequency per
-  environment and exactly 100 environments per run, giving the official per-case totals
-  (50 000 to 500 000 evaluations). Initialization and post-change re-evaluations consume
-  budget. All three temporal modes have identical budgets. Every run's `budget_exact`
-  flag is `True` in the committed data.
+Tracked production data and source files should remain unchanged.
 
-## Optimizer configuration
+---
 
-- Population sizes, algorithm constants and the frozen MPC protocol: `code/phase2_protocol.py`.
-- Optimizer-only tuned population sizes (regime A): `data/tuned_params_optimizer_only.json`,
-  chosen on tuning initial conditions that are disjoint from the evaluation ones
-  (`data/initial_condition_protocol.json`).
-- The earlier jointly tuned configuration, kept only for the co-design comparison:
-  `code/tuned_params.json` and `data/mpc_submitted_protocol/*_qp_tuned_configs.txt`.
-- GMPB: population 20 for every optimizer on every case; PSO inertia 0.9→0.4 with
-  `c1 = c2 = 2`; WOA `b = 1`; GWO and SGO have no parameters beyond population size.
-  See `data/gmpb/gmpb_protocol.json`.
+# 10. Third-party benchmark components
 
-## Deterministic reference solver
+`docs/THIRD_PARTY.md` documents the GMPB source components, provenance, and hashes.
 
-The primary deterministic reference for the MPC subproblems is **OSQP**, cross-checked
-against an independent multistart **L-BFGS-B** solve from the start point and 20 random
-interior points (`code/reference_solvers.py`). A cell is accepted when the strong-convexity
-suboptimality bound at the returned point is far below the 1e-4 convergence criterion *and*
-the two solvers agree to better than 1e-4 relative.
+The official GNU Octave GMPB implementation is used to generate the dynamic benchmark state. The Python evaluator is checked against the official Octave implementation before dynamic optimizer runs.
 
-22 of the 25 tested (system, `N_c`) cells are accepted. All five primary `N_c = 1` cells
-pass. The three UAV cells at `N_c` in {3, 5, 8} fail the agreement rule and are excluded
-from every optimality-gap computation. Per-instant certificates:
-`data/reference_certificates.csv`, `data/reference_nc_sweep_summary.csv`.
+---
 
-## Expected outputs
+# 11. Numerical reproducibility across systems
 
-| Output | Written to |
-|---|---|
-| Main-paper figures `fig1_objective_drift` … `fig7_tail_convention` (`.pdf` and `.eps`) | `data/figures_tables/figures/` |
-| Main-paper and supplementary LaTeX tables (`tab2` … `tab8`, `tabS_*`) | `data/figures_tables/tables/` |
-| GMPB primary and temporal-mode figures and tables | `data/gmpb/{figures,tables}/` |
-| Matched temporal-transfer figures | `data/gmpb_temporal_comparators/figures/` |
-| Grouping-diagnostic figures and table | `data/gmpb_mechanism/{figures,tables}/` |
-| MPC diagnostic figures and per-experiment LaTeX tables | `data/figures/`, `data/tables/` |
-| Recomputed summary and statistics CSVs | alongside the raw files they derive from |
+The recorded environment reproduced the validated MPC and GMPB test cases exactly.
 
-## Data provenance
+Small floating-point differences may occur with materially different:
 
-Every experiment writes, next to its results: run-level records, its machine-readable
-protocol (`*_protocol.json`), run metadata (`*_meta.json`), the seeds it used and the
-realized evaluation counts. Design decisions that had to be fixed before outcomes were
-seen — the MPC protocol, the held-out initial conditions, the drift strata and frozen
-instance list, the four diagnostic GMPB cases, the reference-acceptance criteria — are
-committed as frozen protocol files under `data/protocols/`, `data/*_protocol.json` and
-`data/gmpb*/`*`_protocol.json`.
+- CPUs;
+- operating systems;
+- BLAS implementations;
+- SciPy/NumPy versions;
+- OSQP builds.
 
-The GMPB environments are not re-created: the official Octave generator produces each
-complete environment sequence and the Python evaluator loads that state and reproduces the
-released fitness and evaluation bookkeeping. The pinned upstream file hashes are in
-`data/gmpb/gmpb_protocol.json` and `docs/THIRD_PARTY.md`.
+For the closest reproduction, use the pinned environment and the documented seed and protocol files.
 
-## Third-party components
+Timing results are machine-dependent and should not be interpreted as embedded or hardware-in-the-loop real-time certification.
 
-`docs/THIRD_PARTY.md` lists what is redistributed and what is only cited. In short: the
-four official GMPB `.m` files under `data/gmpb/octave/official/` come from
-[EDOLAB-MATLAB](https://github.com/EDOLAB-platform/EDOLAB-MATLAB) (author Danial Yazdani)
-and are included unmodified with pinned SHA-256 hashes. **That upstream repository does
-not carry an explicit licence file**, so if you plan to redistribute this package further,
-fetch those four files from upstream rather than relying on the copies here; nothing else
-depends on them. Everything else under `code/` — including the SGO, GWO, PSO and WOA
-implementations — is authored in this project from the published algorithm descriptions.
+---
 
-## Known scope limitations relevant to reproduction
+# 12. Citation
 
-- The GMPB study uses the 12 released competition instances in the simplified
-  single-sub-function configuration, with a common population size of 20 rather than
-  per-case tuning.
-- The matched temporal comparison covers four preselected diagnostic cases
-  (F2, F8, F10, F12), not all twelve.
-- The fitness-grouping change is applied to SGO only. It is a diagnostic ablation, not a
-  proposed algorithm, and it is not compared with GWO, PSO or WOA as a method. Operator
-  branch-activation frequencies were not instrumented, so the data do not identify the
-  operator-level causal path.
-- The accepted MPC subproblems are bound-constrained convex quadratic programs. Nonconvex
-  MPC, moving hard state constraints and broader plant uncertainty are outside scope.
-  Three UAV cells at larger control horizons are excluded because the two independent
-  deterministic solvers do not meet the agreement tolerance.
-- Most MPC analyses use the zero-tail prediction convention; hold-last is tested
-  deterministically on all five systems and stochastically on two.
-- Timing figures are environment-dependent and are not a real-time or embedded claim.
-- GMPB benchmark state files are not shipped and must be regenerated with GNU Octave for a
-  Level-2 GMPB rerun.
+Please cite the accompanying manuscript and the original algorithm/benchmark sources when using this repository.
 
-## AI-assisted development disclosure
+Primary SGO reference:
 
-Anthropic Claude Code was used as an AI-assisted **software-development tool** during this
-project. Its role, as reflected in the repository history, covered planning and structuring
-of the experimental code, creation of code scaffolding and backbone, implementation
-assistance, debugging and troubleshooting, refactoring, and the preparation of analysis,
-table and figure-generation scripts. ChatGPT and Claude were additionally used during
-manuscript preparation for idea generation, language editing, organization and LaTeX
-formatting, as disclosed in the manuscript itself.
+M. Azizi, M. Baghalzadeh Shishehgarkhaneh, M. Basiri, and R. C. Moehler,
+“Squid Game Optimizer (SGO): a novel metaheuristic algorithm,”
+*Scientific Reports*, vol. 13, Art. no. 5373, 2023.
 
-AI-generated output was **not** treated as scientific evidence and no AI tool is cited as a
-source for any optimization, benchmark or numerical claim. The experimental design, the
-choice and freezing of protocols, the execution of the experiments, the numerical results,
-their verification and interpretation, and the final conclusions were reviewed and are the
-responsibility of the authors.
+Additional GMPB, GWO, PSO, and WOA references are listed in `docs/THIRD_PARTY.md`.
 
-Verification that is actually implemented in this repository, and that a reader can rerun,
-consists of: the equivalence and fidelity gates listed above, the exact function-evaluation
-budget checks, the deterministic-reference certificates, and `code/verify_claims.py`, which
-recomputes the reported numbers from the raw data. No claim of independent third-party code
-review is made.
+---
 
-## Citation
+## Reproduction summary
 
-If you use this code or data, please cite the manuscript this repository accompanies, and
-cite the original algorithm and benchmark sources separately:
+Two complementary paths are provided:
 
-- **SGO** — M. Azizi, M. Baghalzadeh Shishehgarkhaneh, M. Basiri, R. C. Moehler, "Squid
-  Game Optimizer (SGO): a novel metaheuristic algorithm," *Scientific Reports* 13:5373 (2023).
-- **GMPB** — D. Yazdani et al., "Benchmarking Continuous Dynamic Optimization: Survey and
-  Generalized Test Suite," *IEEE Transactions on Cybernetics* 52(5), 3380–3393; and
-  D. Yazdani et al., arXiv:2106.06174.
-- **GWO / PSO / WOA** — see `docs/THIRD_PARTY.md`.
+### Recompute results from supplied data
+
+```bash
+python code/reproduce.py --from-data
+python code/verify_claims.py
+```
+
+This checks:
+
+```text
+raw data -> analyses/statistics -> reported numerical results
+```
+
+### Generate fresh experimental data
+
+Use the MPC procedure in Section 2 and GMPB procedure in Section 4.
+
+This checks:
+
+```text
+code + protocols + seeds -> fresh run-level experimental data
+```
+
+The full experiment-generation entry points are listed by:
+
+```bash
+python code/reproduce.py --list-full-rerun
+```
