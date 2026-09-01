@@ -42,7 +42,10 @@ import pandas as pd
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PROJECT = os.path.dirname(ROOT)
-OUT = os.path.join(PROJECT, "data")
+# Output root. Defaults to the released data/ directory; set SGO_OUTPUT_DIR to
+# redirect every generated file elsewhere (e.g. a scratch directory) so that a
+# smoke test cannot overwrite the committed production evidence.
+OUT = os.environ.get("SGO_OUTPUT_DIR") or os.path.join(PROJECT, "data")
 CACHE = os.path.join(OUT, "cache")
 os.makedirs(CACHE, exist_ok=True)
 sys.path.insert(0, ROOT)
@@ -226,7 +229,8 @@ def main():
                    fe_exact=("fe_exact", "all")).reset_index())
     summ.to_csv(os.path.join(OUT, "frozen_sweep_v2_summary.csv"), index=False)
 
-    meta = {"instances": int(df.k.nunique()), "rows": int(len(df)),
+    meta = {"instances": int(df[["system", "k"]].drop_duplicates().shape[0]),
+            "rows": int(len(df)),
             "trials": args.trials, "fe_budget": P2.FE_BUDGET,
             "fe_exact_everywhere": bool(df.fe_exact.all()),
             "start_conditions": ["cold", "reference_warm", "optimizer_warm"],

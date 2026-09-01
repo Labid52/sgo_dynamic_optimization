@@ -1,5 +1,5 @@
 {
-  "instances": 135,
+  "instances": 215,
   "rows": 51600,
   "trials": 20,
   "fe_budget": 1000,
@@ -13,5 +13,6 @@
     "rtol": 1e-12,
     "atol": 1e-14
   },
-  "wall_seconds": 3166.3
+  "wall_seconds": 3166.3,
+  "instances_note": "counted as unique (system, k) pairs; an earlier build counted unique k only, which collides across systems. 215 = 45+41+41+32+56 and 215*4*3*20 = 51600 rows. Descriptive metadata only; no reported result uses this field."
 }

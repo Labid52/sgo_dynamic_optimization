@@ -40,7 +40,10 @@ import matplotlib.pyplot as plt
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PROJECT = os.path.dirname(ROOT)
-OUT = os.path.join(PROJECT, "data")
+# Output root. Defaults to the released data/ directory; set SGO_OUTPUT_DIR to
+# redirect every generated file elsewhere (e.g. a scratch directory) so that a
+# smoke test cannot overwrite the committed production evidence.
+OUT = os.environ.get("SGO_OUTPUT_DIR") or os.path.join(PROJECT, "data")
 sys.path.insert(0, ROOT)
 import phase2_protocol as P2                                           # noqa: E402
 
@@ -218,7 +221,9 @@ def main():
                 format="eps", bbox_inches="tight")
     plt.close(fig)
 
-    meta = {"rows": int(len(df)), "instances": int(df.k.nunique()),
+    meta = {
+            "rows": int(len(df)),
+            "instances": int(df[["system", "k"]].drop_duplicates().shape[0]),
             "wall_seconds": round(time.perf_counter() - t0, 1)}
     with open(os.path.join(OUT, "drift_performance_meta.json"), "w") as f:
         json.dump(meta, f, indent=2)

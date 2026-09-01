@@ -90,7 +90,10 @@ Python **3.11** is expected (3.11.15 was used). The pinned `matplotlib` and `pan
 versions matter: older combinations fail when plotting pandas Series directly.
 
 GNU Octave is required **only** for a full GMPB rerun (Level 2), to regenerate the
-benchmark state files. It is not needed for anything else.
+benchmark state files. It is not needed for anything else. Octave 10.3 was used here.
+If Octave comes from a Conda environment, export `OCTAVE_HOME` to that environment
+prefix as well as putting its `bin` on `PATH`; without it Octave cannot find its own
+m-file tree and core functions such as `fullfile` fail to resolve.
 
 ## Environment that produced the data in `data/`
 
@@ -161,6 +164,30 @@ for each — run counts, budget exactness, the GMPB rankings and pairwise outcom
 matched temporal-transfer counts, the grouping-diagnostic magnitudes and directions, the
 MPC drift, convergence, budget, dimension, warm-start, tail and perturbation results, and
 the original-SGO reproduction.
+
+### Testing safely: never overwrite the released data
+
+Every experiment script writes into `data/` by default, which is where the released
+evidence lives. Set `SGO_OUTPUT_DIR` to send all generated files somewhere else, so a
+smoke test cannot damage the committed data:
+
+```bash
+mkdir -p repro_test_output
+SGO_OUTPUT_DIR=$PWD/repro_test_output python code/reference_verification.py --instants 2
+```
+
+Use this for every script under Level 2 unless you deliberately intend to replace the
+released files. The Level-1 analysis path (`code/reproduce.py --from-data`) is the one
+exception where rewriting `data/` in place is the intended behaviour, since it
+regenerates the derived tables and figures from the raw data.
+
+`code/reference_verification.py` is a Phase-1 structural diagnostic of the objective and
+solver implementation (Hessian, convexity, gradient, KKT, multistart spread). It is not
+the production certification and it certifies the multistart L-BFGS-B point, so on the
+UAV it reports "PARTIALLY CERTIFIED". The production gate for which
+`(system, N_c)` configurations may serve as optimality-gap denominators is
+`code/reference_nc_sweep.py`, which certifies the OSQP reference and is the source of
+`data/reference_nc_sweep_summary.csv`.
 
 ### Level 2 — full experiment rerun (expensive)
 

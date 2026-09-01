@@ -39,7 +39,10 @@ import matplotlib.pyplot as plt
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PROJECT = os.path.dirname(ROOT)
-OUT = os.path.join(PROJECT, "data")
+# Output root. Defaults to the released data/ directory; set SGO_OUTPUT_DIR to
+# redirect every generated file elsewhere (e.g. a scratch directory) so that a
+# smoke test cannot overwrite the committed production evidence.
+OUT = os.environ.get("SGO_OUTPUT_DIR") or os.path.join(PROJECT, "data")
 sys.path.insert(0, ROOT)
 
 from system_defs import get_systems                                    # noqa: E402
